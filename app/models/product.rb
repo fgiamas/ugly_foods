@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   enum status: { ugly: 0, old: 0 }
   has_many :product_selections
 
-
   validates :discount_percent, presence: true
   validates :price_per_unit, presence: true
   validates :life_span, presence: true, inclusion: 1..12
@@ -15,3 +14,4 @@ class Product < ApplicationRecord
   validates :total_units, presence: true
   validates :days_to_expiry, presence: true
 end
+
