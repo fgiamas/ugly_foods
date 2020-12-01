@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :carts do
       resources :product_selection
-
+  end
   # make method called dashboard
   # need a view dashboard.html.erb
   get "/dashboard", to: "bookings#dashboard"

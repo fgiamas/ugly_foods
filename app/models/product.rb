@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 
   validates :discount_percent, presence: true
   validates :price_per_unit, presence: true
-  validates :life_span, presence: true, inclusion: 1..12
+  validates :lifespan, presence: true, inclusion: 6..12
   validates :category, presence: true
   validates :status, presence: true
   validates :total_kg, presence: true
