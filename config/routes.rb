@@ -3,24 +3,15 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :shops do
-    resources :product, shallow: true, except: [:dashboard]
-  end
-
-  resources :carts do
-      resources :product_selection
-  end
   # make method called dashboard
   # need a view dashboard.html.erb
-  get "/dashboard", to: "bookings#dashboard"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
   resources :shops do
     # so that we have nested URLs, use shallow nesting for certain things
-    resources :ratings,only: [ :index, :new, :create ], shallow: true
-    end
-    resources :comments, only: [ :show, :edit, :update, :destroy ]
+    resources :ratings, shallow: true
+  end
 
 
   resources :products, except: [:index]

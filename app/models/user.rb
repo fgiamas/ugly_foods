@@ -16,6 +16,6 @@ class User < ApplicationRecord
   validates :country, presence: true
 
   def current_cart
-    Cart.find_or_create_by(user: self, status: { pending: 0 })
+    Cart.find_or_create_by(user: self, status: 0)
   end
 end
