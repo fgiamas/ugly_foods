@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :shop
   belongs_to :produce_type
-  enum category: { vegetable: 0, fruit: 0, flower: 0 }
-  enum status: { ugly: 0, old: 0 }
+  enum category: { vegetable: 0, fruit: 1, flower: 2 }
+  enum status: { ugly: 0, old: 1 }
   has_many :product_selections
 
   validates :discount_percent, presence: true

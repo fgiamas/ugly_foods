@@ -136,7 +136,7 @@ FLOWERS = [
    ]
 
 
-puts 'Creating 10 users...'
+puts 'Creating 8 users...'
 
   user_owner_1 = User.create(
     first_name: Faker::Name.first_name,
@@ -230,7 +230,7 @@ puts "Created #{User.count} users"
 
 
  shop_1 = Shop.create(
-    user_id: user_owner_1,
+    user_id: user_owner_1.id,
     name: "Ekoplaza",
     address: "Van der Hooplaan 104-106",
     city: "Amsterdam",
@@ -241,7 +241,7 @@ puts "Created #{User.count} users"
     )
 
  shop_2 = Shop.create(
-    user_id: user_owner_2,
+    user_id: user_owner_2.id,
     name: "Marqt",
     address: "Olympiaplein 160",
     city: "Amsterdam",
@@ -252,7 +252,7 @@ puts "Created #{User.count} users"
     )
 
  shop_3 = Shop.create(
-    user_id: user_owner_3,
+    user_id: user_owner_3.id,
     name: "Aldi",
     address: "Pijnackerstraat 36",
     city: "Amsterdam",
@@ -263,7 +263,7 @@ puts "Created #{User.count} users"
     )
 
  shop_4 = Shop.create(
-    user_id: user_owner_4,
+    user_id: user_owner_4.id,
     name: "Spar",
     address: "Kinkerstraat 252",
     city: "Amsterdam",
@@ -274,7 +274,7 @@ puts "Created #{User.count} users"
     )
 
  shop_5 = Shop.create(
-    user_id: user_owner_5,
+    user_id: user_owner_5.id,
     name: "Dirk",
     address: "Sierplein 6",
     city: "Amsterdam",
@@ -284,57 +284,62 @@ puts "Created #{User.count} users"
     website: "https://www.dirk.nl"
     )
 
+puts "Creating Ratings..."
  Rating.create(
-    user_id: user_buyer_1,
+    user_id: user_buyer_1.id,
     content: "Pleasantly surprised by the produce and service...
     prices a bit at the high end but if you are a believer this
     is a good place to shop!",
-    shop_id: shop_1,
+    shop_id: shop_1.id,
     rating: "4"
     )
 
  Rating.create(
-    user_id: user_buyer_2,
+    user_id: user_buyer_2.id,
     content: "Impressive selection of eko-foods.
     They have all kinds of meat as well as veggie options.
     I buy my truffles here",
-    shop_id: shop_2,
+    shop_id: shop_2.id,
     rating: "3"
     )
 
  Rating.create(
-    user_id: user_buyer_3,
+    user_id: user_buyer_3.id,
     content: "You get most of groceries here, vegetables and fruits are fresh.
     Also available surinami and indian stuff",
-    shop_id: shop_3,
+    shop_id: shop_3.id,
     rating: "5"
     )
 
  Rating.create(
-    user_id: user_buyer_4,
+    user_id: user_buyer_4.id,
     content: "Good little supermarket. Too little biological meat for my
     taste. Nice selection of healthy items though",
-    shop_id: shop_4,
+    shop_id: shop_4.id,
     rating: "4"
     )
 
  Rating.create(
-    user_id: user_buyer_5,
+    user_id: user_buyer_5.id,
     content: "Lots of good stuff, but too few staff to ask when you can t
     find what you want. Also has a section of Polish delicacies.",
-    shop_id: shop_5,
+    shop_id: shop_5.id,
     rating: "3"
     )
 
+ puts "Created #{Rating.count}"
+
 #FIRST SHOP
 
+
+puts "Creating product"
 5.times do
 Product.create(
     discount_percent: [20..40].sample,
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
     category: "vegetable",
-    shop_id: shop_1,
+    shop_id: shop_1.id,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
     status: "old",
@@ -351,7 +356,7 @@ Product.create(
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
     category: "fruit",
-    shop_id: shop_1,
+    shop_id: shop_1.id,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
     status: "ugly",
@@ -367,7 +372,7 @@ Product.create(
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
     category: "flower",
-    shop_id: shop_1,
+    shop_id: shop_1.id,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
     status: "old",
@@ -376,6 +381,8 @@ Product.create(
     produce_type_id: FLOWERS.shuffle!.pop
     )
 end
+
+"Created #{Product.count} product"
 
 
 #SECOND SHOP
