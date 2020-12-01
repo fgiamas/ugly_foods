@@ -5,15 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :shops, dependent: :destroy
   has_many :ratings
-  has_many :carts
+  has_many :carts, dependent: :destroy
 
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validates :address, presence: true
-  validates :post_code, presence: true
+  #validates :post_code
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  validates :city, presence: true
-  validates :country, presence: true
+  #validates :city
+  #validates :country
 
   def current_cart
     Cart.find_or_create_by(user: self, status: 0)
