@@ -1,0 +1,18 @@
+<%= form_for(@shop) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.label :city %>
+  <%= f.number_field :city %>
+  <%= f.label :post_code %>
+  <%= f.number_field :post_code %>
+  <%= f.label :country %>
+  <%= f.number_field :country %>
+  <%= f.label :website %>
+  <%= f.number_field :website %>
+  <%= f.label :phone_number %>
+  <%= f.number_field :phone_number %>
+
+  <%= f.submit %>
+<% end %>

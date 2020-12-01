@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   resources :shops do
     # so that we have nested URLs, use shallow nesting for certain things
-    resources :reviews, shallow: true
-  end
+    resources :ratings,only: [ :index, :new, :create ], shallow: true
+    end
+    resources :comments, only: [ :show, :edit, :update, :destroy ]
+
 
   resources :products, except: [:index]
 

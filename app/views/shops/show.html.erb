@@ -1,0 +1,21 @@
+<h2><%= @shop.name %></h2>
+<p><%= @shop.address %></p>
+<p><%= @shop.reviews %></p>
+
+<ul class="list-group">
+  <% @shop.ratings.each do |rating| %>
+    <li class="list-group-item"><%= rating.content %></li>
+  <% end %>
+</ul>
+
+<li class="list-group-item">
+      <%= rating.content %>
+      <%= link_to "Remove",
+                  rating_path(rating),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+    </li>
+
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %> |
+<%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
