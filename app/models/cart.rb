@@ -8,7 +8,7 @@ class Cart < ApplicationRecord
   # enums create these methods automatically
   validates :pick_up_date, presence: true, if: :confirmed?
 
-  def expiration_date_cannot_be_in_the_past
+  def pick_up_date_cannot_be_in_the_past
     if pick_up_date.present? && pick_up_date < Date.today
       errors.add(:pick_up_date, 'pick up date can’t be in the past')
     end
