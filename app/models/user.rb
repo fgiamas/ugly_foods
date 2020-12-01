@@ -14,4 +14,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :city, presence: true
   validates :country, presence: true
+
+  def current_cart
+    Cart.find_or_create_by(user: self, status: { pending: 0 })
+  end
 end
