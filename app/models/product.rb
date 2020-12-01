@@ -14,4 +14,3 @@ class Product < ApplicationRecord
   validates :total_units, presence: true
   validates :days_to_expiry, presence: true
 end
-
