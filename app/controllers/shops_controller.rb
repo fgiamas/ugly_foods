@@ -45,7 +45,7 @@ class ShopsController < ApplicationController
   private
 
   def strong_params
-    params.require(:shop).permit(:id, :address, :city, :post_code, :country, :name, :phone_number, :website)
+    params.require(:shop).permit(:id, :address, :city, :post_code, :country, :name, :phone_number, :website, :photo)
   end
 
   def find_shop
