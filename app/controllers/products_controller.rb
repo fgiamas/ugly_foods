@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_products
+  before_action :find_products, except: [:dashboard]
   before_action :authenticate_user!
 
   def dashboard

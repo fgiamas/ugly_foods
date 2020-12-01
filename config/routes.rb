@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   end
   # method run before_action will create for us
 
-  get '/dashboard', to: 'product#index'
+  get '/dashboard', to: 'products#dashboard'
 
 end
