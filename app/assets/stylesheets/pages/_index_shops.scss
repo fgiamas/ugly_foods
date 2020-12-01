@@ -2,9 +2,78 @@
   background-color: white;
   padding: 20px;
   margin-bottom: 1px;
-  border-radius: 15px 0px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .shop-image-rating {
   margin-right: 20px;
+}
+
+.calculated-rating {
+  padding-right: 10px;
+  color: white;
+  background-color: #C7E8E6;
+  border-radius: 20px 0px 0px 20px;
+  padding-left: 15px;
+  margin-right: 6px;
+}
+
+.rating-index .fa-star {
+  padding: 2px;
+  color: #C7E8E6;
+}
+
+.rating-index {
+  padding-top: 5px;
+}
+
+.name-and-distance {
+  background-color: #FEF4EF;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.more-shop-info {
+  width: 100%;
+}
+
+.scrollbar {
+  height: 100px;
+  float: right;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+  margin-right: 20px;
+  background-color: #FBFDFE;
+  margin-left: 10px;
+}
+
+.force-overflow {
+  min-height: 400px;
+}
+
+.scrollbar-items {
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.scroll-icons {
+  height: 60px;
+  width: 60px;
+}
+
+.produce {
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+p.produce-name {
+  font-size: 14px;
+  border-radius: 15px;
+  border: 0.5px solid #E5E6E6;
+  padding: 8px 20px 8px 20px;
+  margin-bottom: 2px;
+  text-align: center;
+  background-color: rgba(255,255,255,0.8);
+  color: #A8A9A8;
 }
