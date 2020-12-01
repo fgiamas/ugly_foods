@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :products, except: [:index]
 
-  resources :cart, only:  [:show, :new] do
+  resources :carts, only: [:show, :new] do
     post '/:product_id', to: 'cart#add_item_to_cart'
     delete '/:product_id', to: 'cart#remove_item_from_cart'
   end
