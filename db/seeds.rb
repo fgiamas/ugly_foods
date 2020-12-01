@@ -7,6 +7,8 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
 Shop.destroy_all
 User.destroy_all
 
@@ -125,24 +127,25 @@ FLOWERS = [
  EMAILS = [
   'micciullapiero@gmail.com',
   'monicandreoli@gmail.com',
-  'donaldtrump@hotmail.com',
   'christianbale@yahoo.com',
   'timroth@hotmail.com',
   'batman@yahoo.com',
   'robin@gmail.com',
   'miakhalifa@hotmail.com',
   'jamesbond@yahoo.com',
-  'brucewillis@hotmail.com'
+  'brucewillis@hotmail.com',
+  'brucewayne@hotmail.com',
+  'brucebane@hotmail.com'
    ]
 
 
-puts 'Creating 8 users...'
+puts 'Creating 10 users...'
 
   user_owner_1 = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
 
@@ -150,7 +153,7 @@ puts 'Creating 8 users...'
       first_name: Faker::Name.first_name,
       last_name: Faker::Name::last_name,
       address: ADDRESSES.sample,
-      email: EMAILS.sample,
+      email: EMAILS.shuffle!.pop,
       password: Faker::Internet.password
       )
 
@@ -158,7 +161,7 @@ puts 'Creating 8 users...'
       first_name: Faker::Name.first_name,
       last_name: Faker::Name::last_name,
       address: ADDRESSES.sample,
-      email: EMAILS.sample,
+      email: EMAILS.shuffle!.pop,
       password: Faker::Internet.password
       )
 
@@ -166,7 +169,7 @@ puts 'Creating 8 users...'
       first_name: Faker::Name.first_name,
       last_name: Faker::Name::last_name,
       address: ADDRESSES.sample,
-      email: EMAILS.sample,
+      email: EMAILS.shuffle!.pop,
       password: Faker::Internet.password
       )
 
@@ -174,7 +177,7 @@ puts 'Creating 8 users...'
       first_name: Faker::Name.first_name,
       last_name: Faker::Name::last_name,
       address: ADDRESSES.sample,
-      email: EMAILS.sample,
+      email: EMAILS.shuffle!.pop,
       password: Faker::Internet.password
       )
 
@@ -183,7 +186,7 @@ puts 'Creating 8 users...'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
 
@@ -191,7 +194,7 @@ puts 'Creating 8 users...'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
 
@@ -199,15 +202,15 @@ puts 'Creating 8 users...'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
 
-  user_buyer_4 = User.create(
+  user_buyer_4 = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
 
@@ -219,15 +222,16 @@ puts 'Creating 8 users...'
     password: '456789'
     )
 
-admin = User.create(
-  first_name: "camille",
-  last_name: "schull",
-  address: "Le wagon",
-  email: "lewagon@wagon.com",
-  password: "123456"
-  )
-puts "Created #{User.count} users"
+  admin = User.create(
+    first_name: "camille",
+    last_name: "schull",
+    address: "Le wagon",
+    email: "lewagon@wagon.com",
+    password: "123456"
+    )
+puts "Created #{User.count} users!"
 
+puts 'Creating 5 shops...'
 
  shop_1 = Shop.create(
     user_id: user_owner_1.id,
@@ -284,8 +288,11 @@ puts "Created #{User.count} users"
     website: "https://www.dirk.nl"
     )
 
-puts "Creating Ratings..."
- Rating.create(
+puts "Created #{Shop.count} shops!"
+
+puts "Creating 5 ratings"
+
+ Rating.create!(
     user_id: user_buyer_1.id,
     content: "Pleasantly surprised by the produce and service...
     prices a bit at the high end but if you are a believer this
@@ -294,7 +301,7 @@ puts "Creating Ratings..."
     rating: "4"
     )
 
- Rating.create(
+ Rating.create!(
     user_id: user_buyer_2.id,
     content: "Impressive selection of eko-foods.
     They have all kinds of meat as well as veggie options.
@@ -303,7 +310,7 @@ puts "Creating Ratings..."
     rating: "3"
     )
 
- Rating.create(
+ Rating.create!(
     user_id: user_buyer_3.id,
     content: "You get most of groceries here, vegetables and fruits are fresh.
     Also available surinami and indian stuff",
@@ -311,7 +318,7 @@ puts "Creating Ratings..."
     rating: "5"
     )
 
- Rating.create(
+ Rating.create!(
     user_id: user_buyer_4.id,
     content: "Good little supermarket. Too little biological meat for my
     taste. Nice selection of healthy items though",
@@ -319,7 +326,7 @@ puts "Creating Ratings..."
     rating: "4"
     )
 
- Rating.create(
+ Rating.create!(
     user_id: user_buyer_5.id,
     content: "Lots of good stuff, but too few staff to ask when you can t
     find what you want. Also has a section of Polish delicacies.",
@@ -327,55 +334,62 @@ puts "Creating Ratings..."
     rating: "3"
     )
 
- puts "Created #{Rating.count}"
+ puts "Created #{Rating.count} ratings!"
 
 #FIRST SHOP
-
-
-puts "Creating product"
 5.times do
-Product.create(
-    discount_percent: [20..40].sample,
-    price_per_unit: [2..5].sample,
-    lifespan: [6..12].sample,
-    category: "vegetable",
-    shop_id: shop_1.id,
-    total_units: [5..20].sample,
-    total_kg: [2..5].sample,
-    status: "old",
+ProduceType.create!(
+  name: FRUITS.shuffle!.pop
+  )
+end
+
+
+puts "Creating products..."
+
+5.times do
+Product.create!(
+    discount_percent: (20..40).to_a.sample,
+    price_per_unit: (2..5).to_a.sample,
+    lifespan: (6..12).to_a.sample,
+    category: 0,
+    shop: shop_1,
+    total_units: (5..20).to_a.sample,
+    total_kg: (2..5).to_a.sample,
+    status: 1,
     sold_status: "",
-    days_to_expiry: [1..6],
-    produce_type_id: VEGGIES.shuffle!.pop
+    days_to_expiry: (1..6).to_a.sample,
+    produce_type_id: ProduceType.all.sample.id
     )
+  puts "Created 1 product..."
 end
 
 
 5.times do
-Product.create(
+Product.create!(
     discount_percent: [20..40].sample,
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
-    category: "fruit",
+    category: 1,
     shop_id: shop_1.id,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
-    status: "ugly",
+    status: 0,
     sold_status: "",
     days_to_expiry: [1..6],
-    produce_type_id: FRUITS.shuffle!.pop
+    produce_type_id: FRUITS.shuffle!.pop.id
     )
 end
 
 5.times do
-Product.create(
+Product.create!(
     discount_percent: [20..40].sample,
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
-    category: "flower",
+    category: 2,
     shop_id: shop_1.id,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
-    status: "old",
+    status: 1,
     sold_status: "",
     days_to_expiry: [1..6],
     produce_type_id: FLOWERS.shuffle!.pop
@@ -388,15 +402,15 @@ end
 #SECOND SHOP
 
 5.times do
-Product.create(
+Product.create!(
     discount_percent: [20..40].sample,
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
-    category: "vegetable",
+    category: 0,
     shop_id: shop_2,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
-    status: "ugly",
+    status: 0,
     sold_status: "",
     days_to_expiry: [1..6],
     produce_type_id: VEGGIES.shuffle!.pop
@@ -405,15 +419,15 @@ end
 
 
 5.times do
-Product.create(
+Product.create!(
     discount_percent: [20..40].sample,
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
-    category: "fruit",
+    category: 1,
     shop_id: shop_2,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
-    status: "old",
+    status: 1,
     sold_status: "",
     days_to_expiry: [1..6],
     produce_type_id: FRUITS.shuffle!.pop
@@ -421,15 +435,15 @@ Product.create(
 end
 
 5.times do
-Product.create(
+Product.create!(
     discount_percent: [20..40].sample,
     price_per_unit: [2..5].sample,
     lifespan: [6..12].sample,
-    category: "flower",
+    category: 2,
     shop_id: shop_2,
     total_units: [5..20].sample,
     total_kg: [2..5].sample,
-    status: "old",
+    status: 1,
     sold_status: "",
     days_to_expiry: [1..6],
     produce_type_id: FLOWERS.shuffle!.pop
