@@ -6,16 +6,88 @@
 
         <div class="shop-image-rating">
           <div>
-            <%= image_tag("shop-placeholder.jpg", :alt => "shop", style: "width: 165px; height: 120px;") %>
+            <%= image_tag("shop-placeholder.jpg", :alt => "shop", style: "width: 165px; height: 120px; border-radius: 10px; margin-bottom: 10px;") %>
           </div>
-          <div class="rating">
-            <%=shop.calculate_rating %>
-            <%  %>
+          <div class="rating-index d-flex flex-wrap align-items-center">
+            <div class="calculated-rating">
+              <%=shop.calculate_rating %>
+            </div>
+            <% shop.calculate_rating.times do %>
+              <i class="far fa-star"></i>
+            <% end %>
           </div>
         </div>
 
         <div class="more-shop-info">
-          <%= shop.name %>
+          <div class="name-and-distance">
+            <strong><%= shop.name %></strong>
+            <p> 0.8miles away </p>
+          </div>
+
+          <div class="produce d-flex flex-wrap">
+            <div class="produce-ugly produce-display-index d-flex flex-wrap">
+              <%= image_tag("ugly-index.png", :alt => "shop", class: "scroll-icons") %>
+
+              <div class="produce-ugly-scroll index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
+                  <div class="scrollbar-items">
+                    <p class="produce-name"> broccoli </p>
+                    <p class="produce-name"> apple </p>
+                    <p class="produce-name"> lettuce </p>
+                    <p class="produce-name"> avocado </p>
+                    <!-- #shop.ugly_foods do |product| -->
+                      <div class="ugly-food-display">
+                        <p class="produce-name"> <!-- product.produce_type.name --> </p>
+                      </div>
+                  <!-- end -->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="produce-old produce-display-index d-flex flex-wrap">
+              <%= image_tag("old-index.png", :alt => "shop", class: "scroll-icons") %>
+              <div class="produce-ugly-scroll index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
+                  <div class="scrollbar-items">
+                    <p class="produce-name"> broccoli </p>
+                    <p class="produce-name"> apple </p>
+                    <p class="produce-name"> lettuce </p>
+                    <p class="produce-name"> avocado </p>
+                    <!-- #shop.ugly_foods do |product| -->
+                      <div class="ugly-food-display">
+                        <p class="produce-name"> <!-- product.produce_type.name --> </p>
+                      </div>
+                  <!-- end -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="produce-flowers produce-display-index d-flex flex-wrap">
+              <%= image_tag("flower-index.png", :alt => "shop", class: "scroll-icons") %>
+              <div class="produce-ugly-scroll index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
+                  <div class="scrollbar-items">
+                    <p class="produce-name"> broccoli </p>
+                    <p class="produce-name"> apple </p>
+                    <p class="produce-name"> lettuce </p>
+                    <p class="produce-name"> avocado </p>
+                    <!-- #shop.ugly_foods do |product| -->
+                      <div class="ugly-food-display">
+                        <p class="produce-name"> <!-- product.produce_type.name --> </p>
+                      </div>
+                  <!-- end -->
+                  </div>
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>

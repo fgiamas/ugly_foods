@@ -21,4 +21,18 @@ class Shop < ApplicationRecord
     total_rating
   end
 
+  def shop_ugly_foods
+    fruits_veg = []
+    fruits_veg << self.products.select { |product| product.category == 0 }
+    fruits_veg << self.products.select { |product| product.category == 1 }
+    ugly_foods = fruits_veg.select { |product| product.status == 0 }
+  end
+
+  def shop_old_foods
+
+  end
+
+  def shop_flowers
+
+  end
 end
