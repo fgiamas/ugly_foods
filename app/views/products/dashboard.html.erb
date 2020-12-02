@@ -1,5 +1,5 @@
 <h1>This is the user dashbord</h1>
-<% if current_user.shop %>
+<% if current_user.shops[0] %>
   <%= render 'shared/shopowner_dashboard' %>
   <%= yield %>
 <% else %>

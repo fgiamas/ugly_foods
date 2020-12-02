@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -14,6 +7,8 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
 Shop.destroy_all
 User.destroy_all
 
@@ -34,9 +29,68 @@ ADDRESSES = [
   'Ekoplaza',
   'Marqt',
   'Aldi',
-  'Spar'
+  'Spar',
+  'Dirk'
  ]
 
+ FRUITS = [
+  'apple',
+  'apricot',
+  'banana',
+  'blueberry',
+  'cherries',
+  'cranberry',
+  'figues',
+  'grapfruit',
+  'grapes',
+  'kiww',
+  'lemon',
+  'mandarin',
+  'orange',
+  'pear',
+  'peach',
+  'pineapple',
+  'plums',
+  'strawberries',
+  'watermelon',
+  'pomegranate'
+ ]
+
+VEGGIES = [
+  'artichoke',
+  'asparagus',
+  'aragula',
+  'beans',
+  'brocoli',
+  'brussel sprouts',
+  'cabage',
+  'carrot',
+  'cauliflower',
+  'celery',
+  'corn',
+  'cucumber',
+  'eggplant',
+  'fennel',
+  'kale',
+  'leaks',
+  'lettuce',
+  'mushrooms',
+  'onion',
+  'pepper',
+  'potatoe',
+  'pumpkin',
+]
+
+FLOWERS = [
+  'tulipe',
+  'rose',
+  'orchid',
+  'chrysanthemum',
+  'poppy',
+  'sunflower',
+  'daffodil',
+  'anemone'
+]
 
  CONTENTS = [
   "Rolex is a classic staple of any luxury watch collection. The GMT Master
@@ -73,125 +127,328 @@ ADDRESSES = [
  EMAILS = [
   'micciullapiero@gmail.com',
   'monicandreoli@gmail.com',
-  'donaldtrump@hotmail.com',
   'christianbale@yahoo.com',
   'timroth@hotmail.com',
   'batman@yahoo.com',
   'robin@gmail.com',
   'miakhalifa@hotmail.com',
   'jamesbond@yahoo.com',
-  'brucewillis@hotmail.com'
+  'brucewillis@hotmail.com',
+  'brucewayne@hotmail.com',
+  'brucebane@hotmail.com'
    ]
 
 
-
-
 puts 'Creating 10 users...'
-5.times do
-  user_owner = User.create(
+
+  user_owner_1 = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
-end
 
-5.times do
-  user_buyer = User.create(
+  user_owner_2 = User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name::last_name,
+      address: ADDRESSES.sample,
+      email: EMAILS.shuffle!.pop,
+      password: Faker::Internet.password
+      )
+
+  user_owner_3 = User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name::last_name,
+      address: ADDRESSES.sample,
+      email: EMAILS.shuffle!.pop,
+      password: Faker::Internet.password
+      )
+
+  user_owner_4 = User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name::last_name,
+      address: ADDRESSES.sample,
+      email: EMAILS.shuffle!.pop,
+      password: Faker::Internet.password
+      )
+
+  user_owner_5 = User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name::last_name,
+      address: ADDRESSES.sample,
+      email: EMAILS.shuffle!.pop,
+      password: Faker::Internet.password
+      )
+
+
+  user_buyer_1 = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name::last_name,
     address: ADDRESSES.sample,
-    email: EMAILS.sample,
+    email: EMAILS.shuffle!.pop,
     password: Faker::Internet.password
     )
-end
 
-admin = User.create(
-  first_name: "camille",
-  last_name: "schull",
-  address: "Le wagon",
-  email: "lewagon@wagon.com",
-  password: "123456"
+  user_buyer_2 = User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name::last_name,
+    address: ADDRESSES.sample,
+    email: EMAILS.shuffle!.pop,
+    password: Faker::Internet.password
+    )
+
+  user_buyer_3 = User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name::last_name,
+    address: ADDRESSES.sample,
+    email: EMAILS.shuffle!.pop,
+    password: Faker::Internet.password
+    )
+
+  user_buyer_4 = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name::last_name,
+    address: ADDRESSES.sample,
+    email: EMAILS.shuffle!.pop,
+    password: Faker::Internet.password
+    )
+
+  user_buyer_5 = User.create(
+    first_name: 'Donald',
+    last_name: 'Trump',
+    address: 'USA',
+    email: 'donaldtrump@hotmail.com',
+    password: '456789'
+    )
+
+  admin = User.create(
+    first_name: "camille",
+    last_name: "schull",
+    address: "Le wagon",
+    email: "lewagon@wagon.com",
+    password: "123456"
+    )
+puts "Created #{User.count} users!"
+
+puts 'Creating 5 shops...'
+
+ shop_1 = Shop.create(
+    user_id: user_owner_1.id,
+    name: "Ekoplaza",
+    address: "Van der Hooplaan 104-106",
+    city: "Amsterdam",
+    post_code: "1185",
+    country: "Netherlands",
+    phone_number: "020-4418691",
+    website: "https://www.ekoplaza.nl"
+    )
+
+ shop_2 = Shop.create(
+    user_id: user_owner_2.id,
+    name: "Marqt",
+    address: "Olympiaplein 160",
+    city: "Amsterdam",
+    post_code: "1076",
+    country: "Netherlands",
+    phone_number: "020 820 4482",
+    website: "https://www.marqt.nl"
+    )
+
+ shop_3 = Shop.create(
+    user_id: user_owner_3.id,
+    name: "Aldi",
+    address: "Pijnackerstraat 36",
+    city: "Amsterdam",
+    post_code: "1072",
+    country: "Netherlands",
+    phone_number: "075 651 7411",
+    website: "https://www.aldi.nl"
+    )
+
+ shop_4 = Shop.create(
+    user_id: user_owner_4.id,
+    name: "Spar",
+    address: "Kinkerstraat 252",
+    city: "Amsterdam",
+    post_code: "1053",
+    country: "Netherlands",
+    phone_number: "020 820 8319",
+    website: "https://www.spar.nl"
+    )
+
+ shop_5 = Shop.create(
+    user_id: user_owner_5.id,
+    name: "Dirk",
+    address: "Sierplein 6",
+    city: "Amsterdam",
+    post_code: "1065",
+    country: "Netherlands",
+    phone_number: "088 313 4295",
+    website: "https://www.dirk.nl"
+    )
+
+puts "Created #{Shop.count} shops!"
+
+puts "Creating 5 ratings"
+
+ Rating.create!(
+    user_id: user_buyer_1.id,
+    content: "Pleasantly surprised by the produce and service...
+    prices a bit at the high end but if you are a believer this
+    is a good place to shop!",
+    shop_id: shop_1.id,
+    rating: "4"
+    )
+
+ Rating.create!(
+    user_id: user_buyer_2.id,
+    content: "Impressive selection of eko-foods.
+    They have all kinds of meat as well as veggie options.
+    I buy my truffles here",
+    shop_id: shop_2.id,
+    rating: "3"
+    )
+
+ Rating.create!(
+    user_id: user_buyer_3.id,
+    content: "You get most of groceries here, vegetables and fruits are fresh.
+    Also available surinami and indian stuff",
+    shop_id: shop_3.id,
+    rating: "5"
+    )
+
+ Rating.create!(
+    user_id: user_buyer_4.id,
+    content: "Good little supermarket. Too little biological meat for my
+    taste. Nice selection of healthy items though",
+    shop_id: shop_4.id,
+    rating: "4"
+    )
+
+ Rating.create!(
+    user_id: user_buyer_5.id,
+    content: "Lots of good stuff, but too few staff to ask when you can t
+    find what you want. Also has a section of Polish delicacies.",
+    shop_id: shop_5.id,
+    rating: "3"
+    )
+
+ puts "Created #{Rating.count} ratings!"
+
+#FIRST SHOP
+5.times do
+ProduceType.create!(
+  name: FRUITS.shuffle!.pop
   )
-puts "Created #{User.count} users"
+end
 
 
+puts "Creating products..."
+
+5.times do
+Product.create!(
+    discount_percent: (20..40).to_a.sample,
+    price_per_unit: (2..5).to_a.sample,
+    lifespan: (6..12).to_a.sample,
+    category: 0,
+    shop: shop_1,
+    total_units: (5..20).to_a.sample,
+    total_kg: (2..5).to_a.sample,
+    status: 1,
+    sold_status: "",
+    days_to_expiry: (1..6).to_a.sample,
+    produce_type_id: ProduceType.all.sample.id
+    )
+  puts "Created 1 product..."
+end
 
 
-user_owner.all.each do |user_owner|
-  shop = Shop.new
-  shop.name = BRANDS.sample
-  watch.price = rand(700..6000)
-  watch.description = DESCRIPTIONS.sample
-  shop.address = ADDRESSES.sample
-  watch.material = Material.all.sample
-  watch.user = user
-  watch.photos.attach(io: File.open(File.join(Rails.root,'app','assets','images', "#{watch.brand}1.jpg")), filename: "#{watch.brand}1.jpg")
-  watch.photos.attach(io: File.open(File.join(Rails.root,'app','assets','images', "#{watch.brand}2.jpg")), filename: "#{watch.brand}2.jpg")
-  watch.photos.attach(io: File.open(File.join(Rails.root,'app','assets','images', "#{watch.brand}3.jpg")), filename: "#{watch.brand}3.jpg")
-  watch.save
-  end
-  puts "Created #{Watch.count} watches"
-puts "Creating 10 bookings"
-  Booking.create(
-    start_date: Date.today,
-    end_date: Date.tomorrow,
-    watch_id: Watch.last.id,
-    user_id: (User.last.id)
+5.times do
+Product.create!(
+    discount_percent: [20..40].sample,
+    price_per_unit: [2..5].sample,
+    lifespan: [6..12].sample,
+    category: 1,
+    shop_id: shop_1.id,
+    total_units: [5..20].sample,
+    total_kg: [2..5].sample,
+    status: 0,
+    sold_status: "",
+    days_to_expiry: [1..6],
+    produce_type_id: FRUITS.shuffle!.pop.id
     )
-  Booking.create(
-    start_date: Date.today + 1,
-    end_date: Date.tomorrow + 3,
-    watch_id: Watch.last.id - 1,
-    user_id: (User.last.id)
+end
+
+5.times do
+Product.create!(
+    discount_percent: [20..40].sample,
+    price_per_unit: [2..5].sample,
+    lifespan: [6..12].sample,
+    category: 2,
+    shop_id: shop_1.id,
+    total_units: [5..20].sample,
+    total_kg: [2..5].sample,
+    status: 1,
+    sold_status: "",
+    days_to_expiry: [1..6],
+    produce_type_id: FLOWERS.shuffle!.pop
     )
-  Booking.create(
-    start_date: Date.today + 3,
-    end_date: Date.tomorrow + 7,
-    watch_id: Watch.last.id - 2,
-    user_id: (User.last.id)
+end
+
+"Created #{Product.count} product"
+
+
+#SECOND SHOP
+
+5.times do
+Product.create!(
+    discount_percent: [20..40].sample,
+    price_per_unit: [2..5].sample,
+    lifespan: [6..12].sample,
+    category: 0,
+    shop_id: shop_2,
+    total_units: [5..20].sample,
+    total_kg: [2..5].sample,
+    status: 0,
+    sold_status: "",
+    days_to_expiry: [1..6],
+    produce_type_id: VEGGIES.shuffle!.pop
     )
-  Booking.create(
-    start_date: Date.today + 2,
-    end_date: Date.tomorrow + 10,
-    watch_id: Watch.last.id - 3,
-    user_id: (User.last.id)
+end
+
+
+5.times do
+Product.create!(
+    discount_percent: [20..40].sample,
+    price_per_unit: [2..5].sample,
+    lifespan: [6..12].sample,
+    category: 1,
+    shop_id: shop_2,
+    total_units: [5..20].sample,
+    total_kg: [2..5].sample,
+    status: 1,
+    sold_status: "",
+    days_to_expiry: [1..6],
+    produce_type_id: FRUITS.shuffle!.pop
     )
-  Booking.create(
-    start_date: Date.today + 4,
-    end_date: Date.tomorrow + 13,
-    watch_id: Watch.last.id - 4,
-    user_id: (User.last.id)
+end
+
+5.times do
+Product.create!(
+    discount_percent: [20..40].sample,
+    price_per_unit: [2..5].sample,
+    lifespan: [6..12].sample,
+    category: 2,
+    shop_id: shop_2,
+    total_units: [5..20].sample,
+    total_kg: [2..5].sample,
+    status: 1,
+    sold_status: "",
+    days_to_expiry: [1..6],
+    produce_type_id: FLOWERS.shuffle!.pop
     )
-  Booking.create(
-    start_date: Date.yesterday - 20,
-    end_date: Date.tomorrow - 10,
-    watch_id: Watch.last.id - 5,
-    user_id: (User.last.id)
-    )
-  Booking.create(
-    start_date: Date.yesterday - 18,
-    end_date: Date.tomorrow - 9,
-    watch_id: Watch.last.id - 6,
-    user_id: (User.last.id)
-    )
-  Booking.create(
-    start_date: Date.yesterday - 16,
-    end_date: Date.tomorrow - 7,
-    watch_id: Watch.last.id - 7,
-    user_id: (User.last.id)
-    )
-  Booking.create(
-    start_date: Date.yesterday - 13,
-    end_date: Date.tomorrow - 5,
-    watch_id: Watch.last.id - 8,
-    user_id: (User.last.id)
-    )
-  Booking.create(
-    start_date: Date.yesterday - 10,
-    end_date: Date.tomorrow - 2,
-    watch_id: Watch.last.id - 9,
-    user_id: (User.last.id)
-    )
-puts "Created #{Booking.count} bookings"
+end
+
+
+  puts "Created #{Product.count} shops"

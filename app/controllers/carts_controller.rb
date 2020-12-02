@@ -3,28 +3,19 @@ class CartsController < ApplicationController
 
   def add_item_to_cart
     @product_selection = Product_selection.new(strong_params)
-    @product_selection.cart = current_user.cart
-
-    @shopping_cart.product_selections.each do |product_selection|
-      if product_selection.units?
-        item_sum = product_selection.product.price * product_selection.units
-      else
-        item_sum = product_selection.product.price * product_selection.kg
-      end
-      @sum += item_sum
-    end
+    @product_selection.cart = current_cart
   end
 
   def remove_item_from_cart
     @product_selection.destroy
-    @shopping_cart.product_selections.each do |product_selection|
-      if product_selection.units?
-        item_sum = product_selection.product.price * product_selection.units
-      else
-        item_sum = product_selection.product.price * product_selection.kg
-      end
-      @sum += item_sum
-    end
+  end
+
+  def show
+    @cart = current_user.current_cart
+  end
+
+  def purchase
+    current_user.current_cart.update(status: 1)
   end
 
   private
