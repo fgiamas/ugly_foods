@@ -8,6 +8,7 @@ require "open-uri"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
+ProduceType.destroy_all
 Cart.destroy_all
 Shop.destroy_all
 User.destroy_all
@@ -363,11 +364,14 @@ puts "Created #{ProduceType.count} fruits and veggies"
 puts "Creating flowers"
 #FLOWERS
 FLOWERS.each do |flower|
-ProduceType.create(
+new_flower = ProduceType.create(
   name: flower,
   category: 2
   )
+  puts "#{new_flower.name}"
 end
+
+
 
 
 
@@ -377,53 +381,48 @@ puts "Created #{ProduceType.count} fruits and veggies and flowers"
 puts "Creating products based on produce_type..."
 
 # CREATING PRODUCTS FOR SHOP_1
+
 Shop.all.each do |shop|
-  5.times do
-  Product.create!(
-      discount_percent: (20..40).to_a.sample,
-      price_per_unit: (2..5).to_a.sample,
-      lifespan: (6..12).to_a.sample,
-      shop: shop,
-      total_units: (5..20).to_a.sample,
-      total_kg: (2..5).to_a.sample,
-      status: 1,
-      days_to_expiry: (1..6).to_a.sample,
-      produce_type_id: ProduceType.where(category: "vegetable").sample.id
-      )
-    puts "Created #{shop_1.products.count} veggies for shop 1..."
+
+  vegetables = ProduceType.where(category: "vegetable").shuffle.take(8)
+  fruits = ProduceType.where(category: "fruit").shuffle.take(8)
+  items = []
+  items.push(*vegetables)
+  items.push(*fruits)
+  items.each do |item|
+  #PRODUCE - UGLY & OLD
+    Product.create!(
+        discount_percent: (20..40).to_a.sample,
+        price_per_unit: (2..5).to_a.sample,
+        lifespan: (6..12).to_a.sample,
+        shop: shop,
+        total_units: (5..20).to_a.sample,
+        status: [0,1].sample,
+        days_to_expiry: (1..6).to_a.sample,
+        produce_type_id: item.id
+        )
+      puts "Created #{shop.products.count} veggies for shop 1..."
   end
 
 
-  5.times do
-  Product.create!(
-      discount_percent: (20..40).to_a.sample,
-      price_per_unit: (2..5).to_a.sample,
-      lifespan: (6..12).to_a.sample,
-      shop: shop,
-      total_units: (5..20).to_a.sample,
-      total_kg: (2..5).to_a.sample,
-      status: 0,
-      days_to_expiry: (1..6).to_a.sample,
-      produce_type_id: ProduceType.where(category: "fruit").sample.id
-      )
-    puts "Created #{shop_1.products.count} fruits shop 1..."
-  end
+  #FLOWERS - OLD
 
-  5.times do
+  flowers = ProduceType.where(category: "flower").shuffle.take(8)
+  flowers.each do |flower|
   Product.create!(
       discount_percent: (20..40).to_a.sample,
       price_per_unit: (2..5).to_a.sample,
       lifespan: (6..12).to_a.sample,
       shop: shop,
       total_units: (5..20).to_a.sample,
-      total_kg: (2..5).to_a.sample,
       status: 1,
       days_to_expiry: (1..6).to_a.sample,
-      produce_type_id: ProduceType.where(category: "flower").sample.id
+      produce_type_id: flower.id
       )
-    puts "Created #{shop_1.products.count} flowers for shop 1..."
+    puts "Created #{shop.products.count} flowers for shop 1..."
   end
 end
+
 puts "Created #{Product.count} products"
 
 puts "Creating 3 carts for admin"
