@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_092557) do
 
   create_table "produce_types", force: :cascade do |t|
     t.string "name"
+    t.integer "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -75,8 +76,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_092557) do
     t.bigint "produce_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "category"
-    t.string "status"
+    t.integer "status"
     t.index ["produce_type_id"], name: "index_products_on_produce_type_id"
     t.index ["shop_id"], name: "index_products_on_shop_id"
   end
