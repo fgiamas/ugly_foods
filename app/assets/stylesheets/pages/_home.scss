@@ -52,22 +52,31 @@
   background-size: cover;
   background-position: 20% 10%;
   height: 100vh;
+  position: relative;
 
 }
 
 .bottom-left {
-  text-align: right;
-  margin-top: 550px;
-
+    top: 74%;
+    text-align: right;
+    position: absolute;
+    left: 63%;
+    color: gold;
+      text-shadow: 2px 2px #ff0000;
 }
 .top-right {
-  color: gold;
+color: black;
+   margin-left: 5%;
+    position: absolute;
+    top: 25%;
+    text-shadow: 2px 2px gold;
 }
 
 .what-we-do{
-  text-align: center;
+  text-align: left;
   background-color: gold;
   padding: 5%;
+  color: white;
 }
 .what-we-do-info{
 background-image: image-url("s3.jpg");
