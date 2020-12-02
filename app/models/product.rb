@@ -8,7 +8,13 @@ class Product < ApplicationRecord
   validates :price_per_unit, presence: true
   validates :lifespan, presence: true, inclusion: 6..12
   validates :status, presence: true
-  validates :total_kg, presence: true
-  validates :total_units, presence: true
   validates :days_to_expiry, presence: true
+
+  validate :check_units_or_kg
+
+  def check_units_or_kg
+    if self.total_units.nil? && self.total_kg.nil?
+      errors.add(:total_units, "units or kg value must be present")
+    end
+  end
 end

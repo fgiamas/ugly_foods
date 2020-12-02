@@ -1,14 +1,18 @@
 
 
 <div class = " index-container">
-  <div class="landing-page-one">
-   <div class="search-bar">
-    <input type="text" class="searchTerm" placeholder="What are you looking for?">
-    <button type="submit" class="searchButton">
-      <i class="fa fa-search"></i>
-    </button>
-  </div>
-</div>
+  <%= form_tag shops_path, method: :get do |f|%>
+      <%= select_tag "distance", options_for_select([2,4,6,8,10,20,30,50],params[:distance]), {prompt: "How far do you want to go?"}%>
+      <%= select_tag "flowers", options_for_select(ProduceType.where(category: 2).pluck(:name), params[:flowers]), {prompt: "Flowers", multiple: true}%>
+      <%= select_tag "produce", options_for_select(ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), params[:produce]), {prompt: "Fruits and Veggies", multiple: true}%>
+    <%= submit_tag "Search", class: "btn btn-primary btn-refine" %>
+  <% end %>
+
+  <button type="submit" class="searchButton">
+    <i class="fa fa-search"></i>
+  </button>
+
+
 </div>
 
 <div class="index-pic-bio">
