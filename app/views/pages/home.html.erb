@@ -15,72 +15,117 @@
 
 </div>
 
-<div class="index-pic-bio">
-  <div class="top-right">
-    <font size="+3">Dont judge a fruit by its cover</font></div>
-    <div class="bottom-left">
-     <font size="+3">We are all the same on the inside</font></div>
+<div class="index-map">
+  <font size="+9" style= "height:4%">Our locations</font>
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+</div>
+
    </div>
+
+
+
    <div class="what-we-do">
-    <font size="+9">What we do hommies</font>
+    <font size="+9" style= "height:4%">What we do hommies</font>
   </div>
 
 
-  <div class="what-we-do-info">
-    <div class="index-card-group col-md-3">
-     <div class="card-index">
-      <img class="card-img-top">
-      <div class="card-body">We are</h5>
-        <p class="card-text">an amazing startup trying to make the world a better and greener place</p>
+
+  <div class="whole-categories">
+   <div class="girl-container">
+    <div class="card-girl" style="width: 22rem; height: 30rem;">
+    </div>
+    <div class="our-card" style="height: 30rem">
+      <div class="whatever">
+        <h4> We are a startup driven by sustainability.</h4>
+        <br/>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio soluta impedit consequatur neque? Ipsam, corrupti. Officiis tenetur culpa maxime accusamus earum, quisquam aspernatur nesciunt repellendus perferendis, vero veniam natus iure. Iusto est deserunt ratione labore fuga ipsum tempora error voluptate reprehenderit, aut ut consectetur! Molestias soluta unde consequuntur mollitia. Dolorem numquam repellendus quis consequatur placeat similique accusamus quaerat. Velit.</p>
       </div>
     </div>
   </div>
 
-  <div class="card-index-girl">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h5 class="card-title">Ugly foods</h5>
-      <p class="card-text">TApproximately 20% of all fruits and vetegables get thrown away for cosmetic imperfections. Let’s not feed in to that... instead let’s feed ourselves, for cheaper!.</p>
+  <div class = "index-category">
+    <div class = "index-ugly" id="categories-products">
+      <h3> Ugly foods </h3>
+      <p>  Approximately 20% of all fruits and vetegables get thrown away for cosmetic imperfections. Let’s not feed in to that... instead let’s feed ourselves, for cheaper!</p>
     </div>
+    <div class="index-old" id="categories-products">
+      <h3> Oldies but Goldies </h3>
+      <p>Their clock may be ticking, but let’s still give them a chance. Our oldies are fruits and vegetables that are going bad soon, but are still in their prime. Let’s not let them go to waste.</p>
+    </div>
+    <div class="index-flower" id="categories-products">
+      <h3> Flowers </h3>
+      <p>Flowers have a short life span. Let’s take a load off our local flower shops and decorate our homes. If flowers are nearing their due date, shopowners will upload them to Ugly Foods to make sure they find a home.</p>
+    </div>
+
+
   </div>
-</div>
-<div class="card-index">
-  <img class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Odlies but goldies</h5>
-    <p class="card-text">Their clock may be ticking, but let’s still give them a chance. Our oldies are fruits and vegetables that are going bad soon, but are still in their prime. Let’s not let them go to waste..</p>
+
+
+  <div class="how-it-works">
+    <font size="+3">How it works</font>
   </div>
-</div>
-</div>
-<div class="card-index">
-  <img class="card-img-top">
-  <div class="card-body">Flowers</h5>
-    <p class="card-text">Flowers have a short life span. Let’s take a load off our local flower shops and decorate our homes. If flowers are nearing their due date, shopowners will upload them to Ugly Foods to make sure they find a home.</p>
+
+  <div class="app-steps">
+    <div class="steps">Log in</div>
+    <div class="steps">Search</div>
+    <div class="steps">Add to cart</div>
+    <div class="steps">Calendar check</div>
+    <div class="steps">Pay</div>
+
   </div>
-</div>
-</div>
+  <div class="app-carrots">
+    <div class="image-wrapper">
+
+      <%= image_tag "carrot.png" %>
+    </div>
+    <div class="line">
+      <span class="actual-line"></span>
+    </div>
+    <div class="image-wrapper">
+
+      <%= image_tag "carrot.png" %>
+    </div>
+    <div class="line">
+      <span class="actual-line"></span>
+    </div>
+    <div class="image-wrapper">
+
+      <%= image_tag "carrot.png" %>
+    </div>
+    <div class="line">
+      <span class="actual-line"></span>
+    </div>
+    <div class="image-wrapper">
+
+      <%= image_tag "carrot.png" %>
+    </div>
+    <div class="line">
+      <span class="actual-line"></span>
+    </div>
+    <div class="image-wrapper">
+
+      <%= image_tag "carrot.png" %>
+    </div>
+
+  </div>
+
+  <div class="app-description">
+    <div class="description">Log In or create your Ugly Foods account</div>
+    <div class="description">Check out daily offers from grocery stores near you</div>
+    <div class="description">Create your basket for the day </div>
+    <div class="description">Choose a date and time to pickup your groceries</div>
+    <div class="description">Review your basket and pay</div>
+
+  </div>
+
+
 
 
 </div>
-</div>
-<div class="seperator">
-<div class = "how-it-works"> <h1> How it works</h1></div>
-<div class="flow">
-  <div class="column">
-    <div class="card-how-it">Log in</div>
-  </div>
-  <div class="column">
-    <div class="card-how-it">Search</div>
-  </div>
-  <div class="column">
-    <div class="card-how-it">Add to cart</div>
-  </div>
-  <div class="column">
-    <div class="card-how-it">Calendar Check</div>
-  </div>
-  <div class="column">
-    <div class="card-how-it">Pay</div>
-  </div>
-</div>
-</div>
+
 
