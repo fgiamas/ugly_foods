@@ -7,8 +7,8 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
+Product.destroy_all
+Cart.destroy_all
 Shop.destroy_all
 User.destroy_all
 
@@ -336,119 +336,149 @@ puts "Creating 5 ratings"
 
  puts "Created #{Rating.count} ratings!"
 
-#FIRST SHOP
-5.times do
-ProduceType.create!(
-  name: FRUITS.shuffle!.pop
+
+puts "Creating fruit"
+#FRUITS
+FRUITS.each do |fruit|
+ProduceType.create(
+  name: fruit,
+  category: 1
+  )
+end
+puts "Created #{ProduceType.count} fruits"
+
+
+puts "Creating veggies"
+#VEGGIES
+VEGGIES.each do |veggie|
+ProduceType.create(
+  name: veggie,
+  category: 0
+  )
+end
+
+puts "Created #{ProduceType.count} fruits and veggies"
+
+
+puts "Creating flowers"
+#FLOWERS
+FLOWERS.each do |flower|
+ProduceType.create(
+  name: flower,
+  category: 2
   )
 end
 
 
-puts "Creating products..."
 
-5.times do
-Product.create!(
-    discount_percent: (20..40).to_a.sample,
-    price_per_unit: (2..5).to_a.sample,
-    lifespan: (6..12).to_a.sample,
-    category: 0,
-    shop: shop_1,
-    total_units: (5..20).to_a.sample,
-    total_kg: (2..5).to_a.sample,
-    status: 1,
-    sold_status: "",
-    days_to_expiry: (1..6).to_a.sample,
-    produce_type_id: ProduceType.all.sample.id
+puts "Created #{ProduceType.count} fruits and veggies and flowers"
+
+
+puts "Creating products based on produce_type..."
+
+# CREATING PRODUCTS FOR SHOP_1
+Shop.all.each do |shop|
+  5.times do
+  Product.create!(
+      discount_percent: (20..40).to_a.sample,
+      price_per_unit: (2..5).to_a.sample,
+      lifespan: (6..12).to_a.sample,
+      shop: shop,
+      total_units: (5..20).to_a.sample,
+      total_kg: (2..5).to_a.sample,
+      status: 1,
+      days_to_expiry: (1..6).to_a.sample,
+      produce_type_id: ProduceType.where(category: "vegetable").sample.id
+      )
+    puts "Created #{shop_1.products.count} veggies for shop 1..."
+  end
+
+
+  5.times do
+  Product.create!(
+      discount_percent: (20..40).to_a.sample,
+      price_per_unit: (2..5).to_a.sample,
+      lifespan: (6..12).to_a.sample,
+      shop: shop,
+      total_units: (5..20).to_a.sample,
+      total_kg: (2..5).to_a.sample,
+      status: 0,
+      days_to_expiry: (1..6).to_a.sample,
+      produce_type_id: ProduceType.where(category: "fruit").sample.id
+      )
+    puts "Created #{shop_1.products.count} fruits shop 1..."
+  end
+
+  5.times do
+  Product.create!(
+      discount_percent: (20..40).to_a.sample,
+      price_per_unit: (2..5).to_a.sample,
+      lifespan: (6..12).to_a.sample,
+      shop: shop,
+      total_units: (5..20).to_a.sample,
+      total_kg: (2..5).to_a.sample,
+      status: 1,
+      days_to_expiry: (1..6).to_a.sample,
+      produce_type_id: ProduceType.where(category: "flower").sample.id
+      )
+    puts "Created #{shop_1.products.count} flowers for shop 1..."
+  end
+end
+puts "Created #{Product.count} products"
+
+puts "Creating 3 carts for admin"
+
+cart_1 = Cart.create(
+  pick_up_date: Date.today,
+  user_id: admin.id,
+  status: "confirmed"
+  )
+
+x = 0
+3.times do
+  ProductSelection.create(
+    cart_id: cart_1.id,
+    product_id: Product.last.id - x,
+    units: (3..12).to_a.sample
     )
-  puts "Created 1 product..."
+  x += 1
+  puts "#{ProductSelection.last}"
+end
+
+puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
+
+cart_2 = Cart.create(
+  pick_up_date: Date.today,
+  user_id: admin.id,
+  status: "confirmed"
+  )
+
+3.times do
+  ProductSelection.create(
+    cart_id: cart_2.id,
+    product_id: Product.last.id - x,
+    units: (3..12).to_a.sample
+    )
+  x += 1
 end
 
 
-5.times do
-Product.create!(
-    discount_percent: [20..40].sample,
-    price_per_unit: [2..5].sample,
-    lifespan: [6..12].sample,
-    category: 1,
-    shop_id: shop_1.id,
-    total_units: [5..20].sample,
-    total_kg: [2..5].sample,
-    status: 0,
-    sold_status: "",
-    days_to_expiry: [1..6],
-    produce_type_id: FRUITS.shuffle!.pop.id
+puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
+
+
+cart_3 = Cart.create(
+  pick_up_date: Date.tomorrow,
+  user_id: admin.id,
+  )
+
+3.times do
+  ProductSelection.create(
+    cart_id: cart_3.id,
+    product_id: Product.last.id - x,
+    units: (3..12).to_a.sample
     )
-end
-
-5.times do
-Product.create!(
-    discount_percent: [20..40].sample,
-    price_per_unit: [2..5].sample,
-    lifespan: [6..12].sample,
-    category: 2,
-    shop_id: shop_1.id,
-    total_units: [5..20].sample,
-    total_kg: [2..5].sample,
-    status: 1,
-    sold_status: "",
-    days_to_expiry: [1..6],
-    produce_type_id: FLOWERS.shuffle!.pop
-    )
-end
-
-"Created #{Product.count} product"
-
-
-#SECOND SHOP
-
-5.times do
-Product.create!(
-    discount_percent: [20..40].sample,
-    price_per_unit: [2..5].sample,
-    lifespan: [6..12].sample,
-    category: 0,
-    shop_id: shop_2,
-    total_units: [5..20].sample,
-    total_kg: [2..5].sample,
-    status: 0,
-    sold_status: "",
-    days_to_expiry: [1..6],
-    produce_type_id: VEGGIES.shuffle!.pop
-    )
+  x += 1
 end
 
 
-5.times do
-Product.create!(
-    discount_percent: [20..40].sample,
-    price_per_unit: [2..5].sample,
-    lifespan: [6..12].sample,
-    category: 1,
-    shop_id: shop_2,
-    total_units: [5..20].sample,
-    total_kg: [2..5].sample,
-    status: 1,
-    sold_status: "",
-    days_to_expiry: [1..6],
-    produce_type_id: FRUITS.shuffle!.pop
-    )
-end
-
-5.times do
-Product.create!(
-    discount_percent: [20..40].sample,
-    price_per_unit: [2..5].sample,
-    lifespan: [6..12].sample,
-    category: 2,
-    shop_id: shop_2,
-    total_units: [5..20].sample,
-    total_kg: [2..5].sample,
-    status: 1,
-    sold_status: "",
-    days_to_expiry: [1..6],
-    produce_type_id: FLOWERS.shuffle!.pop
-    )
-end
-
-
-  puts "Created #{Product.count} shops"
+puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"

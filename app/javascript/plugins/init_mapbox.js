@@ -14,9 +14,11 @@ const addMarkersToMap = (map, markers) => {
   element.className = 'marker';
   element.style.backgroundImage = `url('${marker.image_url}')`;
   element.style.backgroundSize = 'contain';
+
   element.style.width = '45px';
   element.style.height = '45px';
     new mapboxgl.Marker(element)
+
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
@@ -39,5 +41,3 @@ const initMapbox = () => {
   }
 };
 export { initMapbox };
-
-
