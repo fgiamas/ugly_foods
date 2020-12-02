@@ -1,52 +1,3 @@
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-form.simple_form.search-form {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.main-search-bar {
-  background-color: white;
-}
-
-.search-bar {
-  width: 40%;
-  position: relative;
-  display: flex;
-  margin-left: 30%;
-  margin-top: 20%;
-  height: 40%;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid gold;
-  border-right: none;
-  padding: 5px;
-  height: 40%;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-}
-
-.searchTerm:focus{
-  color: gold;
-}
-
-.searchButton {
-  width: 10%;
-  height: 20%;
-  border: 1px solid gold;
-  background: gold;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
 .index-container{
   background-image: image-url("uglyfoods.jpg");
   background-position: center;
@@ -85,82 +36,155 @@ color: black;
 .what-we-do{
   text-align: left;
   background-color: gold;
-  padding: 5%;
+  padding: 1%;
   color: white;
 }
-.what-we-do-info{
-background-image: image-url("s3.jpg");
 
-
-margin-right: 20px;
-text-align: center;
-
-  /* Full height */
-  height: 1%;
-
-  /* Center and scale the image nicely */
+.card-girl{
+ background-image: image-url('s3.jpg');
+ border-radius: 20px;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ margin-left:10%;
+ margin-top: 5%;
+ margin-bottom: 2%;
+}
+.whole-categories{
+  background-image: image-url('indexbackground.jpg');
+ width: 100%;
+ height: 100%;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+.girl-container{
+ display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.our-card{
+  background-color: white;
   background-position: center;
-  background-repeat: no-repeat;
+   margin-right:10%;
+   margin-top: 5%;
+   margin-bottom: 2%;
+  height: 50%;
+  width: 40%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-size: 17px;
+  color:  rgba(198, 230, 228, 1);
+  padding: 10px;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.our-card h4{
+  font-weight: bolder;
+}
+
+#categories-products{
+
+  background-color: white;
   background-size: cover;
-
-}
-.index-card-group{
-  background-color:white;
-  padding: 20px;
-}
-.card-index{
-  text-align: center;
+  background-position: center;
   border-radius: 20px;
-  background-color:navy;
-   margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-size: 15px;
+  color:  rgba(198, 230, 228, 1);
+  padding: 10px;
+  margin:1%;
+  text-align: center;
 }
+.index-category{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  margin:5%;
+}
+.index-category h3{
+  font-weight: bolder;
+  text-align: center;
+}
+
+.whatever{
+  padding-top: 80px;
+}
+
 .how-it-works{
+  text-align: left;
+  color: gold;
+  font-weight: bolder;
+  padding-left: 4%;
+}
+.steps{
+  background-color: white;
+  border-radius:20px;
+  border-style: solid;
+  border-color:rgba(198, 230, 228, 1);
+  padding:10px;
+  width:40%;
   text-align: center;
-
+  margin: 45px;
+  color:rgba(198, 230, 228, 1);
+  font-weight: bolder;
+  font-size: 20px;
 }
-.card-index-girl{
-  text-align: center;
-  border-radius: 20px;
-  background-color:orange;
-   margin-bottom: 10px;
+.app-steps{
+  display: flex;
+  justify-content: space-between;
 }
-
-
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
+.carrots{
+  image: image-url('carrot.png');
 }
 
-/* Remove extra left and right margins, due to padding in columns */
-.flow {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.flow:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Style the counter cards */
-.card-how-it {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-  margin-bottom: 20px;
-}
-
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 1200px) {
-  .column {
-    width: 80%;
+.app-description{
     display: flex;
-    margin-bottom: 20px;
-  }
+  justify-content: space-between;
 }
 
-.seperator{
-  margin: 300px;
-
+.description{
+  background-color: #C1BFD7;
+  border-radius:20px;
+  border-style: solid;
+  border-color:white;
+  padding:10px;
+  width:40%;
+  text-align: center;
+  margin: 45px;
+  color:white;
+  font-size: 17px;
 }
+
+
+.app-carrots {
+display: grid;
+grid-template-columns: repeat(9, 1fr);
+margin-left: 52px;
+margin-right: 52px;
+}
+
+
+.app-carrots .image-wrapper img {
+  max-width: 100%;
+  border-style: solid;
+  border-color:#C6E7E5;
+  border-radius: 20px;
+}
+
+.actual-line {
+    width: 100%;
+    height: 4px;
+    display: block;
+    background-color: #C6E7E5;
+}
+
+
+.line {
+  display: flex;
+  align-items: center;
+}
+
+
