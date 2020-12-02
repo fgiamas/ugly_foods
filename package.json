@@ -10,10 +10,13 @@
     "jquery": "^3.5.1",
     "mapbox-gl": "^1.13.0",
     "popper.js": "^1.16.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "semantic-ui-sass": "^2.4.2",
     "webpack-dev-server": "^3.11.0"
   }
 }

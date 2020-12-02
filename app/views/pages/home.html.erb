@@ -1,18 +1,31 @@
-
-
 <div class = " index-container">
-  <%= form_tag shops_path, method: :get do |f|%>
-      <%= select_tag "distance", options_for_select([2,4,6,8,10,20,30,50],params[:distance]), {prompt: "How far do you want to go?"}%>
-      <%= select_tag "flowers", options_for_select(ProduceType.where(category: 2).pluck(:name), params[:flowers]), {prompt: "Flowers", multiple: true}%>
-      <%= select_tag "produce", options_for_select(ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), params[:produce]), {prompt: "Fruits and Veggies", multiple: true}%>
-    <%= submit_tag "Search", class: "btn btn-primary btn-refine" %>
+  <div class= "main-search-bar">
+  <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
+      <%= f.input :location, as: :string, placeholder: "enter your address", label: false%>
+      <%= f.input :km, collection: [2,4,6,8,10,20,30], prompt: "How far do you want to go?", label: false%>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag("flower.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <input type="text" id="autocomplete-flowers">
+          <%= f.input :flowers, as: :select, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: "", class: "ui fluid search dropdown"} %>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-pepper-hot"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <input type="text" id="autocomplete">
+          <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
+        </div>
+      </div>
+      <%= button_tag do %><i class="fas fa-search"></i><% end %>
   <% end %>
-
-  <button type="submit" class="searchButton">
-    <i class="fa fa-search"></i>
-  </button>
-
-
+  </div>
 </div>
 
 <div class="index-pic-bio">
