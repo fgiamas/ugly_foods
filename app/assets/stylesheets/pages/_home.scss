@@ -1,1 +1,147 @@
-// Specific CSS for your home-page
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search-bar {
+  width: 40%;
+  position: relative;
+  display: flex;
+  margin-left: 30%;
+  margin-top: 20%;
+  height: 40%;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid gold;
+  border-right: none;
+  padding: 5px;
+  height: 40%;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: gold;
+}
+
+.searchButton {
+  width: 10%;
+  height: 20%;
+  border: 1px solid gold;
+  background: gold;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.index-container{
+  background-image: image-url("fruit-main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 20% 10%;
+  height: 100vh;
+}
+.index-pic-bio{
+  background-image: image-url("index-fruits.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 20% 10%;
+  height: 100vh;
+
+}
+
+.bottom-left {
+  text-align: right;
+  margin-top: 550px;
+
+}
+.top-right {
+  color: gold;
+}
+
+.what-we-do{
+  text-align: center;
+  background-color: gold;
+  padding: 5%;
+}
+.what-we-do-info{
+background-image: image-url("s3.jpg");
+
+
+margin-right: 20px;
+text-align: center;
+
+  /* Full height */
+  height: 1%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.index-card-group{
+  background-color:white;
+  padding: 20px;
+}
+.card-index{
+  text-align: center;
+  border-radius: 20px;
+  background-color:navy;
+   margin-bottom: 10px;
+}
+.how-it-works{
+  text-align: center;
+
+}
+.card-index-girl{
+  text-align: center;
+  border-radius: 20px;
+  background-color:orange;
+   margin-bottom: 10px;
+}
+
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.flow {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.flow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card-how-it {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 1200px) {
+  .column {
+    width: 80%;
+    display: flex;
+    margin-bottom: 20px;
+  }
+}
+
+.seperator{
+  margin: 300px;
+
+}

@@ -19,3 +19,6 @@ class User < ApplicationRecord
     Cart.find_or_create_by(user: self, status: 0)
   end
 end
+
+
+
