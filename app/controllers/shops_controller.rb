@@ -3,6 +3,7 @@ class ShopsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @fruit_and_veg_produce = ProduceType.where("category: ? or ")
     @shops = Shop.all
     @markers = @shops.geocoded.map do |shop|
      {
@@ -12,7 +13,7 @@ class ShopsController < ApplicationController
 
         image_url: helpers.asset_url('carrot.png')
       }
-  end
+    end
   end
 
   def show
