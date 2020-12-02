@@ -1,5 +1,4 @@
 <div class="index-page d-flex" style="width: 100%">
-
   <div class="shops-index">
     <% @shops.each do |shop| %>
       <div class="shop-info d-flex">
@@ -31,15 +30,11 @@
               <div class="produce-ugly-scroll index-scroll force_overflow">
                 <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
                   <div class="scrollbar-items">
-                    <p class="produce-name"> broccoli </p>
-                    <p class="produce-name"> apple </p>
-                    <p class="produce-name"> lettuce </p>
-                    <p class="produce-name"> avocado </p>
-                    <!-- #shop.ugly_foods do |product| -->
+                    <% shop.ugly_foods.each do |ugly_food| %>
                       <div class="ugly-food-display">
-                        <p class="produce-name"> <!-- product.produce_type.name --> </p>
+                        <p class="produce-name"><%= ugly_food.produce_type.name %></p>
                       </div>
-                  <!-- end -->
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -51,15 +46,11 @@
               <div class="produce-ugly-scroll index-scroll force_overflow">
                 <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
                   <div class="scrollbar-items">
-                    <p class="produce-name"> broccoli </p>
-                    <p class="produce-name"> apple </p>
-                    <p class="produce-name"> lettuce </p>
-                    <p class="produce-name"> avocado </p>
-                    <!-- #shop.ugly_foods do |product| -->
+                    <% shop.old_foods.each do |old_food| %>
                       <div class="ugly-food-display">
-                        <p class="produce-name"> <!-- product.produce_type.name --> </p>
+                        <p class="produce-name"> <%= old_food.produce_type.name %> </p>
                       </div>
-                  <!-- end -->
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -71,15 +62,11 @@
               <div class="produce-ugly-scroll index-scroll force_overflow">
                 <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
                   <div class="scrollbar-items">
-                    <p class="produce-name"> broccoli </p>
-                    <p class="produce-name"> apple </p>
-                    <p class="produce-name"> lettuce </p>
-                    <p class="produce-name"> avocado </p>
-                    <!-- #shop.ugly_foods do |product| -->
+                    <% shop.flowers.each do |flower| %>
                       <div class="ugly-food-display">
-                        <p class="produce-name"> <!-- product.produce_type.name --> </p>
+                        <p class="produce-name"> <%= flower.produce_type.name %> </p>
                       </div>
-                  <!-- end -->
+                    <% end %>
                   </div>
                 </div>
               </div>

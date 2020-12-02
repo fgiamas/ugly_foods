@@ -23,18 +23,21 @@ class Shop < ApplicationRecord
     total_rating
   end
 
-  def shop_ugly_foods
-    fruits_veg = []
-    fruits_veg << self.products.select { |product| product.category == 0 }
-    fruits_veg << self.products.select { |product| product.category == 1 }
-    ugly_foods = fruits_veg.select { |product| product.status == 0 }
+  def ugly_foods
+    self.products.all.where(status: 0)
   end
 
-  def shop_old_foods
-
+  def old_foods
+    oldies = self.products.all.where(status: 1)
+    oldies.select do |oldie|
+      oldie.produce_type.category == "vegetable" || oldie.produce_type.category == "fruit"
+    end
   end
 
-  def shop_flowers
-
+  def flowers
+    oldies = self.products.all.where(status: 1)
+    oldies.select do |oldie|
+      oldie.produce_type.category == "flower"
+    end
   end
 end
