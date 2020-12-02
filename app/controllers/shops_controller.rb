@@ -5,9 +5,11 @@ class ShopsController < ApplicationController
   def index
     @shops = Shop.all
     @markers = @shops.geocoded.map do |shop|
-      {
+     {
         lat: shop.latitude,
-        lng: shop.longitude
+        lng: shop.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { shop: shop }),
+        image_url: helpers.asset_url('carrot.png')
       }
   end
   end
