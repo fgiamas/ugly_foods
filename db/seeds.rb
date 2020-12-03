@@ -444,6 +444,8 @@ x = 0
   puts "#{ProductSelection.last}"
 end
 
+x+=10
+
 puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
 
 cart_2 = Cart.create(

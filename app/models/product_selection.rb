@@ -8,4 +8,10 @@ class ProductSelection < ApplicationRecord
       errors.add(:units, "units or kg value must be present")
     end
   end
+
+  def total_price
+    self.units ? quantity = self.units : quantity = self.kg
+    total_price = quantity * (self.product.price_per_unit * (self.product.discount_percent/100.to_f))
+    return total_price
+  end
 end

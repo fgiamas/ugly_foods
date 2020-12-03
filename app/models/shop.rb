@@ -3,6 +3,7 @@ class Shop < ApplicationRecord
   belongs_to :user
   has_many :ratings, dependent: :destroy
   has_many :products, dependent: :destroy
+  has_many :product_selections, through: :products
   has_one_attached :photo
 
   validates :name, presence: true, length: { minimum: 2 }
@@ -42,13 +43,36 @@ class Shop < ApplicationRecord
   end
 
   def confirmed_orders
-    products = self.products
-    # prod_selections = products.map do | product|
-    #   product.product_selections
-    # end
-    # prod_selections = prod_selections.select do |selection|
-    #   selection.cart.status == "confirmed"
-    # end
-    # return selections
+    @selections = self.product_selections
+    @selections = @selections.select do |selection|
+      selection.cart.status == "confirmed"
+    end
+    return @selections
   end
+
+  def past_confirmed_orders
+    @confirmed = self.confirmed_orders
+    @confirmed_past = @confirmed.select do |selection|
+      selection.cart.pick_up_date < Date.today
+    end
+    return @confirmed_past
+  end
+
+  def upcoming_confirmed_orders
+    @confirmed = self.confirmed_orders
+    @confirmed_future = @confirmed.select do |selection|
+      selection.cart.pick_up_date >= Date.today
+    end
+    return @confirmed_future
+  end
+
+
+  def filtered_by_produce
+    shop = self.where()
+  end
+
+  def filtered_by_flowers
+
+  end
+
 end

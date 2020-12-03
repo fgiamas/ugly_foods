@@ -16,10 +16,103 @@
           <h2> Hello <%= current_user.first_name %>, welcome to your storefront! </h2>
         </div>
 
+      <div class="top-shop d-flex">
+
+        <div class="shop-owner-stats shop-owner-stats-1">
+          <div class="shop-owner-rating">
+            <h5>Your ratings</h5>
+            <%= current_user.shop.calculate_rating %>
+            <div class="dashboard-rating d-flex flex-wrap">
+            <% current_user.shop.calculate_rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            </div>
+          </div>
+        </br>
+          <h5>Recent comments</h5>
+          <div class="shop-owner-feedback">
+            <% current_user.shop.ratings.each do |rating| %>
+              <div class="shop-owner-feedback-card">
+                <%= rating.rating %>
+                <% rating.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <%= rating.content %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="shop-owner-stats shop-owner-stats-2">
+          <p>you have sold x kg of ugly foods!</p>
+          <p>you have sold x units of old foods!</p>
+          <p>you have sold x flowers!</p>
+          <p>Let's save the foods! We're all beautiful on the inside</p>
+        </div>
+
+      </div>
+
         <div class="upcoming-orders">
           <% current_user.shop.confirmed_orders.each do |prod| %>
-            <%= prod%>
-            <%= prod.product_selections[0] %>
+          <% end %>
+        </div>
+
+        <h5>Your stock</h5>
+
+        <div class="products-ugly shop-existing-products">
+          <h2>Ugly Foods</h2>
+          <% current_user.shop.ugly_foods.each do |food| %>
+            <div class="product-card d-flex justify-content-around">
+              <div>
+                <strong><%= food.produce_type.name %></strong>
+              </div>
+              <div>
+                <p>€<%= food.price_per_unit %>/unit</p>
+                <p><%= food.discount_percent %>% discount</p>
+                <p>New price: €<%= food.total_price%>/unit</p>
+              </div>
+              <p><%= "#{food.total_units} units "if food.total_units %></p>
+              <p><%= "#{food.total_kg} units "if food.total_kg %></p>
+              <p>Shipment uploaded at <%= food.created_at %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="products-old shop-existing-products">
+          <h2>Oldies but Goldies</h2>
+          <% current_user.shop.old_foods.each do |food| %>
+            <div class="product-card d-flex justify-content-around">
+              <div>
+                <strong><%= food.produce_type.name %></strong>
+              </div>
+              <div>
+                <p>€<%= food.price_per_unit %>/unit</p>
+                <p><%= food.discount_percent %>% discount</p>
+                <p>New price: €<%= food.total_price%>/unit</p>
+              </div>
+              <p><%= "#{food.total_units} units "if food.total_units %></p>
+              <p><%= "#{food.total_kg} units "if food.total_kg %></p>
+              <p>Shipment uploaded at <%= food.created_at %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="products-flower shop-existing-products">
+          <h2>Flowers</h2>
+          <% current_user.shop.flowers.each do |food| %>
+            <div class="product-card d-flex justify-content-around">
+              <div>
+                <strong><%= food.produce_type.name %></strong>
+              </div>
+              <div>
+                <p>€<%= food.price_per_unit %>/unit</p>
+                <p><%= food.discount_percent %>% discount</p>
+                <p>New price: €<%= food.total_price%>/unit</p>
+              </div>
+              <p><%= "#{food.total_units} units "if food.total_units %></p>
+              <p><%= "#{food.total_kg} units "if food.total_kg %></p>
+              <p>Shipment uploaded at <%= food.created_at %></p>
+            </div>
           <% end %>
         </div>
 
