@@ -481,3 +481,8 @@ end
 
 
 puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
+
+
+Chatroom.create(
+  name: "general"
+  )
