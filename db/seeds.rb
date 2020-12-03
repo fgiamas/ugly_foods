@@ -143,11 +143,11 @@ FLOWERS = [
 puts 'Creating 10 users...'
 
   user_owner_1 = User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name::last_name,
-    address: ADDRESSES.sample,
-    email: EMAILS.shuffle!.pop,
-    password: Faker::Internet.password
+    first_name: "Fotis",
+    last_name: "Giamas",
+    address: "1 Gibraltarstraat",
+    email: "fotis@giamas.com",
+    password: "fotis123"
     )
 
   user_owner_2 = User.create(
@@ -437,12 +437,14 @@ x = 0
 3.times do
   ProductSelection.create(
     cart_id: cart_1.id,
-    product_id: Product.last.id - x,
+    product_id: shop_1.products.last.id - x,
     units: (3..12).to_a.sample
     )
   x += 1
   puts "#{ProductSelection.last}"
 end
+
+x+=10
 
 puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
 
@@ -455,7 +457,7 @@ cart_2 = Cart.create(
 3.times do
   ProductSelection.create(
     cart_id: cart_2.id,
-    product_id: Product.last.id - x,
+    product_id: shop_1.products.last.id - x,
     units: (3..12).to_a.sample
     )
   x += 1

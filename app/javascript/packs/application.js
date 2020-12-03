@@ -24,7 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import 'semantic-ui-sass';
+
 
 
 // Internal imports, e.g:
@@ -33,10 +33,13 @@ import { initChatroomCable } from '../channels/chatroom_channel.js';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete.js';
 import { initHideSelection } from '../plugins/init_autocomplete.js';
+import { initFilters } from '../plugins/init_filters';
+
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
-  initHideSelection();
+  // initHideSelection();
   initChatroomCable();
+  initFilters();
 })

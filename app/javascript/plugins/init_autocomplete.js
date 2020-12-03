@@ -22,13 +22,13 @@ const handleChange = (event) => {
   })
 }
 
-const initHideSelection = () => {
-  const input = document.querySelector("#fruits-and-veg-search")
-  console.log(input);
-  if(input) {
-    input.addEventListener('click', handleChange)
-  }
-};
+// const initHideSelection = () => {
+//   const input = document.querySelector("#fruits-and-veg-search")
+//   console.log(input);
+//   if(input) {
+//     input.addEventListener('click', handleChange)
+//   }
+// };
 
 const initAutocomplete = () => {
   const input = document.querySelector("#autocomplete")
@@ -38,14 +38,17 @@ const initAutocomplete = () => {
   }
 };
 
-export { initHideSelection };
-
-import places from 'places.js';
-const initAutocomplete = () => {
-  const addressInput = document.getElementById('shop_address');
-  if (addressInput) {
-    places({ container: addressInput });
-  }
-};
-
 export { initAutocomplete };
+// export { initHideSelection };
+
+
+// what is this??
+
+// import places from 'places.js';
+
+// const initAutocomplete = () => {
+//   const addressInput = document.getElementById('shop_address');
+//   if (addressInput) {
+//     places({ container: addressInput });
+//   }
+// };
