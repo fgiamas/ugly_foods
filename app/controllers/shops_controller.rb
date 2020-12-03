@@ -16,8 +16,8 @@ class ShopsController < ApplicationController
     end
   end
 
-
   def show
+    @markers = { lat: @shop.latitude, lng: @shop.longitude }
   end
 
   def new
