@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
   belongs_to :user
   enum status: [:pending, :confirmed]
   has_many :product_selections
-  validate :pick_up_date_cannot_be_in_the_past
+  # validate :pick_up_date_cannot_be_in_the_past
   # enums create these methods automatically
   validates :pick_up_date, presence: true, if: :confirmed?
 
