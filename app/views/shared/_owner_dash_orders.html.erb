@@ -1,0 +1,42 @@
+<h1>Here are your orders</h1>
+
+<div class="shop-orders upcoming">
+  <h3>Upcoming Orders</h3>
+  <%= "No upcoming orders!" if current_user.shop.upcoming_confirmed_orders.empty? %>
+  <% current_user.shop.upcoming_confirmed_orders.each do |order| %>
+    <div class="order-shop d-flex justify-content-around">
+      <div class="title=units">
+      <strong><%= order.product.produce_type.name %></strong>
+        <% if order.units %>
+          <p class="units"><%= order.units %> units</p>
+        <% else %>
+          <p class="kg"><%= order.kg %> kg </p>
+        <% end %>
+        <p>Total: €<%= order.total_price %></p>
+      </div>
+      <%= order.cart.pick_up_date.strftime("%m/%d/%Y") %>
+      <div class="purchase-user">
+        <div class="purchase-user-full-name d-flex">
+          <%= order.cart.user.first_name.downcase.capitalize %>
+          <%= order.cart.user.last_name.downcase.capitalize %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="shop-orders past">
+  <h3>Past Orders</h3>
+  <%current_user.shop.past_confirmed_orders.each do |order| %>
+    <div class="order-shop d-flex">
+      <div class="title=units">
+        <strong><%= order.product.produce_type.name %></strong>
+        <% if order.units %>
+          <p class="units"><%= order.units %> units </p>
+        <% else %>
+          <p class="kg"><%= order.kg %> kg </p>
+        <% end %>
+      </div>
+      <%= order.cart.pick_up_date.strftime("%m/%d/%Y") %>
+    </div>
+  <% end %>
+</div>

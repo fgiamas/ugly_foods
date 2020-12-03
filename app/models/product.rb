@@ -17,4 +17,8 @@ class Product < ApplicationRecord
       errors.add(:total_units, "units or kg value must be present")
     end
   end
+
+  def total_price
+    self.price_per_unit - (self.price_per_unit.to_f * (self.discount_percent/100.to_f))
+  end
 end
