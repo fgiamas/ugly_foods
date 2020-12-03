@@ -1,23 +1,105 @@
-<div class="card-shop-ratings">
-  <ul class="list-group">
-    <% @shop.ratings.each do |rating| %>
-      <li class="list-group-item"><%= rating.content %></li>
-    <% end %>
-  </ul>
+
+<div class="storefront-container">
+
+      <div class="card-shop-ratings">
+      <ul class="list-group">
+        <% @shop.ratings.each do |rating| %>
+          <li class="list-group-item"><%= rating.content %></li>
+        <% end %>
+      </ul>
+    </div>
+
+      <div class="card-shop-show">
+        <div class="card-shop-inner">
+          <h2><%= @shop.name %></h2>
+          <img src="https://assercourant.nl/media/NjgwMzUwXzcxODRhNDVkMmE2MjNkM2YwZTBiNmNlNmFjOWRhYzVjZDUxYTFlMjRfNjIweEMxMTM2eDYzOSswKzA=.jpg">
+          <p><%= @shop.address %></p>
+        </div>
+      </div>
+
+    <div class="shop-map">
+      <div id="map"
+           style="width: 30vw; height: 600px; border-radius: 13px;"
+           data-markers="<%= @markers.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
 </div>
 
+<div>
+  <div class="search-show-container">
+  <div class="row">
+    <div class="col-sm-12 mb-3">
+      <input type="text" id="myFilter" class="form-control"  placeholder="Search for names..">
+    </div>
+  </div>
+  <div class="row" id="myItems">
+    <div class="col-sm-12 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card One</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
 
-<div class="card-shop-show">
-  <h2><%= @shop.name %></h2>
-  <img src="https://assercourant.nl/media/NjgwMzUwXzcxODRhNDVkMmE2MjNkM2YwZTBiNmNlNmFjOWRhYzVjZDUxYTFlMjRfNjIweEMxMTM2eDYzOSswKzA=.jpg">
-  <p><%= @shop.address %></p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card Two</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card Three</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card Four</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card Five</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card Six</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card Seven</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card Eight</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some text.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="shop-map">
-  <div id="map"
-       style="width: 100%; height: 600px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
 
 
