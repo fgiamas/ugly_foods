@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :shop, dependent: :destroy
   has_many :ratings
   has_many :carts, dependent: :destroy
+  has_many :product_selections, through: :carts
+  has_many :products, through: :shop
+  has_many :incoming_product_selections, through: :products, class_name: "ProductSelection", source: :product_selectionss
 
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
@@ -19,6 +22,5 @@ class User < ApplicationRecord
     Cart.find_or_create_by(user: self, status: 0)
   end
 end
-
 
 
