@@ -1,0 +1,157 @@
+.marqt-shop{
+  background-image: image-url('marqt.jpg');
+  background-size: cover;
+}
+
+.upcoming-orders-list-1{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.upcoming-orders-list-2{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.upcoming-orders-list-3{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+
+.upcoming-orders-list-1 p {
+  padding-left: 5px;
+}
+.upcoming-orders-list-2 p {
+  padding-left: 5px;
+}
+.upcoming-orders-list-3 p {
+  padding-left: 5px;
+}
+
+.general-picture{
+  background-image: image-url('food-circle.jpg');
+  background-size: cover;
+}
+
+.upcoming-orders {
+  width: 100%;
+}
+
+.user-general-info{
+  display: flex;
+  justify-content: space-around;
+}
+
+.past-orders-list-1{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.past-orders-list-2{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.past-orders-list-3{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+
+.past-orders-list-1 p {
+  text-align: center;
+  padding-top: 43px;
+  padding-left: 5px;
+}
+.past-orders-list-2 p {
+  text-align: center;
+  padding-top: 43px;
+  padding-left: 5px;
+}
+.past-orders-list-3 p {
+  text-align: center;
+  padding-top: 43px;
+  padding-left: 5px;
+}
+
+.shops-near-me-list{
+  display: flex;
+  justify-content: space-around;
+}
+
+.shops-near-me-list-1{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.shops-near-me-list-2{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.shops-near-me-list-3{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+
+.ratings-dashboard-list{
+  display: flex;
+  justify-content: space-around;
+}
+
+.ratings-dashboard-list-1{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.ratings-dashboard-list-2{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+.ratings-dashboard-list-3{
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: sapace-between;
+}
+
+
+.product-selection-list{
+  text-align: left;
+}
+
+.user-orders{
+  display: flex;
+  justify-content: space-around;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.more-shop-info-1{
+  width: 130%;
+}
+
+.all-the-shit{
+ background-image: image-url('indexbackground.jpg');
+ width: 100%;
+ height: 100%;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+.shop-info_dashboard{
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-size: 15px;
+  color:  black;
+  padding: 10px;
+  margin:1%;
+  text-align: center;
+  width: 100%;
+}
