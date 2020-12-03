@@ -17,7 +17,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <input type="text" id="autocomplete-flowers">
-          <%= f.input :flowers, as: :select, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: "", class: "ui fluid search dropdown"}, as: :check_boxes %>
+          <%= f.input :flowers, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
         </div>
       </div>
 

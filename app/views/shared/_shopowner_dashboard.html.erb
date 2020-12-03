@@ -61,7 +61,7 @@
 
         <div class="products-ugly shop-existing-products">
           <h2>Ugly Foods</h2>
-          <% current_user.shop.ugly_foods.each do |food| %>
+          <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
             <div class="product-card d-flex justify-content-around">
               <div>
                 <strong><%= food.produce_type.name %></strong>
