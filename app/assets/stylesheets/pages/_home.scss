@@ -6,6 +6,25 @@
   background-position: 20% 10%;
   height: 100vh;
 }
+
+.main-search-bar {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 30px;
+  margin-left: 40px;
+}
+
+.btn-search-bar {
+  background-color: white;
+  border: white;
+  color: grey;
+}
+
+.search-location {
+  border: none;
+}
+
 .index-pic-bio{
   background-image: image-url("index-fruits.jpg");
   background-position: center;
@@ -190,10 +209,16 @@ margin-right: 52px;
   align-items: center;
 }
 
+
+.search-item {
+  padding: 10px;
+}
+
 .index-map{
   text-align: center;
   background-color: gold;
   color: white;
+
 
 }
 .dropdown{
