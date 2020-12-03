@@ -10,7 +10,7 @@
     <div class="upcoming-orders">
       <h3>Upcoming orders</h3>
       <div class="upcoming-orders-list">
-        <% all_product_selections = current_user.product_selections.group_by(&:shop) %>
+        <% all_product_selections = current_user.product_selections.select {|product_selection| product_selection.in_the_future? }.group_by(&:shop) %>
         <div class="upcoming-orders-list-1" id="upcoming-orders">
           <% all_product_selections.keys.each do |shop| %>
           <%= render 'shops/card', shop: shop %>
@@ -19,12 +19,15 @@
       </div>
     </div>
 
+
+# display your products when pickupdate is less then date.today
+
     <div class="user-past-info">
       <div class="user-past-orders">
         <div class="past-orders">
           <h3>Past orders</h3>
           <div class="past-orders-list">
-            <% all_past_products = current_user.product_selections.group_by(&:shop) %>
+            <% all_past_products = current_user.product_selections.select {|product_selection| product_selection.in_the_past? }.group_by(&:shop) %>
             <div class="past-orders-list-1" id="past-orders">
               <% all_past_products.keys.each do |shop| %>
               <%= render 'shops/card', shop: shop %>
