@@ -12,6 +12,11 @@
         <%= f.input :password,
         required: false,
         input_html: { autocomplete: "current-password" } %>
+        <div class ="password-show">
+                    <input type="checkbox" onclick="myFunction()"> Show Password
+        </div>
+        <div>
+
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
 
@@ -24,3 +29,16 @@
     </div>
   </div>
 </div>
+
+
+
+ <script>
+      function myFunction() {
+      const x = document.getElementById("user_password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
