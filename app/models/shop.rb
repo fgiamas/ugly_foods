@@ -40,4 +40,15 @@ class Shop < ApplicationRecord
       oldie.produce_type.category == "flower"
     end
   end
+
+  def confirmed_orders
+    products = self.products
+    # prod_selections = products.map do | product|
+    #   product.product_selections
+    # end
+    # prod_selections = prod_selections.select do |selection|
+    #   selection.cart.status == "confirmed"
+    # end
+    # return selections
+  end
 end

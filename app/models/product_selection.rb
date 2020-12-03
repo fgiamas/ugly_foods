@@ -1,5 +1,5 @@
 class ProductSelection < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, touch: true
   belongs_to :cart, touch: true
   validate :check_units_or_kg
 
