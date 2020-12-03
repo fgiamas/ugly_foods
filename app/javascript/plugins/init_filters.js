@@ -1,6 +1,8 @@
 const initFilters = () => {
     const input = document.getElementById("myFilter");
-    input.addEventListener('keyup', handleKeyUp)
+    if(input) {
+      input.addEventListener('keyup', handleKeyUp)
+    }
 }
 
 const handleKeyUp = () => {
