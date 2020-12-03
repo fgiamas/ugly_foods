@@ -320,6 +320,21 @@ puts "Creating 5 ratings"
     rating: "5"
     )
 
+  Rating.create!(
+    user_id: user_buyer_4.id,
+    content: "What an amazing place to shop... the foods aren't even ugly!",
+    shop_id: shop_3.id,
+    rating: "4"
+    )
+
+   Rating.create!(
+    user_id: user_buyer_5.id,
+    content: "Hated it.. Shop owner did not answer his messages, the hours on the shop were wrong
+    and I'm not even sure that he got my order right. Love Ugly Foods though! What a great concept.",
+    shop_id: shop_3.id,
+    rating: "2"
+    )
+
  Rating.create!(
     user_id: user_buyer_4.id,
     content: "Good little supermarket. Too little biological meat for my

@@ -81,7 +81,7 @@
       <div class="calculated-rating">
         <%=Shop.second.calculate_rating %>
       </div>
-      <% Shop.second.calculate_rating.times do %>
+      <% Shop.second.calculate_rating.round.times do %>
       <i class="far fa-star"></i>
       <% end %>
     </div>
