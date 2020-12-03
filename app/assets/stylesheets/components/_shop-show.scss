@@ -1,0 +1,43 @@
+.storefront-container{
+  display: flex;
+  width: 100vw;
+  }
+
+.card-shop-ratings{
+  width: 70vh;
+  height: 60vh;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 13px;
+}
+
+.list-group{
+  border-radius: 13px;
+}
+
+.card-shop-show{
+  width: 70vh;
+  height: 60vh;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 13px;
+
+}
+
+.card-shop-inner{
+  padding: 30px;
+  margin-bottom: 28%;
+}
+
+.card-shop-inner > img{
+  max-width: 100%;
+}
+
+
+.shop-map{
+  width: 20vh;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 13px;
+}
+
+.search-show-container{
+  padding: 10px;
+}
