@@ -53,7 +53,7 @@ color: black;
 }
 
 .what-we-do{
-  text-align: left;
+  text-align: center;
   background-color: gold;
   padding: 1%;
   color: white;
@@ -68,9 +68,12 @@ color: black;
  margin-left:10%;
  margin-top: 5%;
  margin-bottom: 2%;
+ width: 100%;
+ height: 100%;
+
 }
 .whole-categories{
-  background-image: image-url('indexbackground.jpg');
+  background-image: image-url('index-page.png');
  width: 100%;
  height: 100%;
  background-position: center;
@@ -133,7 +136,7 @@ color: black;
 }
 
 .how-it-works{
-  text-align: left;
+  text-align: center;
   color: gold;
   font-weight: bolder;
   padding-left: 4%;
@@ -206,7 +209,20 @@ margin-right: 52px;
   align-items: center;
 }
 
+
 .search-item {
   padding: 10px;
 }
 
+.index-map{
+  text-align: center;
+  background-color: gold;
+  color: white;
+
+
+}
+.dropdown{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 10%;
+}

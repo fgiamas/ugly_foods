@@ -6,10 +6,17 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-#map{
-  max-width: 40%;
+.map-products-overview {
+  max-width: 60%;
   height: 100%;
   position: sticky;
   top: 0;
   bottom: 0;
+
+}
+
+.map-home {
+  max-width: 100%;
+  height: 100%;
+
 }
