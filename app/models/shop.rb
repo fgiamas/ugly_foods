@@ -47,11 +47,7 @@ class Shop < ApplicationRecord
   end
 
   def past_confirmed_orders
-    @confirmed = self.confirmed_orders
-    @confirmed_past = @confirmed.select do |selection|
-      selection.cart.pick_up_date < Date.today
-    end
-    return @confirmed_past
+    self.confirmed_orders.joins(:cart).where("carts.pick_up_date < ?" , Date.today)
   end
 
   def upcoming_confirmed_orders

@@ -27,6 +27,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <input type="text" id="autocomplete">
+          <ul id="collection"></ul>
           <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
         </div>
       </div>

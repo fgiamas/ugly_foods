@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :ratings, shallow: true
   end
 
-
+  resources :product_selections
   resources :products, except: [:index]
 
   resources :carts, only: [:show, :new] do
