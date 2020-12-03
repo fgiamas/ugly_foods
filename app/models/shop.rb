@@ -21,7 +21,7 @@ class Shop < ApplicationRecord
     self.ratings.each do |rating|
       total_rating += rating.rating
     end
-    total_rating
+    total_rating/self.ratings.count.to_f
   end
 
   def ugly_foods

@@ -1,12 +1,38 @@
-<div class="nav-bar-global" style="height: 100px; background-color: #F4A25B;">
+<div class="nav-bar-global" style="height: 100px; background-color: #F4A25B; width: 100%;">
   <div>
 
   <div class="btn-group">
     <button type="button" class="btn btn-secondary dropdown-toggle dropleft" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= image_tag("cart.png", :alt => "shop", style: "width: 40px; height: 40px;")%>
     </button>
-    <div class="dropdown-menu">
-      <p>hello</p>
+    <div class="dropdown-menu shopping-cart-drop">
+      <%= "There is nothing in your cart" if current_user.current_cart.product_selections.empty? %>
+      <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
+      <% group_cart_items.keys.each do |shop_key| %>
+        <div class="grouped-cart-items">
+          <strong><%= shop_key.name %></strong>
+          <% group_cart_items[shop_key].each do |select| %>
+            <div class="cart-cards d-flex flex-wrap justify-content-between">
+              <strong><p><%= select.product.produce_type.name %></p></strong>
+              <div class="pending-purchase-info">
+                <p><%= select.units ? "#{select.units} units" : "#{select.kg} kg" %></p>
+                <p>€ <%= select.total_price.round(2) %></p>
+              </div>
+              <%= link_to product_selections_path(select),
+                    method: :delete,
+                    data: {confirm: "Are you sure you want to remove from cart?"},
+                    remote: true do %>
+                <i class="far fa-minus-square"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <%= link_to cart_path(current_user.current_cart) do%>
+          <p>See cart</p>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -15,20 +41,51 @@
 
 <div class="storefront-container">
 
-      <div class="card-shop-ratings">
-      <ul class="list-group">
-        <% @shop.ratings.each do |rating| %>
-          <li class="list-group-item"><%= rating.content %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="card-shop-ratings">
+      <div class="ratings-title">
+          <h5>Store rating: <%= @shop.calculate_rating %></h5>
+          <div class="show-user-rating-stars d-flex flex-wrap">
+            <% @shop.calculate_rating.round.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          </div>
+      </div>
+      </br>
+      <h6>Read recent reviews</h6>
 
-      <div class="card-shop-show">
-        <div class="card-shop-inner">
+        <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
+          <div class="scrollbar-items">
+            <% @shop.ratings.each do |rating| %>
+              <div class="show-rating">
+                <div class="d-flex justify-content-between">
+                  <strong><p><%= rating.user.first_name%> <%= rating.user.last_name%></p></strong>
+                  <%= rating.created_at.strftime("%y-%m-%d") %>
+                </div>
+                <div class="show-user-rating d-flex flex-wrap">
+                  <p><%= rating.rating %> </p>
+                  <div class="show-user-rating-stars d-flex flex-wrap">
+                    <% rating.rating.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <p><%= rating.content %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-shop-show" style="text-align: center;">
           <h2><%= @shop.name %></h2>
           <img src="https://assercourant.nl/media/NjgwMzUwXzcxODRhNDVkMmE2MjNkM2YwZTBiNmNlNmFjOWRhYzVjZDUxYTFlMjRfNjIweEMxMTM2eDYzOSswKzA=.jpg">
-          <p><%= @shop.address %></p>
-        </div>
+          <strong><p><%= @shop.address %></p></strong>
+          <p class="opening-hours">Monday 10:00-18:00</p>
+          <p class="opening-hours">Tuesday 10:00-18:00</p>
+          <p class="opening-hours">Wednesday 10:00-18:00</p>
+          <p class="opening-hours">Thursday 10:00-18:00</p>
+          <p class="opening-hours">Saturday 12:00-17:00</p>
+          <p class="opening-hours">Sunday 12:00-17:00</p>
       </div>
 
     <div class="shop-map">

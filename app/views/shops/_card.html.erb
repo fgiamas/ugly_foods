@@ -7,7 +7,7 @@
       <div class="calculated-rating">
         <%=shop.calculate_rating %>
       </div>
-      <% shop.calculate_rating.times do %>
+      <% shop.calculate_rating.round.times do %>
       <i class="far fa-star"></i>
       <% end %>
     </div>

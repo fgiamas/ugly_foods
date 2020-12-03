@@ -11,7 +11,7 @@
             <div class="calculated-rating">
               <%=shop.calculate_rating %>
             </div>
-            <% shop.calculate_rating.times do %>
+            <% shop.calculate_rating.round.times do %>
               <i class="far fa-star"></i>
             <% end %>
             <%= link_to shop_path(shop) do %>
@@ -34,7 +34,7 @@
               <%= image_tag("ugly-index.png", :alt => "shop", class: "scroll-icons") %>
 
               <div class="produce-ugly-scroll index-scroll force_overflow">
-                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scollbar-lady-lips">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
                   <div class="scrollbar-items">
                     <% shop.ugly_foods.each do |ugly_food| %>
                       <div class="ugly-food-display">
