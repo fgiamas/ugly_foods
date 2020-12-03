@@ -1,21 +1,23 @@
 class ProductsController < ApplicationController
-  before_action :find_products, except: [:dashboard]
+  before_action :find_products, except: [:dashboard, :create]
   before_action :authenticate_user!
 
   def dashboard
     @products = Product.all
+    @product = Product.new
   end
 
   def new
-    @product
   end
 
   def create
     @product = Product.new(strong_params)
     @product.shop = current_user.shop
-    @product.days_to_expiry = Date.today - params[:lifespan]
-    unless @product.save
-      render :new
+    @product.days_to_expiry = params[:product][:lifespan].to_i
+    if @product.save
+      redirect_to dashboard_url, notice: 'product created'
+    else
+      render dashboard_url, notice: 'something went wrong'
     end
   end
 
