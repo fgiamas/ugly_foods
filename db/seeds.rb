@@ -12,6 +12,7 @@ ProduceType.destroy_all
 Cart.destroy_all
 Shop.destroy_all
 User.destroy_all
+Chatroom.destroy_all
 
 ADDRESSES = [
 'Maarten Lutherweg 122, 1185 Amstelveen',
@@ -483,3 +484,8 @@ end
 
 
 puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
+
+
+Chatroom.create(
+  name: "general"
+  )
