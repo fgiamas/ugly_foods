@@ -28,12 +28,14 @@
           <h6><strong>Your selection:</strong></h6>
           <div class="produce-ugly-scroll index-scroll force_overflow">
                 <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
-                  <div class="scrollbar-items">
-                    <% all_products.keys.each do |shop| %>
-                    <% all_products[shop].each do |product_selection| %>
-                    <h6><strong><%= product_selection.product.produce_type.name %></strong>, discount of:<%= product_selection.product.discount_percent %>%</h6>
-                    <% end %>
-                    <% end %>
+                  <div class="scrollbar-items-styling">
+                    <div class="scrollbar-items">
+                      <% all_products.keys.each do |shop| %>
+                      <% all_products[shop].each do |product_selection| %>
+                      <h6><strong><%= product_selection.product.produce_type.name %></strong>, discount of:<%= product_selection.product.discount_percent %>%</h6>
+                      <% end %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
