@@ -50,7 +50,7 @@
             <div class="produce-old produce-display-index d-flex flex-wrap">
               <%= image_tag("old-index.png", :alt => "shop", class: "scroll-icons") %>
               <div class="produce-ugly-scroll index-scroll force_overflow">
-                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
                   <div class="scrollbar-items">
                     <% shop.old_foods.each do |old_food| %>
                       <div class="ugly-food-display">
@@ -66,7 +66,7 @@
             <div class="produce-flowers produce-display-index d-flex flex-wrap">
               <%= image_tag("flower-index.png", :alt => "shop", class: "scroll-icons") %>
               <div class="produce-ugly-scroll index-scroll force_overflow">
-                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
                   <div class="scrollbar-items">
                     <% shop.flowers.each do |flower| %>
                       <div class="ugly-food-display">
