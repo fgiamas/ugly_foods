@@ -1,0 +1,12 @@
+<% all_upcoming_carts.sort_by {|cart| cart.pick_up_date}.each do |cart| %>
+<div class="carts">
+  <h5>CART</h5>
+  <p><%= cart.pick_up_date %></p>
+  <% prod_select =  cart.product_selections.group_by(&:shop) %>
+  <div class="upcoming-orders-list-1" id="upcoming-orders">
+    <% prod_select.keys.each do |shop_key| %>
+      <%= shop_key.name %>
+    <% end %>
+  </div>
+</div>
+<% end %>

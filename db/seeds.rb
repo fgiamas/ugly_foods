@@ -229,7 +229,11 @@ puts 'Creating 10 users...'
     last_name: "schull",
     address: "Le wagon",
     email: "lewagon@wagon.com",
-    password: "123456"
+    password: "123456",
+    address: "83 Gibraltarstraat",
+    city: "Amsterdam",
+    post_code: "1055NL",
+    country: "Netherlands",
     )
 puts "Created #{User.count} users!"
 

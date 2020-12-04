@@ -1,50 +1,93 @@
-
-<div class="greeting-wrap-up d-flex flex-wrap" id= "background-greeting">
-  <div class="welcome-logo-dashboard">
-    <%= image_tag("Ugly Foods copy 4.png", :alt => "shop", style: 'width: 60px; height: 60px;') %>
-  </div>
-  <div class="greeting-dashboard">
-    <div class="greeting-user-dashboard">
-      <h3> Hello <%= current_user.first_name %>, welcome back!</h3>
+<div>
+  <div class="greeting-wrap-up d-flex flex-wrap" id= "background-greeting">
+    <div class="welcome-logo-dashboard">
+      <%= image_tag("Ugly Foods copy 4.png", :alt => "shop", style: 'width: 60px; height: 60px;') %>
+    </div>
+    <div class="greeting-dashboard">
+      <div class="greeting-user-dashboard">
+        <h3> Hello <%= current_user.first_name %>, welcome back!</h3>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="all-the-shit">
-  <div class="user-orders">
-      <h3>Upcoming orders</h3>
-    <div class="upcoming-orders d-flex flex-wrap">
-      <div class="upcoming-orders-list">
-        <% all_product_selections = current_user.product_selections.select {|product_selection| product_selection.in_the_future? }.group_by(&:shop) %>
-        <div class="upcoming-orders-list-1" id="upcoming-orders">
-          <% all_product_selections.keys.each do |shop| %>
-          <%= render 'shops/card', shop: shop %>
-          <% end %>
+  <div class="d-flex justify-content-around">
+
+    <div class="all-orders">
+      <div class="user-upcoming-orders">
+        <h3>Upcoming orders</h3>
+        <div class="upcoming-orders">
+          <div class="upcoming-orders-list">
+            <div class="index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-user-dash">
+
+            <% all_upcoming_carts = current_user.user_upcoming_carts %>
+            <% all_upcoming_carts.sort_by {|cart| cart.pick_up_date}.each do |cart| %>
+
+              <div class="carts-user-dash">
+                <!-- going into the cart itself, separated by carts -->
+                <div class="d-flex justify-content-between">
+                  <h5>CART</h5>
+                  <p>Total: € <%= cart.calculate_price %></p>
+                </div>
+                <p>Pick up date: <%= cart.pick_up_date %></p>
+                <!-- cart now grouped by shop -->
+                <% grouped_prod_select =  cart.product_selections.group_by(&:shop) %>
+                <div>
+                  <!--now going into the product selection for each shop -->
+                  <% grouped_prod_select.keys.each do |shop_key| %>
+                    <div class="upcoming-org-shop">
+                      <strong><%= shop_key.name %></strong>
+                      <% grouped_prod_select[shop_key].each do |selection| %>
+                        <div class="d-flex justify-content-between">
+                          <p><%= selection.product.produce_type.name %> </p>
+                          <div>
+                            <p><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
+                            <p>€<%= selection.total_price%>  </p>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
+            <% end %>
+
+          </div>
+        </div>
+
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="user-past-info">
-      <div class="user-past-orders">
-        <div class="past-orders">
-          <h3>Past orders</h3>
-          <div class="past-orders-list d-flex flex-wrap">
-            <% all_past_products = current_user.product_selections.select {|product_selection| product_selection.in_the_past? }.group_by(&:shop) %>
-            <div class="past-orders-list-1" id="past-orders">
-              <% all_past_products.keys.each do |shop| %>
-              <%= render 'shops/card', shop: shop %>
-              <% end %>
-            </div>
-            <div class="past-orders-list-2" id="past-orders">
-              <% all_past_products.keys.each do |shop| %>
-              <%= render 'shops/card', shop: shop %>
-              <% end %>
-            </div>
-            <div class="past-orders-list-2" id="past-orders">
-              <% all_past_products.keys.each do |shop| %>
-              <%= render 'shops/card', shop: shop %>
-              <% end %>
-            </div>
+    <div class="user-blurb">
+      <h3>Here are your stats!</h3>
+      <p>you have saved x kg & x units of ugly foods </p>
+      <p>you have saved x kg & x units of oldies but goldies </p>
+      <p>you have saved x kg & x units of flowers </p>
+      <h6>Keep it up!</h6>
+    </div>
+
+  </div>
+
+  <div class="user-past-info">
+    <div class="user-past-orders">
+      <div class="past-orders">
+        <h3>Past orders</h3>
+        <div class="past-orders-list d-flex flex-wrap">
+          <% all_past_products = current_user.product_selections.select {|product_selection| product_selection.in_the_past? }.group_by(&:shop) %>
+
+          <div class="past-orders-list-1" id="past-orders">
+
+          </div>
+
+          <div class="past-orders-list-2" id="past-orders">
+
+          </div>
+
+          <div class="past-orders-list-2" id="past-orders">
+
           </div>
         </div>
       </div>
@@ -53,48 +96,29 @@
 
   <div class="all-shops">
     <div class="shops-near-me">
-      <h3>Shops near me</h3>
+      <h3>Discover shops near you (less than 4km away!)</h3>
       <div class="shops-near-me-list">
-        <div class="shops-near-me-list-1" id="shops-near-me">
-         <% all_past_products.keys.each do |shop| %>
-         <%= render 'shops/card', shop: shop %>
-         <% end %>
-        <div class="shops-near-me-list-2" id="shops-near-me">
-         <% all_past_products.keys.each do |shop| %>
-         <%= render 'shops/card', shop: shop %>
-         <% end %>
-       </div>
-       <div class="shops-near-me-list-3" id="shops-near-me">
-         <% all_past_products.keys.each do |shop| %>
-         <%= render 'shops/card', shop: shop %>
-         <% end %>
-       </div>
-     </div>
-   </div>
- </div>
+        <% current_user.shops_near_me.each do |shop| %>
+          <div class="shops-near-me">
+            <%= shop.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
- <div class="ratings-dashboard">
-  <h3>Don't forget to leave a review you cheap ass fucks!!!</h3>
-  <div class="ratings-dashboard-list">
-    <div class="ratings-dashboard-list-1" id="ratings-dashboard">
-      <div class="marqt-shop" style="width: 150px; height: 120px;">
-      </div>
-      <div class="calculated-rating">
-        <%=Shop.second.calculate_rating %>
-      </div>
-      <% Shop.second.calculate_rating.round.times do %>
-      <i class="far fa-star"></i>
+  <div class="ratings-dashboard">
+    <h3>Don't forget to leave a review </h3>
+    <div class="shops-to-review d-flex flex-wrap">
+      <% current_user.ratings_todo.each do |shop| %>
+        <div>
+          <%= shop.name %>
+          <%= shop.calculate_rating %>
+          <div class="marqt-shop" style="width: 150px; height: 120px;">
+          </div>
+        </div>
       <% end %>
-    </div>
-    <div class="ratings-dashboard-list-2" id="ratings-dashboard">
-      <div class="marqt-shop" style="width: 150px; height: 120px;">
-      </div>
-      <p>Opening hours of the shop</p>
-    </div>
-    <div class="ratings-dashboard-list-3" id="ratings-dashboard">
-      <div class="marqt-shop" style="width: 150px; height: 120px;">
-      </div>
-      <p>Opening hours of the shop</p>
     </div>
   </div>
 </div>
+

@@ -17,13 +17,13 @@ class Cart < ApplicationRecord
     sum = 0
     self.product_selections.each do |product_selection|
       if product_selection.units?
-        item_sum = product_selection.product.price_per_unit * product_selection.units
+        item_sum = product_selection.total_price
       else
-        item_sum = product_selection.product.price_per_unit * product_selection.kg
+        item_sum = product_selection.total_price
       end
       sum += item_sum
     end
-    self.total_price = sum
+    return sum.round(2)
   end
 
 end
