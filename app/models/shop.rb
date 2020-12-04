@@ -5,6 +5,7 @@ class Shop < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :product_selections, through: :products
   has_one_attached :photo
+  has_many :likes, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :website, presence: true
@@ -62,5 +63,7 @@ class Shop < ApplicationRecord
   def filtered_by_flowers
 
   end
+
+
 
 end

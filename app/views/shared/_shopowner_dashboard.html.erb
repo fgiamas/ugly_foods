@@ -77,6 +77,7 @@
           </div>
         </div>
 
+
         <div class="products-ugly shop-existing-products">
           <h2>Ugly Foods</h2>
           <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
@@ -92,6 +93,28 @@
               <p><%= "#{food.total_units} units "if food.total_units %></p>
               <p><%= "#{food.total_kg} units "if food.total_kg %></p>
               <p>Shipment uploaded at <%= food.created_at %></p>
+              <%= link_to "Remove",
+                  product_path(food),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+              <a class="btn btn-primary" data-toggle="collapse" href="#EditItem" role="button" aria-expanded="false" aria-controls="EditItem">
+                Edit to your Product
+                </a>
+                <div class="collapse" id="EditItem">
+                  <div class="card card-body">
+                      <%= simple_form_for(food) do |f| %>
+                        <%= f.input :discount_percent %>
+                        <%= f.input :price_per_unit %>
+                        <%= f.input :lifespan %>
+                        <%= f.input :total_units %>
+                        <%= f.input :total_kg %>
+                        <%= f.input :days_to_expiry %>
+                        <%= f.input :status, collection: Product.statuses.keys.to_a %>
+                        <%= f.association :produce_type %>
+                        <%= f.submit %>
+                      <% end %>
+                  </div>
+                </div>
             </div>
           <% end %>
         </div>

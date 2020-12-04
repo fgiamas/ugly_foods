@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :find_shop, only: [:show, :edit, :update, :destroy]
+  before_action :find_shop, only: [:show, :edit, :update, :destroy, :number_of_likes]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -38,6 +38,7 @@ class ShopsController < ApplicationController
   def show
     @markers = [{ lat: @shop.latitude, lng: @shop.longitude, infoWindow: render_to_string(partial: "info_window", locals: { shop: @shop }),image_url: helpers.asset_url('carrot.png') }]
     @product_selection = ProductSelection.new
+    @liked_shop = check_if_liked
   end
 
   def new
@@ -82,4 +83,9 @@ class ShopsController < ApplicationController
   def find_shop
     @shop = Shop.find(params[:id])
   end
+
+  def check_if_liked
+    @shop.likes.where(user_id: current_user.id)
+  end
+
 end

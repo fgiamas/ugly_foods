@@ -39,6 +39,7 @@ import { initFiltersTwo } from '../plugins/init_filters';
 import { initFiltersThree } from '../plugins/init_filters';
 
 
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
@@ -48,5 +49,6 @@ document.addEventListener('turbolinks:load', () => {
   initFilters();
   initFiltersTwo();
   initFiltersThree();
+
 
 })

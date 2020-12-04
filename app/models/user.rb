@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :product_selections, through: :carts
   has_many :products, through: :shop
   has_many :incoming_product_selections, through: :products, class_name: "ProductSelection", source: :product_selectionss
+  has_many :likes, dependent: :destroy
 
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
