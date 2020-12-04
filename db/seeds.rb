@@ -465,7 +465,7 @@ x+=10
 puts "Created #{Cart.count} carts, #{ProductSelection.count} product selections"
 
 cart_2 = Cart.create(
-  pick_up_date: Date.today,
+  pick_up_date: Date.tomorrow,
   user_id: admin.id,
   status: "confirmed"
   )

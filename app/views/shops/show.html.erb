@@ -1,7 +1,8 @@
 <div class="nav-bar-global" style="height: 100px; background-color: #F4A25B; width: 100%;">
-  <div>
+  <div d-flex justify-content-right>
 
-  <div class="btn-group">
+
+  <div class="btn-group aign-items-right">
     <button type="button" class="btn btn-secondary dropdown-toggle dropleft" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= image_tag("cart.png", :alt => "shop", style: "width: 40px; height: 40px;")%>
     </button>
@@ -18,7 +19,7 @@
                 <p><%= select.units ? "#{select.units} units" : "#{select.kg} kg" %></p>
                 <p>€ <%= select.total_price.round(2) %></p>
               </div>
-              <%= link_to product_selections_path(select),
+              <%= link_to product_selection_path(select),
                     method: :delete,
                     data: {confirm: "Are you sure you want to remove from cart?"},
                     remote: true do %>
@@ -39,6 +40,8 @@
   </div>
 </div>
 
+<%= link_to 'Back', shops_path %>
+
 <div class="storefront-container">
 
     <div class="card-shop-ratings">
@@ -52,6 +55,7 @@
       </div>
       </br>
       <h6>Read recent reviews</h6>
+      <%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
 
         <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
           <div class="scrollbar-items">
@@ -154,17 +158,18 @@
     <h1>Old Foods</h1>
     <div class="row">
       <div class="col-sm-12 mb-3">
-        <input type="text" id="myFilter" class="form-control"  placeholder="Search for names..">
+        <input type="text" id="myFilter-2" class="form-control"  placeholder="Search for names..">
       </div>
     </div>
-    <div class="row" id="myItems">
+    <div class="row" id="myItems-2">
       <div class="col-sm-12 mb-3">
         <% @shop.old_foods.each do |product| %>
+          <% product.total_units? ? measure = "units" : measure = "kg"  %>
           <div class="card">
-            <div class="card-body">
+            <div class="card-body d-flex flex-wrap">
               <div class="card-main-information-produce">
                 <div class="title-and-add d-flex justify-content-between">
-                  <h5 class="card-title"><a href="#"> <%= product.produce_type.name %></a></h5>
+                  <h5 class="card-title-2"><a href="#"> <%= product.produce_type.name %></a></h5>
                 </div>
                 <h6 class="card-subtitle mb-2 text-muted"> <%= "#{product.total_units} kg" if product.total_units %></h6>
                 <h6 class="card-subtitle mb-2 text-muted"> <%= "#{product.total_kg} kg" if product.total_kg %></h6>
@@ -172,7 +177,15 @@
                 <h6 class="card-subtitle mb-2 text-muted"> <%= product.discount_percent %>%</h6>
                 <h6 class="card-subtitle mb-2 text-muted"> Discount price: Euros<%= product.total_price %>/unit</h6>
               </div>
-
+              <div class="checkout-card">
+                <%= simple_form_for(@product_selection, url: product_selections_path, remote: true) do |f|%>
+                  <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
+                  <%= f.input measure.to_sym, as: :integer %>
+                  <%= f.input :cart_id, as: :hidden, input_html: { value: current_cart.id } %>
+                  <%= product.total_units? ? "units" : "kg" %>
+                  <%= button_tag do %><i class="far fa-plus-square"></i><% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
@@ -184,33 +197,38 @@
     <h1>Flowers</h1>
     <div class="row">
       <div class="col-sm-12 mb-3">
-        <input type="text" id="myFilter" class="form-control"  placeholder="Search for names..">
+        <input type="text" id="myFilter-3" class="form-control"  placeholder="Search for names..">
       </div>
     </div>
-    <div class="row" id="myItems">
+    <div class="row" id="myItems-3">
       <div class="col-sm-12 mb-3">
         <% @shop.flowers.each do |product| %>
+          <% product.total_units? ? measure = "units" : measure = "kg"  %>
           <div class="card">
-            <div class="card-body">
+            <div class="card-body d-flex flex-wrap">
               <div class="card-main-information-produce">
                 <div class="title-and-add d-flex justify-content-between">
-                  <h5 class="card-title"><a href="#"> <%= product.produce_type.name %></a></h5>
+                  <h5 class="card-title-3"><a href="#"> <%= product.produce_type.name %></a></h5>
                 </div>
                 <h6 class="card-subtitle mb-2 text-muted"> <%= "#{product.total_units} kg" if product.total_units %></h6>
                 <h6 class="card-subtitle mb-2 text-muted"> <%= "#{product.total_kg} kg" if product.total_kg %></h6>
                 <h6 class="card-subtitle mb-2 text-muted"> Euros<%= product.price_per_unit %>/unit</h6>
                 <h6 class="card-subtitle mb-2 text-muted"> <%= product.discount_percent %>%</h6>
                 <h6 class="card-subtitle mb-2 text-muted"> Discount price: Euros<%= product.total_price %>/unit</h6>
+              </div>
+              <div class="checkout-card">
+                <%= simple_form_for(@product_selection, url: product_selections_path, remote: true) do |f|%>
+                  <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
+                  <%= f.input measure.to_sym, as: :integer %>
+                  <%= f.input :cart_id, as: :hidden, input_html: { value: current_cart.id } %>
+                  <%= product.total_units? ? "units" : "kg" %>
+                  <%= button_tag do %><i class="far fa-plus-square"></i><% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
-
 
 </div>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %> |
-<%= link_to 'Leave a review', new_shop_rating_path(@shop) %>

@@ -1,1 +1,53 @@
-<h1>This is your cart</h1>
+<div class="shopping-cart-window d-flex flex-wrap">
+  <div class="shopping-cart-info">
+  <h1><%= current_user.first_name %>, this is your cart</h1>
+  <p>Let's save the foods!</p>
+  <div class="cart-items-show">
+      <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
+      <% group_cart_items.keys.each do |shop_key| %>
+        <div class="grouped-cart-items-show d-flex flex-wrap">
+          <div class="grouped-cart-items-show-info">
+            <strong><%= shop_key.name %></strong>
+            <% group_cart_items[shop_key].each do |select| %>
+              <div class="cart-cards-show d-flex flex-wrap justify-content-between">
+                <%= image_tag("cart-item.png", :alt => "cart-item", style: "width: 40px; height: 40px;")%>
+                <strong><p><%= select.product.produce_type.name %></p></strong>
+                <div class="pending-purchase-info">
+                  <p><%= select.units ? "#{select.units} units" : "#{select.kg} kg" %></p>
+                  <p>€ <%= select.total_price.round(2) %></p>
+                </div>
+                <%= link_to product_selection_path(select),
+                      method: :delete,
+                      data: {confirm: "Are you sure you want to remove from cart?"},
+                      remote: true do %>
+                  <i class="far fa-minus-square"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+  <%= simple_form_for current_user.current_cart, url: cart_path(current_user.current_cart), method: :put do |f|%>
+    <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }  %>
+    <%= f.submit 'Confirm your purchase'%>
+    <% end %>
+
+      <%= link_to shops_path do %>
+        <div class="d-flex flex-wrap">
+          <i class="fas fa-long-arrow-alt-left"></i>
+          <p>Continue shopping</p>
+        </div>
+      <% end %>
+      </div>
+      <div class="payment-details">
+        <h5>Card Details</h5>
+        <p>Payment Type</p>
+        <p>Name on Card</p>
+        <p>Card Number</p>
+        <div class="security-info d-flex flex-wrap">
+          <p>Expiry date</p>
+          <p>Security code</p>
+        </div>
+  </div>
+</div>
