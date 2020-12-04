@@ -1,0 +1,96 @@
+          <div class="all-orders-orderpage d-flex flex-wrap justify-content-around">
+            <div class="user-upcoming-orders-orderpage">
+              <h3>Upcoming orders</h3>
+              <div class="upcoming-orders-orderpage">
+                <div class="upcoming-orders-list-orderpage">
+                  <div class="index-scroll force_overflow">
+                      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-orderpage">
+
+                  <% all_upcoming_carts = current_user.user_upcoming_carts %>
+                  <% all_upcoming_carts.sort_by {|cart| cart.pick_up_date}.each do |cart| %>
+
+                    <div class="carts-user-orders-dash">
+                      <!-- going into the cart itself, separated by carts -->
+                      <div class="d-flex justify-content-between">
+                        <h5>CART</h5>
+                        <p>Total: € <%= cart.calculate_price %></p>
+                      </div>
+                      <p>Pick up date: <%= cart.pick_up_date %></p>
+                      <!-- cart now grouped by shop -->
+                      <% grouped_prod_select =  cart.product_selections.group_by(&:shop) %>
+                      <div>
+                        <!--now going into the product selection for each shop -->
+                        <% grouped_prod_select.keys.each do |shop_key| %>
+                          <div class="upcoming-org-shop-orders">
+                            <strong><%= shop_key.name %></strong>
+                            <% grouped_prod_select[shop_key].each do |selection| %>
+                              <div class="d-flex justify-content-between">
+                                <p><%= selection.product.produce_type.name %> </p>
+                                <div>
+                                  <p><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
+                                  <p>€<%= selection.total_price%>  </p>
+                                </div>
+                              </div>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+
+                  <% end %>
+
+                </div>
+              </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="user-past-orders-orderpage">
+              <h3>Past orders</h3>
+                <div class="upcoming-orders-orderpage">
+                  <div class="upcoming-orders-list-orderpage">
+                    <div class="index-scroll force_overflow">
+                        <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-orderpage">
+
+                    <% all_past_carts = current_user.user_past_carts %>
+                    <% all_past_carts.sort_by {|cart| cart.pick_up_date}.each do |cart| %>
+
+                      <div class="carts-user-orders-dash">
+                        <!-- going into the cart itself, separated by carts -->
+                        <div class="d-flex justify-content-between">
+                          <h5>CART</h5>
+                          <p>Total: € <%= cart.calculate_price %></p>
+                        </div>
+                        <p>Pick up date: <%= cart.pick_up_date %></p>
+                        <!-- cart now grouped by shop -->
+                        <% grouped_prod_select =  cart.product_selections.group_by(&:shop) %>
+                        <div>
+                          <!--now going into the product selection for each shop -->
+                          <% grouped_prod_select.keys.each do |shop_key| %>
+                            <div class="upcoming-org-shop-orders">
+                              <strong><%= shop_key.name %></strong>
+                              <% grouped_prod_select[shop_key].each do |selection| %>
+                                <div class="d-flex justify-content-between">
+                                  <p><%= selection.product.produce_type.name %> </p>
+                                  <div>
+                                    <p><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
+                                    <p>€<%= selection.total_price%>  </p>
+                                  </div>
+                                </div>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+
+                    <% end %>
+
+                  </div>
+                </div>
+
+                  </div>
+                </div>
+            </div>
+
+          </div>
