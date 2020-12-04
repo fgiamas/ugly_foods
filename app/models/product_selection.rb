@@ -24,7 +24,7 @@ class ProductSelection < ApplicationRecord
 
   def total_price
     self.units ? quantity = self.units : quantity = self.kg
-    total_price = quantity * (self.product.price_per_unit * (self.product.discount_percent/100.to_f))
+    total_price = (quantity * (self.product.price_per_unit * (self.product.discount_percent/100.to_f))).round(2)
     return total_price
   end
 end
