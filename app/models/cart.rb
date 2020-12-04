@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
   belongs_to :user
   enum status: [:pending, :confirmed]
   has_many :product_selections
-  validate :pick_up_date_cannot_be_in_the_past
+  # validate :pick_up_date_cannot_be_in_the_past
   # enums create these methods automatically
   validates :pick_up_date, presence: true, if: :confirmed?
 
@@ -17,13 +17,13 @@ class Cart < ApplicationRecord
     sum = 0
     self.product_selections.each do |product_selection|
       if product_selection.units?
-        item_sum = product_selection.product.price_per_unit * product_selection.units
+        item_sum = product_selection.total_price
       else
-        item_sum = product_selection.product.price_per_unit * product_selection.kg
+        item_sum = product_selection.total_price
       end
       sum += item_sum
     end
-    self.total_price = sum
+    return sum.round(2)
   end
 
 end

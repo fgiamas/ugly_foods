@@ -1,54 +1,52 @@
 const handleChange = (event) => {
   const currentInput = event.currentTarget.value;
-  console.log(currentInput);
-  const allLabels = document.querySelectorAll(".shops_fruits_and_veggies label")
-  console.log(allLabels);
-  const allLabelText = [...document.querySelectorAll(".shops_fruits_and_veggies label")].map((label) => {
-    // setting the id of the labels inside .shops_fruits_and_veggies
+  const allLabels = document.querySelectorAll(".search_fruits_and_veggies label")
+  // setting the id of the labels inside .shops_fruits_and_veggies
+  const allLabelText = [...document.querySelectorAll(".search_fruits_and_veggies label")].map((label) => {
     label.id = label.innerText
     return label.innerText
   })
-
+  console.log(allLabelText)
   const results = allLabelText.filter(item => {
     return item.startsWith(currentInput)
   })
-
   allLabels.forEach(label => {
-    label.classList.add('hidden-label')
+    label.parentElement.classList.add('hidden-label')
   })
-
   results.forEach(item => {
-    document.querySelector(`#${item}`).classList.remove("hidden-label")
+    document.querySelector(`#${item}`).parentElement.classList.remove("hidden-label")
   })
 }
-
-// const initHideSelection = () => {
-//   const input = document.querySelector("#fruits-and-veg-search")
-//   console.log(input);
-//   if(input) {
-//     input.addEventListener('click', handleChange)
-//   }
-// };
-
+const handleChangeFlowers = (event) => {
+  const currentInput = event.currentTarget.value;
+  const allLabels = document.querySelectorAll(".search_flowers label")
+  // setting the id of the labels inside .shops_fruits_and_veggies
+  const allLabelText = [...document.querySelectorAll(".search_flowers label")].map((label) => {
+    label.id = label.innerText
+    return label.innerText
+  })
+  console.log(allLabelText)
+  const results = allLabelText.filter(item => {
+    return item.startsWith(currentInput)
+  })
+  allLabels.forEach(label => {
+    label.parentElement.classList.add('hidden-label')
+  })
+  results.forEach(item => {
+    document.querySelector(`#${item}`).parentElement.classList.remove("hidden-label")
+  })
+}
 const initAutocomplete = () => {
   const input = document.querySelector("#autocomplete")
-  console.log(input);
   if(input) {
     input.addEventListener('keyup', handleChange)
   }
 };
-
+const initAutocompleteFlowers = () => {
+  const input = document.querySelector("#autocomplete-flowers")
+  if(input) {
+    input.addEventListener('keyup', handleChangeFlowers)
+  }
+};
 export { initAutocomplete };
-// export { initHideSelection };
-
-
-// what is this??
-
-// import places from 'places.js';
-
-// const initAutocomplete = () => {
-//   const addressInput = document.getElementById('shop_address');
-//   if (addressInput) {
-//     places({ container: addressInput });
-//   }
-// };
+export { initAutocompleteFlowers };

@@ -1,43 +1,62 @@
 .storefront-container{
   display: flex;
-  width: 100vw;
   }
-
 .card-shop-ratings{
-  width: 70vh;
-  height: 60vh;
+  width: 40%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 13px;
+  padding: 20px;
 }
-
 .list-group{
   border-radius: 13px;
 }
-
 .card-shop-show{
-  width: 70vh;
-  height: 60vh;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 13px;
-
-}
-
-.card-shop-inner{
   padding: 30px;
-  margin-bottom: 28%;
 }
-
-.card-shop-inner > img{
-  max-width: 100%;
+.likes{
+  display: flex;
+  justify-content: center;
 }
-
-
+.far.fa-heart:hover {
+  color: #79C3BD;
+  cursor: pointer;
+}
+fas.fa-heart.active {
+  color: #79C3BD;
+}
+.card-shop-show > img{
+  max-width: 70%;
+}
 .shop-map{
-  width: 20vh;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 40%;
   border-radius: 13px;
 }
-
 .search-show-container{
   padding: 10px;
+}
+.shopping-cart-drop {
+  width: 350px;
+  padding: 20px;
+}
+.cart-cards {
+  border-top: 0.2px solid lightgrey;
+  padding-top: 5px;
+}
+.grouped-cart-items {
+  border: 0.5px solid grey;
+  border-radius: 15px;
+  padding: 20px;
+}
+.show-rating {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 5px;
+}
+.ratings-title {
+}
+.scroll-bar-shopfront {
+  height: 400px;
 }

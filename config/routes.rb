@@ -12,13 +12,14 @@ Rails.application.routes.draw do
 
   resources :shops do
     # so that we have nested URLs, use shallow nesting for certain things
+    resources :likes
     resources :ratings, shallow: true
   end
 
-
+  resources :product_selections
   resources :products, except: [:index]
 
-  resources :carts, only: [:show, :new] do
+  resources :carts, only: [:show, :new, :update] do
     post '/:product_id', to: 'cart#add_item_to_cart'
     delete '/:product_id', to: 'cart#remove_item_from_cart'
   end

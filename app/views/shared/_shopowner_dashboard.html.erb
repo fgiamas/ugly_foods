@@ -1,6 +1,5 @@
 <div class="shop-owner-main">
   <h2>this is the shop owner dashboard</h2>
-
   <div class="owner-tabs-content d-flex">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="owner-dash nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home fa-owner"></i> Home</a>
@@ -8,24 +7,21 @@
       <a class="owner-dash" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-bell fa-owner"></i> Alerts</a>
       <a class="owner-dash" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-comments fa-owner"></i> Messages</a>
     </div>
-
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
         <div class="welcome d-flex flex-wrap align-items-center">
           <%= image_tag("storefront.png", :alt => "shop", style: 'width: 80px; height: 80px;') %>
           <h2> Hello <%= current_user.first_name %>, welcome to your storefront! </h2>
         </div>
-
       <div class="top-shop d-flex">
-
         <div class="shop-owner-stats shop-owner-stats-1">
           <div class="shop-owner-rating">
             <h5>Your ratings</h5>
             <%= current_user.shop.calculate_rating %>
             <div class="dashboard-rating d-flex flex-wrap">
-            <% current_user.shop.calculate_rating.times do %>
+            <%# current_user.shop.calculate_rating.times do %>
               <i class="fas fa-star"></i>
-            <% end %>
+            <%# end %>
             </div>
           </div>
         </br>
@@ -42,23 +38,36 @@
             <% end %>
           </div>
         </div>
-
         <div class="shop-owner-stats shop-owner-stats-2">
           <p>you have sold x kg of ugly foods!</p>
           <p>you have sold x units of old foods!</p>
           <p>you have sold x flowers!</p>
           <p>Let's save the foods! We're all beautiful on the inside</p>
         </div>
-
       </div>
-
         <div class="upcoming-orders">
           <% current_user.shop.confirmed_orders.each do |prod| %>
           <% end %>
         </div>
-
         <h5>Your stock</h5>
-
+        <a class="btn btn-primary" data-toggle="collapse" href="#AddToStock" role="button" aria-expanded="false" aria-controls="AddToStock">
+        Add to your Stock
+        </a>
+        <div class="collapse" id="AddToStock">
+          <div class="card card-body">
+              <%= simple_form_for(@product) do |f| %>
+                <%= f.input :discount_percent %>
+                <%= f.input :price_per_unit %>
+                <%= f.input :lifespan %>
+                <%= f.input :total_units %>
+                <%= f.input :total_kg %>
+                <%= f.input :days_to_expiry %>
+                <%= f.input :status, collection: Product.statuses.keys.to_a %>
+                <%= f.association :produce_type %>
+                <%= f.submit %>
+              <% end %>
+          </div>
+        </div>
         <div class="products-ugly shop-existing-products">
           <h2>Ugly Foods</h2>
           <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
@@ -74,10 +83,31 @@
               <p><%= "#{food.total_units} units "if food.total_units %></p>
               <p><%= "#{food.total_kg} units "if food.total_kg %></p>
               <p>Shipment uploaded at <%= food.created_at %></p>
+              <%= link_to "Remove",
+                  product_path(food),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+              <a class="btn btn-primary" data-toggle="collapse" href="#EditItem" role="button" aria-expanded="false" aria-controls="EditItem">
+                Edit to your Product
+                </a>
+                <div class="collapse" id="EditItem">
+                  <div class="card card-body">
+                      <%= simple_form_for(food) do |f| %>
+                        <%= f.input :discount_percent %>
+                        <%= f.input :price_per_unit %>
+                        <%= f.input :lifespan %>
+                        <%= f.input :total_units %>
+                        <%= f.input :total_kg %>
+                        <%= f.input :days_to_expiry %>
+                        <%= f.input :status, collection: Product.statuses.keys.to_a %>
+                        <%= f.association :produce_type %>
+                        <%= f.submit %>
+                      <% end %>
+                  </div>
+                </div>
             </div>
           <% end %>
         </div>
-
         <div class="products-old shop-existing-products">
           <h2>Oldies but Goldies</h2>
           <% current_user.shop.old_foods.each do |food| %>
@@ -96,7 +126,6 @@
             </div>
           <% end %>
         </div>
-
         <div class="products-flower shop-existing-products">
           <h2>Flowers</h2>
           <% current_user.shop.flowers.each do |food| %>
@@ -115,9 +144,7 @@
             </div>
           <% end %>
         </div>
-
       </div>
-
       <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         <%= render 'shared/owner_dash_orders' %>
         <%= yield %>
@@ -127,11 +154,7 @@
         <%= yield %>
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-
       </div>
     </div>
   </div>
-
 </div>
-
-
