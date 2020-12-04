@@ -77,7 +77,20 @@
       </div>
 
       <div class="card-shop-show" style="text-align: center;">
+        <div class="likes">
           <h2><%= @shop.name %></h2>
+          <%= button_to shop_likes_path(@shop), method: :post do %>
+          <% if @liked_shop %>
+            <i class="fas fa-heart"></i>
+          <% else %>
+            <i class="fal fa-heart"></i>
+          <% end %>
+          <% end %>
+
+
+
+          <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        </div>
           <img src="https://assercourant.nl/media/NjgwMzUwXzcxODRhNDVkMmE2MjNkM2YwZTBiNmNlNmFjOWRhYzVjZDUxYTFlMjRfNjIweEMxMTM2eDYzOSswKzA=.jpg">
           <strong><p><%= @shop.address %></p></strong>
           <p class="opening-hours">Monday 10:00-18:00</p>

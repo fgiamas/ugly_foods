@@ -27,11 +27,16 @@ class ProductsController < ApplicationController
 
   def update
     @product
-    @product.update(strong_params)
+    if @product.update(strong_params)
+      redirect_to dashboard_url, notice: 'product updated'
+    else
+      render dashboard_url, notice: 'something went wrong'
+    end
   end
 
   def destroy
     @product.destroy
+    redirect_back(fallback_location: root_path, notice: 'product deleted')
   end
 
   private

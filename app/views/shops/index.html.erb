@@ -2,7 +2,7 @@
   <div class="shops-index">
     <% @shops.each do |shop| %>
       <div class="shop-info d-flex">
-
+        <p><%= shop.likes.count %> <%= (shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         <div class="shop-image-rating">
           <div>
             <%= image_tag("shop-placeholder.jpg", :alt => "shop", style: "width: 165px; height: 120px; border-radius: 10px; margin-bottom: 10px;") %>
