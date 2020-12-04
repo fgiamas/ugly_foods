@@ -43,6 +43,7 @@
   justify-content: space-around;
 }
 
+
 .past-orders-list-1{
   margin-bottom: 12px;
   display: flex;
@@ -122,19 +123,19 @@
   text-align: left;
 }
 
-.user-orders{
-  display: flex;
-  justify-content: space-around;
-  margin-right: 100px;
-  margin-left: 100px;
-}
+// .user-orders{
+//   display: flex;
+//   justify-content: space-around;
+//   margin-right: 100px;
+//   margin-left: 100px;
+// }
 
 .more-shop-info-1{
   width: 130%;
 }
 
 .all-the-shit{
- background-image: image-url('indexbackground.jpg');
+ background-color: white;
  width: 100%;
  height: 100%;
  background-position: center;
@@ -143,7 +144,7 @@
 }
 
 .shop-info_dashboard{
-  background-color: white;
+  background-color: rgba(255, 224, 199, 0.8);
   background-size: cover;
   background-position: center;
   border-radius: 20px;
@@ -154,4 +155,27 @@
   margin:1%;
   text-align: center;
   width: 100%;
+}
+.shop-logo{
+  display: flex;
+  justify-content: space-around;
+}
+
+.welcome-logo-dashboard{
+  margin-right: 10px;
+  margin-left: 20px;
+  padding-top: 15px;
+}
+
+.greeting-dashboard{
+  padding-top: 25px;
+}
+
+#background-greeting{
+  background-color: white;
+  padding-bottom: 30px;
+}
+
+.scrollbar-items{
+   background-color: rgba(255, 224, 199, 0.8);
 }
