@@ -8,6 +8,35 @@
 }
 
 
+.main-search-bar {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 30px;
+  margin-left: 40px;
+}
+
+.btn-search-bar {
+  background-color: white;
+  border: white;
+  color: grey;
+}
+
+.search-location {
+  border: none;
+}
+
+.index-pic-bio{
+  background-image: image-url("index-fruits.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 20% 10%;
+  height: 100vh;
+  position: relative;}
+
+
+
 .bottom-left {
     top: 74%;
     text-align: right;
@@ -45,7 +74,7 @@ color: black;
 
 }
 .whole-categories{
-  background-image: image-url('index-page.png');
+  background-image: image-url('newbackground.png');
  width: 100%;
  height: 100%;
  background-position: center;
@@ -140,7 +169,7 @@ color: black;
 }
 
 .description{
-  background-color: #C1BFD7;
+  background-color: #F9DA8B;
   border-radius:20px;
   border-style: solid;
   border-color:white;
@@ -181,10 +210,16 @@ margin-right: 52px;
   align-items: center;
 }
 
+
+.search-item {
+  padding: 10px;
+}
+
 .index-map{
   text-align: center;
   background-color: gold;
   color: white;
+
 
 }
 .dropdown{
@@ -193,11 +228,6 @@ margin-right: 52px;
   height: 10%;
 }
 
- // &:hover {
- //    z-index: 5;
- //    box-shadow: 0px 13px 30px -15px #000000;
- //    transform:translateY(-10px);
- //  }
 
 
 

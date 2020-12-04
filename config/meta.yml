@@ -1,0 +1,5 @@
+meta_product_name: "Ugly foods"
+meta_title: "We are a startup driven by sustainability "
+meta_description: "We are all beautifull on the inside ( banana emoji)"
+meta_image: "carrot.png" # should exist in `app/assets/images/`
+twitter_account: "@ugly_foods"

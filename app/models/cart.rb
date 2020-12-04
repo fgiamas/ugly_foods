@@ -1,6 +1,5 @@
 class Cart < ApplicationRecord
   after_touch :calculate_price
-
   belongs_to :user
   enum status: [:pending, :confirmed]
   has_many :product_selections
