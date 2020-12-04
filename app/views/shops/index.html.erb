@@ -9,7 +9,7 @@
           </div>
           <div class="rating-index d-flex flex-wrap align-items-center">
             <div class="calculated-rating">
-              <%=shop.calculate_rating %>
+              <%=shop.calculate_rating.round(1) %>
             </div>
             <% shop.calculate_rating.round.times do %>
               <i class="far fa-star"></i>
