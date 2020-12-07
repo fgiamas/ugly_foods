@@ -6,6 +6,7 @@ class Shop < ApplicationRecord
   has_many :product_selections, through: :products
   has_one_attached :photo
   has_many :likes, dependent: :destroy
+  has_many :chatrooms
   validates :name, presence: true, length: { minimum: 2 }
   validates :website, presence: true
   validates :address, presence: true

@@ -1,5 +1,5 @@
 .index-container{
-  background-image: image-url("uglyfoods.jpg");
+  // background-image: image-url("uglyfoods.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -170,7 +170,11 @@ grid-template-columns: repeat(9, 1fr);
 margin-left: 52px;
 margin-right: 52px;
 }
+
+
+
 .app-carrots .image-wrapper img {
+
   max-width: 100%;
   border-style: solid;
   border-color:#C6E7E5;
@@ -187,7 +191,7 @@ margin-right: 52px;
   align-items: center;
 }
 .search-item {
-  padding: 10px;
+  padding: 10px 0px;
 }
 .index-map{
   text-align: center;
@@ -199,6 +203,7 @@ margin-right: 52px;
   margin-bottom: 5px;
   height: 10%;
 }
+
 h1, h2, h3, h4, h5, h6, p, a, body {
   font-family: 'Nunito', sans-serif;
 }
@@ -223,9 +228,11 @@ footer{
   padding:0;
   display:flex;
 }
+
 .socials li {
   list-style: none;
 }
+
 .socials li a {
   position: relative;
   width:60px;
@@ -271,3 +278,94 @@ footer{
 // .socials li:nth-child(5) a:hover .fab {
 //   color: #e4405f;
 // }
+
+.rotate-in-center {
+  -webkit-animation: rotate-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation: rotate-in-center 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes rotate-in-center {
+  0% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    opacity: 1;
+  }
+}
+@keyframes rotate-in-center {
+  0% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+.home_video {
+   width: 100vw;
+   height: 100vh;
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   object-fit: cover;
+   top: 0;
+   z-index: -2;
+}
+
+.scroll-down{
+  position: absolute;
+  width: 150px;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -75px;
+  z-index: 50;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}
+
+.scroll-down .icon {
+    transition: all .3s ease;
+    width: 26px;
+    height: 44px;
+    display: block;
+    border-radius: 13px;
+    border: 2px solid #b3b3b3;
+    margin: 0 auto;
+}
+
+.scroll-down .icon:before {
+  -webkit-transition: all .3s ease;
+  width: 6px;
+  height: 6px;
+  animation: scrollDownKnobAnimation 2s ease infinite;
+  position: absolute;
+  top: 6px;
+  border-radius: 50%;
+  background-color: #b3b3b3;
+  content: '';
+  left: 50%;
+  margin-left: -3px;
+}
+
+.scroll-down span {
+    transition: all .3s ease;
+    position: relative;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    top: -24px;
+}
+
+.scroll-down, .scroll-down:active, .scroll-down:focus, .scroll-down:hover, .scroll-down:visited, a, a:active, a:focus, a:hover, a:visited {
+    text-decoration: none;
+}
+
