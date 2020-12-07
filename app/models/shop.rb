@@ -6,7 +6,7 @@ class Shop < ApplicationRecord
   has_many :product_selections, through: :products
   has_one_attached :photo
   has_many :likes, dependent: :destroy
-
+  has_many :chatrooms
   validates :name, presence: true, length: { minimum: 2 }
   validates :website, presence: true
   validates :address, presence: true
@@ -56,15 +56,10 @@ class Shop < ApplicationRecord
     self.confirmed_orders.joins(:cart).where("carts.pick_up_date >= ?" , Date.today)
   end
 
-
   def filtered_by_produce
     shop = self.where()
   end
 
   def filtered_by_flowers
-
   end
-
-
-
 end

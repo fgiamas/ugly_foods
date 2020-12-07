@@ -16,11 +16,7 @@ class Cart < ApplicationRecord
   def calculate_price
     sum = 0
     self.product_selections.each do |product_selection|
-      if product_selection.units?
-        item_sum = product_selection.total_price
-      else
-        item_sum = product_selection.total_price
-      end
+      item_sum = product_selection.total_price
       sum += item_sum
     end
     return sum.round(2)

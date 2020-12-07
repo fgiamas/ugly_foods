@@ -6,7 +6,6 @@
   background-position: 20% 10%;
   height: 100vh;
 }
-
 .main-search-bar {
   background-color: white;
   padding-left: 20px;
@@ -14,17 +13,14 @@
   border-radius: 30px;
   margin-left: 40px;
 }
-
 .btn-search-bar {
   background-color: white;
   border: white;
   color: grey;
 }
-
 .search-location {
   border: none;
 }
-
 .index-pic-bio{
   background-image: image-url("index-fruits.jpg");
   background-position: center;
@@ -34,8 +30,6 @@
   height: 100vh;
   position: relative;
 }
-
-
 .bottom-left {
     top: 74%;
     text-align: right;
@@ -51,14 +45,12 @@ color: black;
     top: 25%;
     text-shadow: 2px 2px gold;
 }
-
 .what-we-do{
   text-align: center;
   background-color: gold;
   padding: 1%;
   color: white;
 }
-
 .card-girl{
  background-image: image-url('s3.jpg');
  border-radius: 20px;
@@ -70,7 +62,6 @@ color: black;
  margin-bottom: 2%;
  width: 100%;
  height: 100%;
-
 }
 .whole-categories{
   background-image: image-url('index-page.png');
@@ -106,9 +97,7 @@ color: black;
 .our-card h4{
   font-weight: bolder;
 }
-
 #categories-products{
-
   background-color: white;
   background-size: cover;
   background-position: center;
@@ -130,11 +119,9 @@ color: black;
   font-weight: bolder;
   text-align: center;
 }
-
 .whatever{
   padding-top: 80px;
 }
-
 .how-it-works{
   text-align: center;
   color: gold;
@@ -161,12 +148,10 @@ color: black;
 .carrots{
   image: image-url('carrot.png');
 }
-
 .app-description{
     display: flex;
   justify-content: space-between;
 }
-
 .description{
   background-color: #C1BFD7;
   border-radius:20px;
@@ -179,67 +164,55 @@ color: black;
   color:white;
   font-size: 17px;
 }
-
-
 .app-carrots {
 display: grid;
 grid-template-columns: repeat(9, 1fr);
 margin-left: 52px;
 margin-right: 52px;
 }
+<<<<<<< HEAD
 
 
 .app-carrots .rotate-in-center img {
+=======
+.app-carrots .image-wrapper img {
+>>>>>>> master
   max-width: 100%;
   border-style: solid;
   border-color:#C6E7E5;
   border-radius: 20px;
 }
-
 .actual-line {
     width: 100%;
     height: 4px;
     display: block;
     background-color: #C6E7E5;
 }
-
-
 .line {
   display: flex;
   align-items: center;
 }
-
-
 .search-item {
-  padding: 10px;
+  padding: 10px 0px;
 }
-
 .index-map{
   text-align: center;
   background-color: gold;
   color: white;
-
-
 }
 .dropdown{
   margin-top: 5px;
   margin-bottom: 5px;
   height: 10%;
 }
-
-
 h1, h2, h3, h4, h5, h6, p, a, body {
   font-family: 'Nunito', sans-serif;
 }
-
  // &:hover {
  //    z-index: 5;
  //    box-shadow: 0px 13px 30px -15px #000000;
  //    transform:translateY(-10px);
  //  }
-
-
-
 // <------------------------------------------Footer CSS
 footer{
   width: 100%;
@@ -247,7 +220,6 @@ footer{
   height: 20%;
   background-color: gold;
 }
-
 .socials {
   position:absolute;
   top:50%;
@@ -257,11 +229,9 @@ footer{
   padding:0;
   display:flex;
 }
-
 .socials li {
   list-style: none;
 }
-
 .socials li a {
   position: relative;
   width:60px;
@@ -277,12 +247,10 @@ footer{
   background: linear-gradient(0deg, #ddd, #fff);
   transition: .5s;
 }
-
 .socials li a:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   text-decoration:none;
 }
-
 .socials li a .fab {
   width: 100%;
   height:100%;
@@ -294,23 +262,18 @@ footer{
   color: #C6E7E5;
   transition: .5s;
 }
-
 // .socials li:nth-child(1) a:hover .fab {
 //   color: #3b5998;
 // }
-
 // .socials li:nth-child(2) a:hover .fab {
 //   color: #00aced;
 // }
-
 // .socials li:nth-child(3) a:hover .fab {
 //   color: #dd4b39;
 // }
-
 // .socials li:nth-child(4) a:hover .fab {
 //   color: #007bb6;
 // }
-
 // .socials li:nth-child(5) a:hover .fab {
 //   color: #e4405f;
 // }
@@ -404,5 +367,4 @@ footer{
 .scroll-down, .scroll-down:active, .scroll-down:focus, .scroll-down:hover, .scroll-down:visited, a, a:active, a:focus, a:hover, a:visited {
     text-decoration: none;
 }
-
 

@@ -11,6 +11,7 @@ Product.destroy_all
 ProduceType.destroy_all
 Cart.destroy_all
 Shop.destroy_all
+Message.destroy_all
 User.destroy_all
 Chatroom.destroy_all
 
@@ -230,7 +231,7 @@ puts 'Creating 10 users...'
     address: "Le wagon",
     email: "lewagon@wagon.com",
     password: "123456",
-    address: "83 Gibraltarstraat",
+    address: "IJsbaanpad 9",
     city: "Amsterdam",
     post_code: "1055NL",
     country: "Netherlands",
