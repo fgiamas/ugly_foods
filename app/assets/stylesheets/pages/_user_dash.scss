@@ -1,11 +1,29 @@
 .carts-user-dash {
-  border: 0.5px solid grey;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
+  background-color: white;
+  margin: 20px;
+  box-shadow: 2px 2px 8px 0px rgba(97 ,90,87,0.1);
 }
+
+.upcoming-orders-list {
+  background-color: #FBFDFE;
+  box-shadow: 2px 2px 8px 0px rgba(97 ,90,87,0.1);
+  padding-top: 10px;
+  min-height: 400px;
+  padding-bottom: 20px;
+}
+
+.upcoming-orders {
+  box-shadow: 2px 2px 8px 0px rgba(97 ,90,87,0.1);
+  margin: 20px;
+  margin-bottom: 0px;
+}
+
 
 .all-orders {
   width: 60%;
+  margin-right: 20px;
 }
 
 .upcoming-org-shop {
@@ -13,10 +31,249 @@
   border: 0.2px solid lightgrey;
   padding: 30px;
   border-radius: 10px;
-  margin: 0;
+  margin: 5px;
 }
 
 .scrollbar-user-dash {
   height: 400px;
   overflow-y: scroll;
+  min-width: 500px;
 }
+
+.user-dash-main {
+  padding-left: 10px;
+  background-color:#ECF9FE ;
+}
+
+.tab-content {
+  border-radius: 80px 0px 0px 80px;
+  padding: 30px;
+  min-height: 100vh;
+}
+
+#v-pills-tabContent {
+  width: 100%;
+  background-color: white;
+  padding: 50px;
+}
+
+.greeting-dashboard {
+  color: #4C4B60;
+}
+
+.purple {
+  color: #4C4B60;
+}
+
+.purple-title {
+ color: #4C4B60;
+  font-size: 20px;
+}
+
+.user-blurb {
+  color: white;
+  min-width: 200px;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px 0px rgba(97 ,90,87,0.1);
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  height: 100%;
+}
+
+.orange-text {
+  color: #F19F8B;
+}
+
+.upcoming-title {
+  color: #4C4B60;
+  font-size: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 8px;
+  margin: 20px;
+  min-width: 500px;
+}
+
+p.cart-items {
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  color: grey;
+}
+
+.cart-item-group {
+  border-bottom: 0.2px solid lightgrey;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.user-tabs-content a{
+  text-decoration: none;
+}
+
+.cart-shop-title {
+  padding-bottom: 5px;
+}
+
+.top-bloc-user {
+  margin-bottom: 20px;
+}
+
+#v-pills-tab {
+    padding-top: 70px;
+    min-width: 150px;
+    align-items: center;
+}
+
+.owner-dash {
+  padding: 20px;
+  color: #4C4B60;
+}
+
+.active#v-pills-home-tab {
+  background-color: #FBAB7E;
+  color: white;
+  box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+}
+
+.active#v-pills-orders-tab {
+  background-color: #FBAB7E;
+  color: white;
+  box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+}
+
+.active#v-pills-notifications-tab{
+  background-color: #FBAB7E;
+  color: white;
+  box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+}
+
+.active#v-pills-messages-tab{
+  background-color: #FBAB7E;
+  color: white;
+  box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+}
+
+.owner-dash {
+  padding: 10px;
+  align-items: center;
+  border-radius: 15px 0px 0px 15px;
+  display: flex;
+  width: 150px;
+}
+
+.owner-dash.nav-link {
+  padding: 10px;
+  align-items: center;
+  border-radius: 15px 0px 0px 15px;
+  display: flex;
+  width: 150px;
+}
+
+.owner-dash:hover {
+  color: #EF917A;
+}
+
+.owner-dash.nav-link:hover {
+  color: #EF917A;
+}
+
+
+.user-logo {
+  padding-right: 8px;
+}
+
+.cart-item-user-up {
+  padding-right: 15px;
+}
+
+
+.scrolling-wrapper{
+  overflow-x: auto;
+}
+
+body{
+  background-color: black;
+  color: #fff;
+  font-family: 'system-ui';
+}
+
+h1{
+  font-weight: 800;
+  font-size: 3em;
+}
+
+.subtitle{
+  font-size: 1.25em;
+  opacity: 0.65;
+}
+
+.card-block{
+  height: 100%;
+  background-color: #fff;
+  border: none;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.2s ease-in-out !important;
+  border-radius: 24px;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+  &:hover{
+    transform: translateY(-5px);
+    box-shadow: none;
+  }
+}
+
+.card-4{
+  background-color: #FBAB7E;
+background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.8);
+}
+
+.grey {
+  color: #C5C6C8;
+}
+
+.dash-shop-info {
+  padding-left: 20px;
+}
+
+.orange {
+  color: #FBAB7E;
+}
+
+.shop-near-me {
+  border: 0.2px solid lightgrey;
+  border-radius: 20px;
+  padding: 20px;
+  margin-left: 10px;
+  box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+}
+
+.shops-near-me {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.marqt-shop-near {
+  border-radius: 20px;
+}
+
+.icon-in-line {
+  padding-left: 10px;
+}
+
+.leave-a-review-btn {
+  padding: 8px;
+  border: 0.2px solid white;
+  width: 180px;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
