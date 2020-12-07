@@ -230,7 +230,7 @@ puts 'Creating 10 users...'
     address: "Le wagon",
     email: "lewagon@wagon.com",
     password: "123456",
-    address: "83 Gibraltarstraat",
+    address: "IJsbaanpad 9",
     city: "Amsterdam",
     post_code: "1055NL",
     country: "Netherlands",
