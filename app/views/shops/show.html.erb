@@ -1,7 +1,5 @@
 <div class="nav-bar-global" style="height: 100px; background-color: #F4A25B; width: 100%;">
   <div d-flex justify-content-right>
-
-
     <div class="btn-group aign-items-right">
       <button type="button" class="btn btn-secondary dropdown-toggle dropleft" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= image_tag("cart.png", :alt => "shop", style: "width: 40px; height: 40px;")%>
@@ -36,89 +34,75 @@
           <% end %>
         </div>
         <% else %>
-
         hello
-
         <% end %>
       </div>
     </div>
-
   </div>
 </div>
-
 <%= link_to 'Back', shops_path %>
-
 <div class="storefront-container">
-
   <div class="card-shop-ratings">
     <div class="ratings-title">
-      <h5>Store rating: <%= @shop.calculate_rating %></h5>
-      <div class="show-user-rating-stars d-flex flex-wrap">
-        <% @shop.calculate_rating.round.times do %>
-        <i class="fas fa-star"></i>
+        <h5>Store rating: <%= @shop.calculate_rating %></h5>
+        <div class="show-user-rating-stars d-flex flex-wrap">
+          <% @shop.calculate_rating.round.times do %>
+          <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+      </div>
+    </br>
+    <h6>Read recent reviews</h6>
+    <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
+      <div class="scrollbar-items">
+        <% @shop.ratings.each do |rating| %>
+        <div class="show-rating">
+          <div class="d-flex justify-content-between">
+            <strong><p><%= rating.user.first_name%> <%= rating.user.last_name%></p></strong>
+            <%= rating.created_at.strftime("%y-%m-%d") %>
+          </div>
+          <div class="show-user-rating d-flex flex-wrap">
+            <p><%= rating.rating %> </p>
+            <div class="show-user-rating-stars d-flex flex-wrap">
+              <% rating.rating.times do %>
+              <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+          </div>
+          <p><%= rating.content %></p>
+        </div>
         <% end %>
       </div>
     </div>
-  </br>
-  <h6>Read recent reviews</h6>
-  <%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
+    <%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
+  </div>
 
-  <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
-    <div class="scrollbar-items">
-      <% @shop.ratings.each do |rating| %>
-      <div class="show-rating">
-        <div class="d-flex justify-content-between">
-          <strong><p><%= rating.user.first_name%> <%= rating.user.last_name%></p></strong>
-          <%= rating.created_at.strftime("%y-%m-%d") %>
+    <div class="card-shop-show" style="text-align: center;">
+      <% if user_signed_in? %>
+        <div class="likes">
+          <%= button_to shop_likes_path(@shop), method: :post do %>
+          <% if @liked_shop %>
+          <i class="fas fa-heart"></i>
+          <% else %>
+          <i class="fal fa-heart"></i>
+          <% end %>
+          <% end %>
+          <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         </div>
-        <div class="show-user-rating d-flex flex-wrap">
-          <p><%= rating.rating %> </p>
-          <div class="show-user-rating-stars d-flex flex-wrap">
-            <% rating.rating.times do %>
-            <i class="fas fa-star"></i>
-            <% end %>
-          </div>
-        </div>
-        <p><%= rating.content %></p>
-      </div>
       <% end %>
+      <div class="likes">
+        <h2><%= @shop.name %></h2>
+      </div>
+      <img src="https://assercourant.nl/media/NjgwMzUwXzcxODRhNDVkMmE2MjNkM2YwZTBiNmNlNmFjOWRhYzVjZDUxYTFlMjRfNjIweEMxMTM2eDYzOSswKzA=.jpg">
+      <strong><p><%= @shop.address %></p></strong>
+      <p class="opening-hours">Monday 10:00-18:00</p>
+      <p class="opening-hours">Tuesday 10:00-18:00</p>
+      <p class="opening-hours">Wednesday 10:00-18:00</p>
+      <p class="opening-hours">Thursday 10:00-18:00</p>
+      <p class="opening-hours">Saturday 12:00-17:00</p>
+      <p class="opening-hours">Sunday 12:00-17:00</p>
+
     </div>
-  </div>
-
-
-<% if user_signed_in? %>
-<div class="card-shop-show" style="text-align: center;">
-  <div class="likes">
-    <h2><%= @shop.name %></h2>
-    <%= button_to shop_likes_path(@shop), method: :post do %>
-    <% if @liked_shop %>
-    <i class="fas fa-heart"></i>
-    <% else %>
-    <i class="fal fa-heart"></i>
-    <% end %>
-    <% end %>
-
-    <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-
-
-    <% else %>
-</div>
-
-  <div class="card-shop-show" style="text-align: center;">
-    <div class="likes">
-      <h2><%= @shop.name %></h2>
-    </div>
-    <img src="https://assercourant.nl/media/NjgwMzUwXzcxODRhNDVkMmE2MjNkM2YwZTBiNmNlNmFjOWRhYzVjZDUxYTFlMjRfNjIweEMxMTM2eDYzOSswKzA=.jpg">
-    <strong><p><%= @shop.address %></p></strong>
-    <p class="opening-hours">Monday 10:00-18:00</p>
-    <p class="opening-hours">Tuesday 10:00-18:00</p>
-    <p class="opening-hours">Wednesday 10:00-18:00</p>
-    <p class="opening-hours">Thursday 10:00-18:00</p>
-    <p class="opening-hours">Saturday 12:00-17:00</p>
-    <p class="opening-hours">Sunday 12:00-17:00</p>
-  </div>
-  <% end %>
-
   <div class="shop-map">
     <div id="map"
     style="width: 30vw; height: 600px; border-radius: 13px;"
@@ -126,10 +110,8 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 </div>
-
 <div class="show-products-search-machine d-flex flex-wrap">
-
-  <div class="search-show-container ugly-search">
+  <div class="search-show-container ugly-search col-4">
     <h1>Ugly Foods</h1>
     <div class="row">
       <div class="col-sm-12 mb-3">
@@ -154,7 +136,6 @@
             </div>
             <div class="checkout-card">
               <% if user_signed_in? %>
-
               <%= simple_form_for(@product_selection, url: product_selections_path, remote: true) do |f|%>
               <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
               <%= f.input measure.to_sym, as: :integer %>
@@ -162,7 +143,6 @@
               <%= product.total_units? ? "units" : "kg" %>
               <%= button_tag do %><i class="far fa-plus-square"></i><% end %>
               <% end %>
-
               <% end %>
             </div>
           </div>
@@ -171,8 +151,7 @@
       </div>
     </div>
   </div>
-
-  <div class="search-show-container old-search">
+  <div class="search-show-container old-search col-4">
     <h1>Old Foods</h1>
     <div class="row">
       <div class="col-sm-12 mb-3">
@@ -197,7 +176,6 @@
             </div>
             <div class="checkout-card">
               <% if user_signed_in? %>
-
               <%= simple_form_for(@product_selection, url: product_selections_path, remote: true) do |f|%>
               <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
               <%= f.input measure.to_sym, as: :integer %>
@@ -205,7 +183,6 @@
               <%= product.total_units? ? "units" : "kg" %>
               <%= button_tag do %><i class="far fa-plus-square"></i><% end %>
               <% end %>
-
               <% end %>
             </div>
           </div>
@@ -214,8 +191,7 @@
       </div>
     </div>
   </div>
-
-  <div class="search-show-container old-search">
+  <div class="search-show-container flower-search col-4">
     <h1>Flowers</h1>
     <div class="row">
       <div class="col-sm-12 mb-3">
@@ -240,7 +216,6 @@
             </div>
             <div class="checkout-card">
               <% if user_signed_in? %>
-
               <%= simple_form_for(@product_selection, url: product_selections_path, remote: true) do |f|%>
               <%= f.input :product_id, as: :hidden, input_html: { value: product.id } %>
               <%= f.input measure.to_sym, as: :integer %>
@@ -256,3 +231,4 @@
       </div>
     </div>
   </div>
+</div>

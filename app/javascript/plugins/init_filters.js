@@ -5,7 +5,6 @@ const initFilters = () => {
       console.log(input.value);
     }
 }
-
 const handleKeyUp = () => {
     var input, filter, cards, cardContainer, h5, title, i;
     input = document.getElementById("myFilter");
@@ -21,7 +20,6 @@ const handleKeyUp = () => {
         }
     }
 }
-
 const initFiltersTwo = () => {
     const input = document.getElementById("myFilter-2");
     if(input) {
@@ -29,7 +27,6 @@ const initFiltersTwo = () => {
       console.log(input.innerText);
     }
 }
-
 const handleKeyUp2 = () => {
     var input, filter, cards, cardContainer, h5, title, i;
     input = document.getElementById("myFilter-2");
@@ -45,14 +42,12 @@ const handleKeyUp2 = () => {
         }
     }
 }
-
 const initFiltersThree = () => {
     const input = document.getElementById("myFilter-3");
     if(input) {
       input.addEventListener('keyup', handleKeyUp3)
     }
 }
-
 const handleKeyUp3 = () => {
     var input, filter, cards, cardContainer, h5, title, i;
     input = document.getElementById("myFilter-3");
@@ -68,8 +63,6 @@ const handleKeyUp3 = () => {
         }
     }
 }
-
-
 export { initFilters };
 export { initFiltersTwo };
 export { initFiltersThree };
