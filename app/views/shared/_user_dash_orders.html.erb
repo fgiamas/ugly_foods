@@ -23,6 +23,9 @@
                         <% grouped_prod_select.keys.each do |shop_key| %>
                           <div class="upcoming-org-shop-orders">
                             <strong><%= shop_key.name %></strong>
+
+                            <%= link_to 'Message the shop', shop_chatroom_path(shop_key) %>
+
                             <% grouped_prod_select[shop_key].each do |selection| %>
                               <div class="d-flex justify-content-between">
                                 <p><%= selection.product.produce_type.name %> </p>

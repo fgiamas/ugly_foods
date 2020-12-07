@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   # make method called dashboard
   # need a view dashboard.html.erb
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :chatrooms, only: :show do
-    resources :messages, only: :create
-  end
+
 
   resources :shops do
     # so that we have nested URLs, use shallow nesting for certain things
+    resource :chatroom, only: :show do
+    resources :messages, only: :create
+  end
     resources :likes
     resources :ratings, shallow: true
   end
