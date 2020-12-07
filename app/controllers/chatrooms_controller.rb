@@ -1,6 +1,8 @@
-class ChatroomsController < ApplicationController
+ class ChatroomsController < ApplicationController
   def show
-    @chatroom = Chatroom.find(params[:id])
+    @shop = Shop.find(params[:shop_id])
+    @chatroom = Chatroom.find_or_create_by(shop: @shop, user: current_user)
     @message = Message.new
+
   end
 end
