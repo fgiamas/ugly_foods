@@ -11,6 +11,7 @@ Product.destroy_all
 ProduceType.destroy_all
 Cart.destroy_all
 Shop.destroy_all
+Message.destroy_all
 User.destroy_all
 Chatroom.destroy_all
 
