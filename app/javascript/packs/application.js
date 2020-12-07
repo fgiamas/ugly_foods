@@ -27,7 +27,10 @@ import { initAutocompleteFlowers } from '../plugins/init_autocomplete.js';
 import { initHideSelection } from '../plugins/init_autocomplete.js';
 import { initFilters } from '../plugins/init_filters';
 import { initFiltersTwo } from '../plugins/init_filters';
-import { initFiltersThree } from '../plugins/init_filters';
+// import { initLandingPage } from '../plugins/init_landing_page'
+
+
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
@@ -37,4 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   initFilters();
   initFiltersTwo();
   initFiltersThree();
+  // initLandingPage();
+
 })

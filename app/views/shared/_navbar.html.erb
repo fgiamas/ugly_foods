@@ -1,16 +1,58 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+<div class="navbar navbar-expand-lg navbar-light navbar-lewagon d-flex justify-content-between">
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+
+  <div class= "index-search-bar d-flex flex-wrap align-items-center mr-0">
+    <div class = "search-wrap d-flex">
+      <div class="index-search-item1">
+        <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
+        <%= f.input :location, wrapper: false, as: :string, html: {class: "search-location"}, placeholder: "Enter your address", label: false%>
+      </div>
+
+      <div class="index-search-item2">
+        <%= f.input :km, wrapper: false, collection: [2,4,6,8,10,20,30], html: {class: "search-location"}, prompt: "How far do you want to go?", label: false%>
+      </div>
+
+
+      <div class="dropdown search-item">
+        <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ✿
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <input type="text" id="autocomplete-flowers">
+          <%= f.input :flowers, wrapper: false, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
+        </div>
+      </div>
+
+      <div class="dropdown search-item">
+        <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-pepper-hot fa-lg"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <input type="text" id="autocomplete">
+          <ul id="collection"></ul>
+          <%= f.input :fruits_and_veggies, wrapper: false, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
+        </div>
+      </div>
+
+        <%= button_tag(class:"button-index-nav") do %>
+        <i class="fas fa-search"></i>
+        <% end %>
+
+      <% end %>
+
+    </div>
+  </div>
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>
         </li>
@@ -26,10 +68,11 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </li>
       <% end %>
     </ul>
   </div>
