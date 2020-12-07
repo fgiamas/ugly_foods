@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   # method run before_action will create for us
 
   get '/dashboard', to: 'products#dashboard'
+  get '/notifications', to: 'products#notifications'
 
 end

@@ -11,9 +11,11 @@ class User < ApplicationRecord
   has_many :incoming_product_selections, through: :products, class_name: "ProductSelection", source: :product_selectionss
   has_many :likes, dependent: :destroy
   has_many :chatrooms
+  has_many :notifications, as: :recipient
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validates :address, presence: true
+
   #validates :post_code
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   #validates :city
