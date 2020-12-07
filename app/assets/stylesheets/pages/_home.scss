@@ -170,13 +170,11 @@ grid-template-columns: repeat(9, 1fr);
 margin-left: 52px;
 margin-right: 52px;
 }
-<<<<<<< HEAD
 
 
-.app-carrots .rotate-in-center img {
-=======
+
 .app-carrots .image-wrapper img {
->>>>>>> master
+
   max-width: 100%;
   border-style: solid;
   border-color:#C6E7E5;
@@ -205,6 +203,7 @@ margin-right: 52px;
   margin-bottom: 5px;
   height: 10%;
 }
+
 h1, h2, h3, h4, h5, h6, p, a, body {
   font-family: 'Nunito', sans-serif;
 }
@@ -229,9 +228,11 @@ footer{
   padding:0;
   display:flex;
 }
+
 .socials li {
   list-style: none;
 }
+
 .socials li a {
   position: relative;
   width:60px;
