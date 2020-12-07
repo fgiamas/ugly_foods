@@ -100,9 +100,10 @@
 
     <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-    <% else %>
 
-  </div>
+    <% else %>
+</div>
+
   <div class="card-shop-show" style="text-align: center;">
     <div class="likes">
       <h2><%= @shop.name %></h2>
@@ -254,5 +255,4 @@
         <% end %>
       </div>
     </div>
-
   </div>
