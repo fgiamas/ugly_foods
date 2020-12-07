@@ -13,9 +13,9 @@
 
       <div class="dropdown search-item">
         <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag("flower.png", :alt => "shop", style: 'width: 25px; height: 25px;') %>
+          ✿
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton">
           <input type="text" id="autocomplete-flowers">
           <%= f.input :flowers, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
         </div>
@@ -25,7 +25,7 @@
         <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-pepper-hot fa-lg"></i>
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton">
           <input type="text" id="autocomplete">
           <ul id="collection"></ul>
           <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>

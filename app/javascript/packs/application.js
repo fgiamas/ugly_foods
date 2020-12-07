@@ -28,6 +28,7 @@ import { initHideSelection } from '../plugins/init_autocomplete.js';
 import { initFilters } from '../plugins/init_filters';
 import { initFiltersTwo } from '../plugins/init_filters';
 import { initFiltersThree } from '../plugins/init_filters';
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
