@@ -4,8 +4,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
+  <%= image_tag "Ugly Foods copy 4.png", class: "logo-navbar" %>
+  <% if !current_page? root_path  %>
   <div class= "index-search-bar d-flex flex-wrap align-items-center mr-0">
     <div class = "search-wrap d-flex">
       <div class="index-search-item1">
@@ -22,7 +22,7 @@
         <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ✿
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton">
           <input type="text" id="autocomplete-flowers">
           <%= f.input :flowers, wrapper: false, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
         </div>
@@ -32,42 +32,35 @@
         <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-pepper-hot fa-lg"></i>
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu search_fruits_and_veggies " aria-labelledby="dropdownMenuButton">
           <input type="text" id="autocomplete">
           <ul id="collection"></ul>
           <%= f.input :fruits_and_veggies, wrapper: false, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
         </div>
       </div>
 
-        <%= button_tag(class:"button-index-nav") do %>
-        <i class="fas fa-search"></i>
-        <% end %>
+      <%= button_tag(class:"button-index-nav") do %>
+      <i class="fas fa-search"></i>
+      <% end %>
 
       <% end %>
 
     </div>
   </div>
+  <% end %>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
 
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-          <%= current_user.notifications.count %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
+      <li class="nav-item dropdown">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Dashboard", "dashboard", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
 
       <% else %>
       <li class="nav-item">
