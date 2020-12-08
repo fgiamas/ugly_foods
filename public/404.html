@@ -1,55 +1,98 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    .hit-the-floor {
-  color: #fff;
-  font-size: 12em;
-  font-weight: bold;
-  font-family: Helvetica;
-  text-shadow:
-    0 1px 0 #ccc,
-    0 2px 0 #c9c9c9,
-    0 3px 0 #bbb,
-    0 4px 0 #b9b9b9,
-    0 5px 0 #aaa,
-    0 6px 1px rgba(0,0,0,.1),
-    0 0 5px rgba(0,0,0,.1),
-    0 1px 3px rgba(0,0,0,.3),
-    0 3px 5px rgba(0,0,0,.2),
-    0 5px 10px rgba(0,0,0,.25),
-    0 10px 10px rgba(0,0,0,.2),
-    0 20px 20px rgba(0,0,0,.15);
-}
-.ugly-error{
-    text-align: center;
-    font-weight: bold;
-  font-family: Helvetica;
-  color: orange;
-
-
-}
-.hit-the-floor {
-  text-align: center;
-}
-
-body {
-  background-color: #f1f1f1;
-}
-
-
+  <title>Time Out</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="5" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      background: url('https://miro.medium.com/max/4800/1*utVeo-1Hc7xMpz3rpxCZMQ.jpeg');
+      background-position: bottom;
+      background-repeat: repeat-x;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 300;
+      background-size: cover;
+    }
+    h1 {
+      font-weight: normal;
+      margin: 0;
+      padding: 1em 0 10pt 0;
+      font-size: 15vmin;
+      font-family: 'DSG Sans-Black', Impact, 'Lato', Arial, "Helvetica Neue", Helvetica, sans-serif;
+      text-transform: uppercase;
+    }
+    #whistle {
+      height: 25vmin;
+      width: 25vmin;
+    }
+    .buttoncontainer {
+      text-align: left;
+      padding: 2%;
+    }
+    .return-button {
+      background: white;
+      display: inline-block;
+      border: 3px solid white;
+      border-radius: 5px;
+      text-align: center;
+      color: #066756;
+      transition-duration: .2s;
+      width: 180px;
+      height: 46px;
+      font-size: 18px;
+      line-height: 2.5em;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .return-button:hover {
+      background: transparent;
+      border: 3px solid #fff;
+      cursor: pointer;
+      color: white;
+      opacity: 1;
+    }
+    .return-button:active {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+      opacity: 1;
+      margin-top: 40%;
+    }
+    .return-button:focus {
+      background: #FFBB33;
+      color: white;
+      border: 3px solid white;
+      opacity: 1;
+       margin-top: 40%;
+    }
   </style>
 </head>
+<body>
+  <p><svg xmlns="https://miro.medium.com/max/4800/1*utVeo-1Hc7xMpz3rpxCZMQ.jpeg" viewBox="0 0 108.97 111.41" id="whistle">
+  <defs>
+    <style>
+      .a {
+        fill: #FFAC00;
+      }
+      .b {
+        fill: #222;
+      }
+    </style>
+  </defs>
+  <g>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
- <div class="hit-the-floor">404</div>
- <div class="ugly-error">
- <p> Apologies for the inconvenience, stay ugly!</p></div>
- <style >
- </style>
+  </g>
+</svg></p>
+  <div class="buttoncontainer"><a href="javascript:history.back()" class="return-button">Run back home!</a></div>
 </body>
 </html>
-
