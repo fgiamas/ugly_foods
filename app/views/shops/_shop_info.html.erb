@@ -1,0 +1,86 @@
+  <div style="position:relative;">
+
+    <%= image_tag("storefront-2.png", :alt => "shop", style: "position: absolute; width: 90px; height: 100px; top:-7%;" ) %>
+    <h1 class="purple" style="padding-top: 50px;">Welcome to <%= @shop.user.first_name %>'s shop, <%= @shop.name %></h1>
+
+          <div class="ratings-title">
+          <h5>Overall rating <%= @shop.calculate_rating %></h5>
+
+          <div class="show-user-rating-stars d-flex flex-wrap">
+            <% @shop.calculate_rating.round.times do %>
+            <i class="fas fa-star" style="color:#F5AC7D ;"></i>
+            <% end %>
+          </div>
+
+          <% if user_signed_in? %>
+            <div class="likes d-flex justify-content-left" style="text-align: left;">
+              <%= button_to shop_likes_path(@shop), method: :post do %>
+              <% if @liked_shop %>
+              <i class="fas fa-heart"></i>
+              <% else %>
+              <i class="fal fa-heart"></i>
+              <% end %>
+              <% end %>
+              <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            </div>
+          <% end %>
+
+        </div>
+
+    <div class="card-shop-show d-flex">
+        <div>
+          <%= image_tag("example.jpg", :alt => "shop", style: "width: 270px; height: 200px; border-radius: 20px;")%>
+        </div>
+        <div class="hours" style="margin-left: 20px;">
+          <p class="purple"><strong> <%= @shop.address %> </strong></p>
+          <p class="opening-hours"><strong>Monday</strong> 10:00-18:00</p>
+          <p class="opening-hours"><strong>Tuesday</strong> 10:00-18:00</p>
+          <p class="opening-hours"><strong>Wednesday</strong> 10:00-18:00</p>
+          <p class="opening-hours"><strong>Thursday</strong> 10:00-18:00</p>
+          <p class="opening-hours"><strong>Saturday</strong> 12:00-17:00</p>
+          <p class="opening-hours"><strong>Sunday</strong> 12:00-17:00</p>
+        </div>
+    </div>
+
+
+    <div class="card-shop-ratings">
+
+
+
+      </br>
+      <h6 class="purple"><strong>Read recent reviews</strong></h6>
+      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
+        <div class="scrollbar-items">
+          <% @shop.ratings.each do |rating| %>
+            <div class="d-flex">
+              <%= image_tag("review.png", :alt => "shop", class: "scroll-icons", style: "margin-top: 20px;") %>
+              <div class="show-rating">
+                <div class="d-flex justify-content-between">
+                  <strong><p><%= rating.user.first_name%> <%= rating.user.last_name%></p></strong>
+                  <div class="d-flex flex-wrap">
+                    <p style="color: lightgrey"> Posted on &nbsp</p>
+                    <p style="margin-right: 20px;"><%= rating.created_at.strftime("%y-%m-%d") %></p>
+                  </div>
+                </div>
+                <div class="show-user-rating d-flex flex-wrap">
+                  <p style="margin-right: 10px"><%= rating.rating %> </p>
+                  <div class="show-user-rating-stars d-flex flex-wrap">
+                    <% rating.rating.times do %>
+                    <i class="fas fa-star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <p><%= rating.content %></p>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
+    </div>
+
+
+
+    </div>

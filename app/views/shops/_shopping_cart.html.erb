@@ -1,0 +1,73 @@
+<div class="btn-group aign-items-right">
+  <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
+
+  <button type="button" class="btn cart dropdown-toggle dropleft" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative">
+    <%= image_tag("cart.png", :alt => "shop", style: "width: 60px; height: 60px; position: relative;")%>
+    <% sum = 0 %>
+    <% group_cart_items.keys.each do |shop_key| %>
+      <% sum += group_cart_items[shop_key].count %>
+    <% end %>
+    <p class="cart-count"><%= sum %></p>
+  </button>
+
+  <div class="dropdown-menu shopping-cart-drop" style="position: relative; bottom: 0px;">
+    <% if current_user %>
+      <% if current_user.current_cart.product_selections.empty? %>
+        <p>There is nothing in your cart</p>
+      <% else %>
+          <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-cart scrollbar-sunny-morning">
+             <div class="overflow-auto">
+              <% group_cart_items.keys.each do |shop_key| %>
+
+                <div class="grouped-cart-items" style="margin-bottom: 5px;">
+                  <strong class="purple"><%= shop_key.name %></strong>
+                  <% group_cart_items[shop_key].each do |select| %>
+                  <div class="cart-cards d-flex flex-wrap justify-content-between" style="padding-bottom: 10px;">
+                    <div>
+                      <strong><p class="light-blue" style="text-transform: capitalize; margin: 0; padding: 0;"><%= select.product.produce_type.name %></p></strong>
+                      <p class="grey" style="font-size: 14px; padding: 0px; margin: 0px">€ <%= select.total_price.round(2) %></p>
+                    </div>
+                    <div class="pending-purchase-info">
+                      <p class="grey" style="font-size: 14px;"><%= select.units ? "#{select.units} units" : "#{select.kg} kg" %></p>
+                    </div>
+                    <%= link_to product_selection_path(select),
+                    method: :delete,
+                    data: {confirm: "Are you sure you want to remove from cart?"},
+                    remote: true do %>
+                    <i class="far fa-minus-square remove-cart" style="color: #EB4963"></i>
+                    <% end %>
+                  </div>
+                  <% end %>
+                </div>
+
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="sub-total d-flex justify-content-between" style="padding: 10px; margin: 0px;">
+          <p class="purple">Subtotal:</p>
+          <p class="purple">€ <%= current_cart.calculate_price %> </p>
+        </div>
+
+        <div class="bring-to-checkout">
+          <%= link_to cart_path(current_user.current_cart) do%>
+          <p>See cart</p>
+          <% end %>
+        </div>
+
+      </div>
+
+
+    <% else %>
+
+      <div class="d-flex justify-content-around">
+        <%= image_tag("oops.png", :alt => "shop", class: "scroll-icons") %>
+        <p>Oops! Looks like you aren't logged in 🤔</p>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
