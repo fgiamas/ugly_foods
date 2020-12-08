@@ -1,0 +1,4 @@
+<% if @product_selection.errors.any? %>
+  console.log("<%= @product_selection.errors %>");
+  document.getElementById("<%="product_selection-#{@product.id}"%>").innerHTML =  ('<%= j render 'shared/stock_form', product: @product_selection.product, product_selection: @product_selection, measure: @product_selection.product.total_units ? "units" : "kg" %>')
+<% end %>
