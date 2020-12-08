@@ -11,6 +11,7 @@ const handleChange = (event) => {
     return item.startsWith(currentInput)
   })
   allLabels.forEach(label => {
+    console.log(label.parentElement)
     label.parentElement.classList.add('hidden-label')
   })
   results.forEach(item => {

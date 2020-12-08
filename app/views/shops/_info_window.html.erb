@@ -1,5 +1,7 @@
 <h2><%= shop.name %></h2>
-<p><%= shop.address %></p>
-<p><%= shop.ratings %></p>
+<h6><%= shop.address %></h6>
+<% shop.ratings.each do |rating| %>
+<% rating.content  %>
+<% end  %>
 
 

@@ -1,24 +1,11 @@
-.storefront-container{
-  display: flex;
-  }
 .card-shop-ratings{
-  width: 40%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 13px;
   padding: 20px;
 }
 .list-group{
   border-radius: 13px;
 }
-.card-shop-show{
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 13px;
-  padding: 30px;
-}
-.likes{
-  display: flex;
-  justify-content: center;
-}
+
 .far.fa-heart:hover {
   color: #79C3BD;
   cursor: pointer;
@@ -59,4 +46,116 @@ fas.fa-heart.active {
 }
 .scroll-bar-shopfront {
   height: 400px;
+}
+
+.shops-show-all {
+  background-color: white;
+}
+
+.storefront-container {
+  padding: 40px;
+}
+
+a .back-btn{
+  color: #CBF0FE;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.storefront-container h1 {
+  font-weight: 400px;
+}
+
+.opening-hours {
+  padding: 0px;
+  margin: 0px;
+}
+
+.shops-show-all {
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.shops-show-all-back {
+  background-color: #F2FAFC;
+  padding: 20px;
+}
+
+
+.card-shop-show {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.hours {
+  padding-left: 20px;
+  color: grey;
+}
+
+.stock-title {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.my-Filter {
+  border-radius: 20px;
+}
+
+.col-sm-12 .card {
+  border-radius: 40px;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 5px;
+  border: none;
+  box-shadow: 5px 5px 10px 2px rgba(87,89,90,0.02);
+}
+
+.col-sm-12 .card h5 {
+  font-size: 18px;
+}
+
+.col-sm-12 .card h6 {
+  font-size: 15px;
+}
+
+.cards-title a {
+  color: #4C4B60;
+}
+
+.add-to-cart {
+  border: none;
+}
+
+.store-units {
+}
+
+.store-price {
+  background-color: #F5AD7D;
+  color: white;
+  border-radius: 15px;
+  width: 100px;
+}
+
+.store-price h6{
+  color: white;
+}
+
+button {
+  background-color: white;
+  border: none;
+}
+
+.fa-cart-plus:hover {
+  color: #black;
+}
+
+.products-title {
+  color: #9FD8D4;
+  padding: 10px;
+  border-radius: 30px;
+  justify-content: center;
+  margin-bottom: 10px;
 }
