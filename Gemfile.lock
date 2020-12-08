@@ -121,13 +121,10 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-<<<<<<< HEAD
-    httpclient (2.8.3)
-=======
     http-form_data (2.3.0)
     http-parser (1.2.2)
       ffi-compiler
->>>>>>> master
+    httpclient (2.8.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
