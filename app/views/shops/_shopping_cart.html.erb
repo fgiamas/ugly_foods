@@ -10,7 +10,7 @@
     <p class="cart-count"><%= sum %></p>
   </button>
 
-  <div class="dropdown-menu shopping-cart-drop" style="position: relative; bottom: 0px;">
+  <div class="dropdown-menu shopping-cart-drop" id="cart-drop" style="position: relative; bottom: 0px;">
     <% if current_user %>
       <% if current_user.current_cart.product_selections.empty? %>
         <p>There is nothing in your cart</p>
@@ -50,11 +50,13 @@
           <p class="purple">€ <%= current_cart.calculate_price %> </p>
         </div>
 
-        <div class="bring-to-checkout">
-          <%= link_to cart_path(current_user.current_cart) do%>
-          <p>See cart</p>
-          <% end %>
+        <div class="bring-to-checkout" id="cart-animation">
+          <div class="" id="cart-slide">
+          <i class="fas fa-shopping-cart fa-lg text-white" style="padding-top: 10px;"> see cart</i>
+          </div>
         </div>
+          <%= link_to "check_out", cart_path(current_user.current_cart), id:"check-out-link", class:"d-none" %>
+
 
       </div>
 
@@ -71,3 +73,32 @@
   </div>
 
 </div>
+
+
+<script>
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+  const cartAnimation = document.querySelector("#cart-animation")
+  const animationSlide = document.querySelector("#cart-slide")
+  const animationCheckOutLink = document.querySelector("#check-out-link")
+  const cartDropdown = document.querySelector("#cart-drop")
+  cartAnimation.addEventListener("click",(e)=>{
+    e.preventDefault()
+    cartDropdown.addEventListener("click", (event) => event.stopImmediatePropagation())
+    console.log("clicked")
+    animationSlide.classList.add("slide-out-right")
+    setTimeout(() => {
+      console.log("Waited for a while")
+      animationCheckOutLink.click()
+    }, 1200)
+    // sleep(2000).then(() => {
+    //     // Do something after the sleep!
+    // });
+  })
+  // sleep time expects milliseconds
+// Usage!
+</script>
+
+
+

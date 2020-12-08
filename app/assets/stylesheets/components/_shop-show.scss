@@ -196,9 +196,11 @@ button {
 
 .bring-to-checkout {
   background-color: #F5AD7D;
-  text-align: center;
+  text-align: left;
+  padding-left: 20px;
   border-radius: 15px;
   margin-top: 5px;
+  height: 8%;
 }
 
 .bring-to-checkout:hover {
@@ -250,4 +252,39 @@ scrollbar-color: #f6d365 #F5F5F5;
   margin-right: 20px;
   background-color: #FBFDFE;
   margin-left: 10px;
+}
+
+
+.slide-out-right {
+  -webkit-animation: slide-out-right 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+          animation: slide-out-right 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes slide-out-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+}
+
+.fa-shopping-cart{
+  height: 7%;
 }
