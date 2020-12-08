@@ -1,45 +1,4 @@
-<div class="nav-bar-global" style="height: 100px; background-color: grey; width: 100%;">
-  <div d-flex justify-content-right>
-    <div class="btn-group aign-items-right">
-      <button type="button" class="btn btn-secondary dropdown-toggle dropleft" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= image_tag("cart.png", :alt => "shop", style: "width: 40px; height: 40px;")%>
-      </button>
-      <div class="dropdown-menu shopping-cart-drop">
-        <% if current_user %>
-        <%= "There is nothing in your cart" if current_user.current_cart.product_selections.empty? %>
-        <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
-        <% group_cart_items.keys.each do |shop_key| %>
-        <div class="grouped-cart-items">
-          <strong><%= shop_key.name %></strong>
-          <% group_cart_items[shop_key].each do |select| %>
-          <div class="cart-cards d-flex flex-wrap justify-content-between">
-            <strong><p><%= select.product.produce_type.name %></p></strong>
-            <div class="pending-purchase-info">
-              <p><%= select.units ? "#{select.units} units" : "#{select.kg} kg" %></p>
-              <p>€ <%= select.total_price.round(2) %></p>
-            </div>
-            <%= link_to product_selection_path(select),
-            method: :delete,
-            data: {confirm: "Are you sure you want to remove from cart?"},
-            remote: true do %>
-            <i class="far fa-minus-square"></i>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-        <% end %>
-        <div>
-          <%= link_to cart_path(current_user.current_cart) do%>
-          <p>See cart</p>
-          <% end %>
-        </div>
-        <% else %>
-        hello
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "shop_nav" %>
 
 <div class="shops-show-all-back">
       <%= link_to shops_path do %>
@@ -50,104 +9,31 @@
 
 <div class="shops-show-all">
   <div class="storefront-container d-flex">
-  <div style="position:relative;">
+    <%= render "shop_info" %>
 
-    <%= image_tag("storefront-2.png", :alt => "shop", style: "position: absolute; width: 90px; height: 100px; top:-7%;" ) %>
-    <h1 class="purple" style="padding-top: 50px;">Welcome to <%= @shop.user.first_name %>'s shop, <%= @shop.name %></h1>
-
-          <div class="ratings-title">
-          <h5>Overall rating <%= @shop.calculate_rating %></h5>
-
-          <div class="show-user-rating-stars d-flex flex-wrap">
-            <% @shop.calculate_rating.round.times do %>
-            <i class="fas fa-star" style="color:#F5AC7D ;"></i>
-            <% end %>
-          </div>
-
-          <% if user_signed_in? %>
-            <div class="likes d-flex justify-content-left" style="text-align: left;">
-              <%= button_to shop_likes_path(@shop), method: :post do %>
-              <% if @liked_shop %>
-              <i class="fas fa-heart"></i>
-              <% else %>
-              <i class="fal fa-heart"></i>
-              <% end %>
-              <% end %>
-              <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-            </div>
-          <% end %>
-
-        </div>
-
-    <div class="card-shop-show d-flex">
-        <div>
-          <%= image_tag("example.jpg", :alt => "shop", style: "width: 270px; height: 200px; border-radius: 20px;")%>
-        </div>
-        <div class="hours" style="margin-left: 20px;">
-          <p class="purple"><strong> <%= @shop.address %> </strong></p>
-          <p class="opening-hours"><strong>Monday</strong> 10:00-18:00</p>
-          <p class="opening-hours"><strong>Tuesday</strong> 10:00-18:00</p>
-          <p class="opening-hours"><strong>Wednesday</strong> 10:00-18:00</p>
-          <p class="opening-hours"><strong>Thursday</strong> 10:00-18:00</p>
-          <p class="opening-hours"><strong>Saturday</strong> 12:00-17:00</p>
-          <p class="opening-hours"><strong>Sunday</strong> 12:00-17:00</p>
-        </div>
-    </div>
-
-
-    <div class="card-shop-ratings">
-
-
-
-      </br>
-      <h6 class="purple"><strong>Read recent reviews</strong></h6>
-      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
-        <div class="scrollbar-items">
-          <% @shop.ratings.each do |rating| %>
-            <div class="d-flex">
-              <%= image_tag("review.png", :alt => "shop", class: "scroll-icons", style: "margin-top: 20px;") %>
-              <div class="show-rating">
-                <div class="d-flex justify-content-between">
-                  <strong><p><%= rating.user.first_name%> <%= rating.user.last_name%></p></strong>
-                  <div class="d-flex flex-wrap">
-                    <p style="color: lightgrey"> Posted on &nbsp</p>
-                    <p style="margin-right: 20px;"><%= rating.created_at.strftime("%y-%m-%d") %></p>
-                  </div>
-                </div>
-                <div class="show-user-rating d-flex flex-wrap">
-                  <p style="margin-right: 10px"><%= rating.rating %> </p>
-                  <div class="show-user-rating-stars d-flex flex-wrap">
-                    <% rating.rating.times do %>
-                    <i class="fas fa-star"></i>
-                    <% end %>
-                  </div>
-                </div>
-                <p><%= rating.content %></p>
-              </div>
-            </div>
-
-          <% end %>
-        </div>
-      </div>
-
-      <%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
-    </div>
-
-
-
-    </div>
-
-    <div class="shop-map">
-      <div id="map"
-      style="width: 30vw; height: 600px; border-radius: 13px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-    </div>
+    <%= render "shop_map" %>
   </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="shops-show-all" style="text-align: center">
+
+  <h2 class="purple" style="text-align: center; padding-top: 20px;">Browse Products</h2>
+
 
   <div class="show-products-search-machine d-flex flex-wrap">
 
-    <div class="search-show-container ugly-search col-4" style="min-width: 400px;">
+
+
+    <div class="search-show-container ugly-search col-4" style="width: 425px;">
 
       <div class="d-flex products-title" style="padding-bottom: 20px;">
         <%= image_tag("ugly-index.png", :alt => "shop", class: "scroll-icons") %>
@@ -162,37 +48,13 @@
         <div class="col-sm-12 mb-3">
           <% @shop.ugly_foods.each do |product| %>
           <% product.total_units ? measure = "units" : measure = "kg"  %>
-          <div class="card" style="margin-right: 20px; min-width: 380px;" >
-            <div class="card-body d-flex flex-wrap justify-content-between">
-              <div class="card-main-information-produce">
-                <div class="d-flex flex-wrap align-items-center" style="margin-bottom: 15px;">
-                  <div class="title-and-add d-flex justify-content-between">
-                    <h5 class="card-title cards-title"><a href="#"> <%= product.produce_type.name %></a></h5>
-                  </div>
-                  <div class="store-price d-flex align-items-center justify-content-center" style="margin-left: 10px;">
-                    <h6 class="card-subtitle mb-2 text-muted" style="font-weight: 600px; color: white; margin: 0; padding-top: 8px ;"><strong> €<%= (product.total_price).round(2) %> / unit</strong></h6>
-                  </div>
-                </div>
-
-                <h6 class="card-subtitle store-units mb-2 text-muted"> <%= "We've got #{product.total_units} units 🥬" if product.total_units %></h6>
-                <h6 class="card-subtitle store-units mb-2 text-muted"> <%= "We've got #{product.total_kg} kg 🥬" if product.total_kg %></h6>
-
-              </div>
-              <div class="checkout-card" style="margin-left: 20px;">
-                <% if user_signed_in? %>
-                <div id="<%="product_selection-#{product.id}" %>" >
-                  <%= render 'shared/stock_form', product: product, product_selection: @product_selection, measure: measure %>
-                </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
+            <%= render partial: "ugly_food", locals: { product: product, measure: measure } %>
           <% end %>
         </div>
       </div>
     </div>
 
-    <div class="search-show-container old-search col-4" style="min-width: 400px;">
+    <div class="search-show-container old-search col-4" style="width: 425px;">
 
       <div class="d-flex products-title" style="padding-bottom: 20px;">
         <%= image_tag("old-index.png", :alt => "shop", class: "scroll-icons") %>
@@ -207,34 +69,7 @@
         <div class="col-sm-12 mb-3">
           <% @shop.old_foods.each do |product| %>
           <% product.total_units? ? measure = "units" : measure = "kg"  %>
-
-          <div class="card" style="min-width: 380px;">
-            <div class="card-body d-flex flex-wrap justify-content-between">
-
-              <div class="card-main-information-produce">
-                <div class="d-flex flex-wrap align-items-center" style="margin-bottom: 15px;">
-                  <div class="title-and-add d-flex justify-content-between">
-                    <h5 class="card-title-2 cards-title"><a href="#"> <%= product.produce_type.name %></a></h5>
-                  </div>
-                  <div class="store-price d-flex align-items-center justify-content-center" style="margin-left: 10px;">
-                    <h6 class="card-subtitle mb-2 text-muted" style="font-weight: 600px; color: white; margin: 0; padding-top: 8px ;"><strong> €<%= (product.total_price).round(2) %> / unit</strong></h6>
-                  </div>
-                </div>
-
-                <h6 class="card-subtitle store-units mb-2 text-muted"> <%= "We've got #{product.total_units} units 🥬" if product.total_units %></h6>
-                <h6 class="card-subtitle store-units mb-2 text-muted"> <%= "We've got #{product.total_kg} kg 🥬" if product.total_kg %></h6>
-              </div>
-
-                <div class="checkout-card" style="margin-left: 20px;">
-                  <% if user_signed_in? %>
-                    <div id="<%="product_selection-#{product.id}" %>" >
-                      <%= render 'shared/stock_form', product: product, product_selection: @product_selection, measure: measure %>
-                    </div>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
+            <%= render partial: "ugly_food", locals: { product: product, measure: measure } %>
 
           <% end %>
         </div>
@@ -243,7 +78,7 @@
     </div>
 
 
-    <div class="search-show-container flower-search col-4">
+    <div class="search-show-container flower-search col-4" style="width: 425px;">
       <div class="d-flex products-title" style="padding-bottom: 20px;">
         <%= image_tag("flower-index.png", :alt => "shop", class: "scroll-icons") %>
       </div>
@@ -256,38 +91,13 @@
         <div class="col-sm-12 mb-3">
           <% @shop.flowers.each do |product| %>
           <% product.total_units? ? measure = "units" : measure = "kg"  %>
-          <div class="card" style="min-width: 380px;">
-            <div class="card-body d-flex flex-wrap justify-content-between">
-
-              <div class="card-main-information-produce">
-                <div class="d-flex flex-wrap align-items-center" style="margin-bottom: 15px;">
-                  <div class="title-and-add d-flex justify-content-between">
-                    <h5 class="card-title-3 cards-title"><a href="#"> <%= product.produce_type.name %></a></h5>
-                  </div>
-                  <div class="store-price d-flex align-items-center justify-content-center" style="margin-left: 10px;">
-                    <h6 class="card-subtitle mb-2 text-muted" style="font-weight: 600px; color: white; margin: 0; padding-top: 8px ;"><strong> €<%= (product.total_price).round(2) %> / unit</strong></h6>
-                  </div>
-                </div>
-
-                <h6 class="card-subtitle store-units mb-2 text-muted"> <%= "We've got #{product.total_units} units 💐" if product.total_units %></h6>
-                <h6 class="card-subtitle store-units mb-2 text-muted"> <%= "We've got #{product.total_kg} kg 💐" if product.total_kg %></h6>
-              </div>
-
-                <div class="checkout-card" style="margin-left: 20px;">
-                  <% if user_signed_in? %>
-                    <div id="<%="product_selection-#{product.id}" %>" >
-                      <%= render 'shared/stock_form', product: product, product_selection: @product_selection, measure: measure %>
-                    </div>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
+            <%= render partial: "flower", locals: { product: product, measure: measure } %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 </div>
