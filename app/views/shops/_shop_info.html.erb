@@ -14,16 +14,21 @@
 
           <% if user_signed_in? %>
             <div class="likes d-flex justify-content-left" style="text-align: left;">
-              <%= button_to shop_likes_path(@shop), method: :post do %>
-              <% if @liked_shop %>
+          <% pre_like = @shop.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to shop_like_path(@shop, pre_like), method: :delete, remote: true do %>
               <i class="fas fa-heart"></i>
-              <% else %>
-              <i class="fal fa-heart"></i>
-              <% end %>
-              <% end %>
-              <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-            </div>
+            <% end %>
+          <% else %>
+            <%= button_to shop_likes_path(@shop), method: :post, remote: true  do %>
+              <i class="far fa-heart"></i>
+            <% end %>
           <% end %>
+          <p><%= @shop.likes.count %> <%= (@shop.likes.count) == 1 || 0 ? 'Like' : 'Likes'%></p>
+          </div>
+          <% end %>
+
+
 
         </div>
 
