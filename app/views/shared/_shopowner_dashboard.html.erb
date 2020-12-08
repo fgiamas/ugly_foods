@@ -5,7 +5,7 @@
       <a class="owner-dash nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home fa-owner"></i> Home</a>
       <a class=" owner-dash nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-pepper-hot fa-owner"></i> Your Orders</a>
       <a class="owner-dash" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-bell fa-owner"></i> Alerts</a>
-      <a class="owner-dash" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-comments fa-owner"></i> Messages</a>
+      <a class="owner-dash" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-comments fa-owner"></i> Messages <%= current_user.notifications.count %></a>
     </div>
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -154,8 +154,9 @@
         <%= yield %>
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
         <% current_user.notifications.each do |notification| %>
-        <%= notification.to_notification.message %>
+        <%= link_to "#{notification.to_notification.message} ", shop_chatroom_path(current_user.shop.id, user_id: notification.params[:message][:user_id]) %>
         <% end %>
       </div>
     </div>
