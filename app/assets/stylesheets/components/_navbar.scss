@@ -25,9 +25,15 @@ margin-left: 50%;
   color:orange;
   width: 6%;
   height:3%;
-
 }
 
+.button-index-nav:hover{
+  background-color: #FBAB7E;
+  color:#EBF9FD;
+  transition: 0.3s;
+  width: 8%;
+  height: 5%;
+}
 
 .form-control {
     border: 0;
@@ -54,6 +60,8 @@ padding: px;
 }
 
 
+
 .navbar-lewagon{
   background-color: #EBF9FD;
 }
+
