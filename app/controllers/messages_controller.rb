@@ -9,13 +9,17 @@ class MessagesController < ApplicationController
 
       ChatroomChannel.broadcast_to(
         @chatroom,
+
         render_to_string(partial: "message", locals: { message: @message })
+
         )
 
-      if @chatroom.shop_id == current_user.id
+      if @chatroom.shop.user == current_user
+
         user = @chatroom.user
+
       else
-        user = @chatroom.shop
+        user = @chatroom.shop.user
       end
       CommentNotification.with(message: @message).deliver(user)
 

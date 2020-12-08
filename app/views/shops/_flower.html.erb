@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-body d-flex flex-wrap justify-content-between">
+
+    <div class="card-main-information-produce">
+      <div class="d-flex flex-wrap align-items-center" style="margin-bottom: 15px;">
+        <div class="title-and-add d-flex justify-content-between">
+          <h5 class="card-title-3 cards-title"><a href="#"> <%= product.produce_type.name %></a></h5>
+        </div>
+        <div class="store-price d-flex align-items-center justify-content-center" style="margin-left: 15px;">
+          <h6 class="card-subtitle mb-2 text-muted" style="font-weight: 600px; color: white; margin: 0; padding-top: 8px ;"><strong> €<%= (product.total_price).round(2) %> / unit</strong></h6>
+        </div>
+      </div>
+
+      <h6 class="card-subtitle store-units mb-2 text-muted" > <%= "We've got #{product.total_units} units 💐" if product.total_units %></h6>
+      <h6 class="card-subtitle store-units mb-2 text-muted" > <%= "We've got #{product.total_kg} kg 💐" if product.total_kg %></h6>
+    </div>
+
+      <div class="checkout-card" style="margin-left: 20px;">
+        <% if user_signed_in? %>
+          <div id="<%="product_selection-#{product.id}" %>" >
+            <%= render 'shared/stock_form', product: product, product_selection: @product_selection, measure: measure %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
