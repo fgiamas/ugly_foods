@@ -1,0 +1,103 @@
+.continue-shoping{
+}
+
+.cart-page{
+  background-color: white;
+  max-height: 50%;
+  width:90%;
+  border-radius:20px;
+  margin-left: 5%;
+}
+
+.continue-shoping{
+  text-align: left;
+
+}
+
+
+.cart-card-index{
+  display: flex;
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  margin-bottom: 3%;
+  background-color:white ;
+  color:#4C4B60;
+}
+
+
+.cart-name{
+  width: 20%;
+
+}
+.cart-logo{
+ width: 10%;
+  img{
+    height:5%;
+    width: 40px;
+    object-fit: cover;
+    justify-content: space-around;
+    border-radius:50%;
+
+    }
+
+}
+.cart-quantity-index{
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.cart-price{
+
+    display: flex;
+
+
+
+}
+.confirm-pay{
+  width: 80%;
+  margin-bottom: 10%;
+  margin-top: 8%;
+  text-align: center;
+}
+
+
+.payment-method{
+background-color: #b1bfd8;
+background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
+  border-radius: 20px;
+  margin-left: 10%;
+}
+.info-content{
+  min-height: 1vh;
+}
+.price-per-shop{
+  text-align: right;
+}
+.grand-total{
+  margin-top: 20%;
+  text-align: right;
+  text-decoration: underline;
+  color: green;
+  font-size: 30px;
+}
+.user-intro{
+  text-align: center;
+}
+.cart-show-index{
+  background-color: #EBF9FD;
+}
+.second-index{
+  background-color: white;
+  border-radius: 40px;
+  margin-right:25px;
+  margin-left:95px;
+  margin-bottom:10px;
+  margin-top: 10px;
+}
+.nav-card {
+  background-color:#758EBB;
+  color:white;}
+  .nav-item{
+  background-color:#758EBB;
+  color:white;}
