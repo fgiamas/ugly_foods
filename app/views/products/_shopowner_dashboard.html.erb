@@ -1,11 +1,11 @@
 <div class="shop-owner-main">
   <h2>this is the shop owner dashboard</h2>
   <div class="owner-tabs-content d-flex">
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="nav flex-column nav-pills user-main" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="owner-dash nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home fa-owner"></i> Home</a>
       <a class=" owner-dash nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-pepper-hot fa-owner"></i> Your Orders</a>
-      <a class="owner-dash" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-bell fa-owner"></i> Alerts</a>
-      <a class="owner-dash" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-comments fa-owner"></i> Messages <%= current_user.notifications.count %></a>
+      <a class="owner-dash" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-bell fa-owner"></i> Messages</a>
+      <a class="owner-dash" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-comments fa-owner"></i> To Delete <%= current_user.notifications.count %></a>
     </div>
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -146,12 +146,10 @@
         </div>
       </div>
       <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <%= render 'shared/owner_dash_orders' %>
-        <%= yield %>
+        <%= render 'owner_dash_orders' %>
       </div>
       <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        <%= render 'shared/owner_dash_not' %>
-        <%= yield %>
+        <%= render 'owner_dash_messages' %>
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 
