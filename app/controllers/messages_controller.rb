@@ -12,6 +12,13 @@ class MessagesController < ApplicationController
         render_to_string(partial: "message", locals: { message: @message })
         )
 
+      if @chatroom.shop_id == current_user.id
+        user = @chatroom.user
+      else
+        user = @chatroom.shop
+      end
+      CommentNotification.with(message: @message).deliver(user)
+
     else
       render "chatrooms/show"
     end

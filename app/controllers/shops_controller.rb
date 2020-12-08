@@ -9,6 +9,7 @@ class ShopsController < ApplicationController
       @km = params[:search][:km]
       @flowers = params[:search][:flowers]&.reject(&:blank?)
       @prod = params[:search][:fruits_and_veggies]&.reject(&:blank?)
+      @search_products = @flowers + @prod
     end
     if @km && !@km.empty?
       @shops = @shops.near(@location, @km)

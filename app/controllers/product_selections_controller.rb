@@ -3,10 +3,9 @@ class ProductSelectionsController < ApplicationController
 
   def create
     @product_selection = ProductSelection.new(strong_params)
+    @product = @product_selection.product
     if @product_selection.save
       redirect_back(fallback_location: root_path)
-    else
-      render :new
     end
   end
 

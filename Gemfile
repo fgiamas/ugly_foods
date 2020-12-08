@@ -33,6 +33,8 @@ gem 'devise'
 gem 'faker'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
+gem "algoliasearch-rails"
+
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
@@ -64,3 +66,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "noticed", "~> 1.2"
