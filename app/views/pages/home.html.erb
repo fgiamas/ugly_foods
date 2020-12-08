@@ -7,62 +7,54 @@
   <span>scroll down</span>
 </a>
 
-<%= video_tag "ugly-foods.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
 
 <div class = "index-container d-flex align-items-center">
 
-    <div class= "main-search-bar d-flex flex-wrap align-items-center">
+  <%= video_tag "ugly-foods.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
+  <div class= "main-search-bar-home d-flex flex-wrap align-items-center">
 
-        <div class="search-item">
-        <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
-          <%= f.input :location, as: :string, html: {class: "search-location"}, placeholder: "enter your address", label: false%>
-        </div>
-
-
-      <div class="dropdown search-item">
-        <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ✿
-        </button>
-        <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton">
-          <input type="text" id="autocomplete-flowers">
-          <%= f.input :flowers, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
-
-        <div class="search-item">
-          <%= f.input :km, collection: [2,4,6,8,10,20,30], html: {class: "search-location"}, prompt: "How far do you want to go?", label: false%>
-
-        </div>
-
-
-      <div class="dropdown search-item">
-        <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-pepper-hot fa-lg"></i>
-        </button>
-        <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton">
-          <input type="text" id="autocomplete">
-          <ul id="collection"></ul>
-          <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
-        <div class="dropdown search-item">
-          <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-pepper-hot fa-lg"></i>
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <input type="text" id="autocomplete">
-            <ul id="collection"></ul>
-            <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
-          </div>
-        </div> -->
-
-        <div class="dropdown search-item">
-          <%= button_tag do %><i class="fas fa-search"></i><% end %>
-        </div>
-      <% end %>
+    <div class="search-item">
+      <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
+      <%= f.input :location, as: :string, html: {class: "search-location"}, placeholder: "enter your address", label: false%>
     </div>
 
+    <div class="search-item">
+        <%= f.input :km, collection: [2,4,6,8,10,20,30], html: {class: "search-location"}, prompt: "How far do you want to go?", label: false%>
 
+    </div>
+
+    <div class="dropdown search-item">
+      <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ✿
+      </button>
+      <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton">
+        <input type="text" id="autocomplete-flowers">
+        <%= f.input :flowers, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
+      </div>
+    </div>
+
+    <div class="dropdown search-item">
+      <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-pepper-hot fa-lg"></i>
+      </button>
+      <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton">
+        <input type="text" id="autocomplete">
+        <ul id="collection"></ul>
+        <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
+      </div>
+    </div>
+
+      <div class="dropdown search-item">
+        <%= button_tag do %><i class="fas fa-search"></i><% end %>
+      </div>
+      <% end %>
+
+  </div>
 </div>
 
 <div class="index-map" id="page2">
-  <font size="+9" style= "height:4%">Our locations</font>
+  <h1> Our Locations</h1>
+  <!-- <font size="+9" style= "height:4%">Our locations</font> -->
 
 <div id="map"
 class="map-home"
@@ -72,12 +64,8 @@ class="map-home"
 
 </div>
 
-   </div>
-
-
-
    <div class="what-we-do">
-    <font size="+9" style= "height:4%">What we do </font>
+    <font size="+9" style= "height:5%">What we do </font>
   </div>
 
 
@@ -90,7 +78,9 @@ class="map-home"
       <div class="whatever">
         <h4> We are a startup driven by sustainability.</h4>
         <br/>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum distinctio soluta impedit consequatur neque? Ipsam, corrupti. Officiis tenetur culpa maxime accusamus earum, quisquam aspernatur nesciunt repellendus perferendis, vero veniam natus iure. Iusto est deserunt ratione labore fuga ipsum tempora error voluptate reprehenderit, aut ut consectetur! Molestias soluta unde consequuntur mollitia. Dolorem numquam repellendus quis consequatur placeat similique accusamus quaerat. Velit.</p>
+        <p> A common misconception is that fruits and vegetables only look strange if something is wrong with them or they are genetically modified (GMO). Quite the opposite: All-natural produce is apt to look funkier than the picture-perfect kind that is engineered in a </p>
+        <p>Unfortunately, fruits and vegetables are often rejected by grocery stores and supermarkets due to natural imperfections or variations in size. Carrots grow into each other and look twisted. Peppers get blemishes from the ground. Apples fall and get bruised.</p>
+        <p>All are perfectly normal, nutritious and tasty, and they shouldn’t be discarded. Sometimes a market owner may have received an item that is ugly in a certain way. We’ll pick up the slack so that market owners still make money from ugly products and nothing goes to waste.</p>
       </div>
     </div>
   </div>
@@ -121,42 +111,37 @@ class="map-home"
     <div class="steps">Log in</div>
     <div class="steps">Search</div>
     <div class="steps">Add to cart</div>
-    <div class="steps">Calendar check</div>
+    <div class="steps">Calendar</div>
     <div class="steps">Pay</div>
 
   </div>
   <div class="app-carrots">
-    <div class="rotate-in-center">
-
-      <%= image_tag "carrot.png" %>
+    <div class="image-wrapper">
+      <%= image_tag "ugly-index.png", class: "carrot-image" %>
     </div>
     <div class="line">
       <span class="actual-line"></span>
     </div>
-    <div class="rotate-in-center">
-
-      <%= image_tag "carrot.png" %>
+    <div class="image-wrapper">
+      <%= image_tag "ugly-index.png", class: "carrot-image" %>
     </div>
     <div class="line">
       <span class="actual-line"></span>
     </div>
-    <div class="rotate-in-center">
-
-      <%= image_tag "carrot.png" %>
+    <div class="image-wrapper">
+      <%= image_tag "ugly-index.png", class: "carrot-image" %>
     </div>
     <div class="line">
       <span class="actual-line"></span>
     </div>
-    <div class="rotate-in-center">
-
-      <%= image_tag "carrot.png" %>
+    <div class="image-wrapper">
+      <%= image_tag "ugly-index.png", class: "carrot-image" %>
     </div>
     <div class="line">
       <span class="actual-line"></span>
     </div>
-    <div class="rotate-in-center">
-
-      <%= image_tag "carrot.png" %>
+    <div class="image-wrapper">
+      <%= image_tag "ugly-index.png", class: "carrot-image" %>
     </div>
 
   </div>
@@ -169,9 +154,6 @@ class="map-home"
     <div class="description">Review your basket and pay</div>
 
   </div>
-
-  </div>
-
 
 </div>
 
