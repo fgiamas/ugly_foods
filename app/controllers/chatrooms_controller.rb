@@ -5,6 +5,7 @@
       # For shopowners
       @chatroom = Chatroom.find_or_create_by(shop: @shop, user: params[:user_id])
     else
+      # For users
       @chatroom = Chatroom.find_or_create_by(shop: @shop, user: current_user)
     end
     @message = Message.new

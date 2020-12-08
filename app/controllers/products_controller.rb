@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   def dashboard
     @products = Product.all
     @product = Product.new
+    @message = Message.new
   end
 
   def new
