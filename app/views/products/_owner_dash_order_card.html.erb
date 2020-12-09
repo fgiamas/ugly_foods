@@ -9,6 +9,8 @@
             🛒 &nbsp
             <p style="color: #F5AB7E;"><%= cart_key.user.first_name.downcase.capitalize %></p> &nbsp
             <p style="color: #F5AB7E;"><%= cart_key.user.last_name.downcase.capitalize %></p>
+            <%= link_to 'Chat with the customer', shop_chatroom_path(shop_id: current_user.shop.id, user_id: cart_key.user.id) %>
+
           </div>
           <p> Cart ordered on: <strong><%= cart_key.pick_up_date.strftime("%m/%d/%Y") %></strong> </p>
         </div>
