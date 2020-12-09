@@ -38,7 +38,8 @@
       </div>
       <div class="row" id="myItems">
         <div class="col-sm-12 mb-3">
-          <% @shop.ugly_foods.each do |product| %>
+          <% @shop.ugly_foods.sort_by(&:produce_type).each do |product| %>
+
           <% product.total_units ? measure = "units" : measure = "kg"  %>
             <%= render partial: "ugly_food", locals: { product: product, measure: measure } %>
           <% end %>
@@ -59,7 +60,8 @@
 
       <div class="row" id="myItems-2">
         <div class="col-sm-12 mb-3">
-          <% @shop.old_foods.each do |product| %>
+          <% @shop.old_foods.sort_by{|t| [t.produce_type, t.produce_type.name] }.each do |product| %>
+
           <% product.total_units? ? measure = "units" : measure = "kg"  %>
             <%= render partial: "ugly_food", locals: { product: product, measure: measure } %>
 
@@ -81,7 +83,8 @@
       </div>
       <div class="row" id="myItems-3">
         <div class="col-sm-12 mb-3">
-          <% @shop.flowers.each do |product| %>
+
+          <% @shop.flowers.sort_by{ |t| t.produce_type.name }.each do |product| %>
           <% product.total_units? ? measure = "units" : measure = "kg"  %>
             <%= render partial: "flower", locals: { product: product, measure: measure } %>
           <% end %>
