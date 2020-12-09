@@ -1,4 +1,8 @@
 
+<div class="welcome">
+  <h1>Ugly foods</h1>
+</div>
+
 <a href="#page2" class= scroll-down style="display: block;">
   <i class="icon">
     <i class="slide-bottom">
@@ -19,25 +23,25 @@
     </div>
 
     <div class="search-item">
-        <%= f.input :km, collection: [2,4,6,8,10,20,30], html: {class: "search-location"}, prompt: "How far do you want to go?", label: false%>
+        <%= f.input :km, collection: [[2, "2km"], [4, "4km"],[6, "6km"],[8, "8km"],[10, "10km"],[20, "20km"],[30, "30km"]], label_method: :second, value_method: :first,  html: {class: "search-location"}, prompt: "Distance from your location?", label: false%>
 
     </div>
 
     <div class="dropdown search-item">
-      <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn  dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         ✿
       </button>
-      <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton" id="test-for">
         <input type="text" id="autocomplete-flowers">
         <%= f.input :flowers, collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
       </div>
     </div>
 
     <div class="dropdown search-item">
-      <button class="btn btn-secondary dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn  dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-pepper-hot fa-lg"></i>
       </button>
-      <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton" id="test-for">
         <input type="text" id="autocomplete">
         <ul id="collection"></ul>
         <%= f.input :fruits_and_veggies, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>

@@ -1,3 +1,13 @@
+.welcome{
+margin-left: 8%;
+color: rgba(198, 230, 228, 1);
+text-shadow: 2px 2px black;
+}
+
+.welcome h1{
+font-family: 'Fjalla One', sans-serif;
+}
+
 .index-container{
   // background-image: image-url("uglyfoods.jpg");
   background-position: center;
@@ -28,7 +38,7 @@
 .btn-search-bar {
   background-color: white;
   border: white;
-  color: grey;
+  color: #4C4B60;
 }
 .search-location {
   border: none;
@@ -456,6 +466,26 @@ ul#buttons li:hover:before {
     margin: 0 auto;
 }
 
+#test-for {
+  transform: none !important;
+  left: -55px !important;
+}
+
+#test-for fieldset.search_fruits_and_veggies {
+      padding: 5px;
+}
+
+#test-for fieldset.search_flowers {
+      padding: 5px;
+}
+
+#autocomplete {
+  width: 95%;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid rgba(100,100,100,0.5);
+}
+
 .scroll-down .icon:before {
   -webkit-transition: all .3s ease;
   width: 6px;
@@ -598,9 +628,7 @@ ul#buttons li:hover:before {
   }
 }
 
-
-
-
-
-
+.col-form{
+  overflow-y: scroll;
+}
 
