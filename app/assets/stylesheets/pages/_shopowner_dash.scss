@@ -32,7 +32,7 @@
   margin-bottom: 3px;
   border: 1px solid grey;
   padding: 20px;
-  padding-bottom: 0;
+  padding-bottom: 20px;
   border-radius: 20px;
 }
 
@@ -101,3 +101,48 @@
   height: 700px;
   overflow-y: scroll;
 }
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: #EB4964;
+  color: white;
+  padding: 10px 15px 10px 15px;  border-radius: 25px;
+
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid #EB4964;
+  border-radius: 25px;
+  color: #EB4964;
+  margin: 10px;
+}
+
+
+.nav-link.prod {
+  border: 1px solid #EB4964;
+  border-radius: 25px;
+  color: #EB4964;
+  margin: 5px;
+}
+
+.nav-link.prod:hover {
+  padding: 10px 15px 10px 15px;
+  border-radius: 25px;
+  border: 1px solid #EB4964;
+  color: #EB4964;
+}
+
+.card-body-add-dropdown {
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.btn.add-stock {
+  padding: 10px;
+  box-shadow: 5px 5px 10px 3px rgba(30,29,38,0.08);
+  border-radius: 20px;
+}
+
