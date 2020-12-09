@@ -60,15 +60,15 @@
     <% shop_stats = current_user.shop.amnt_saved %>
       <div class="d-flex">
         <%= image_tag("ugly-white.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
-        <p>You have saved <%= shop_stats[:kg_ugly_sum]%> kg & <%= shop_stats[:units_ugly_sum]%> units of ugly foods </p>
+        <p style="padding-left: 8px;">You have saved <%= shop_stats[:kg_ugly_sum]%> kg & <%= shop_stats[:units_ugly_sum]%> units of ugly foods </p>
       </div>
       <div class="d-flex">
         <%= image_tag("old-white.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
-        <p>You have saved <%= shop_stats[:kg_old_sum]%> kg & <%= shop_stats[:units_old_sum]%> units of oldies but goldies </p>
+        <p style="padding-left: 8px;">You have saved <%= shop_stats[:kg_old_sum]%> kg & <%= shop_stats[:units_old_sum]%> units of oldies but goldies </p>
       </div>
       <div class="d-flex">
         <%= image_tag("flower-white.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
-        <p>You have saved <%= shop_stats[:flower_sum]%> units of flowers </p>
+        <p style="padding-left: 8px;">You have saved <%= shop_stats[:flower_sum]%> units of flowers </p>
       </div>
     </br>
     <h4>Let's save the foods!</h4>
