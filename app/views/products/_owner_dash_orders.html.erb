@@ -1,0 +1,22 @@
+<h1>Here are your orders</h1>
+
+<div class="all-owner-order-info d-flex flex-wrap justify-content-around">
+  <div class="shop-orders upcoming">
+    <h3 style="color: white; padding-bottom: 15px;">Upcoming Orders</h3>
+
+    <%if current_user.shop.upcoming_confirmed_orders.empty? %>
+      <i class="fas fa-folder-open fa-2x" style="color: white;"></i>
+      <h6 style="color: white;">You have no upcoming orders!</h6>
+    <% end %>   <!-- this is an array of keys (below) -->
+    <%= render partial: "owner_dash_order_card", locals: { grouped_carts: current_user.shop.upcoming_confirmed_orders.group_by(&:cart) } %>
+  </div>
+
+  <div class="shop-orders past">
+    <h3 style="color: white; padding-bottom: 15px;">Past Orders</h3>
+    <%if current_user.shop.past_confirmed_orders.empty? %>
+      <i class="fas fa-folder-open" style="color: white;"></i>
+      <h6 style="color: white;">You have no past orders yet!</h6>
+    <% end %>
+     <%= render partial: "owner_dash_order_card", locals: { grouped_carts: current_user.shop.past_confirmed_orders.group_by(&:cart) } %>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div>
+
+  <div class="row" style="box-shadow: 5px 5px 10px 10px rgba(87,89,90,0.02); border-radius: 15px;">
+
+    <div class="col-3">
+
+
+      <div class="nav flex-column nav-pills dash-messages d-flex justify-content-right" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="width: 100%;">
+        <div style="padding-left: 10px;">
+          <i class="far fa-comments purple fa-3x"></i>
+          <h4 class="purple">Your Message History</h4>
+        </br>
+        </div>
+        <% current_user.shop.chatrooms.each_with_index do |chat, index| %>
+          <a class="nav-link <%= 'active' if index==0 %> dash-messages-tabs" id= "<%="v-pills-#{chat.shop.id}-tab"%>" data-toggle="pill" href="<%="#v-pills-#{chat.shop.id}"%>"  role="tab" aria-controls="<%="v-pills-#{chat.shop.id}"%>" aria-selected="false">
+            <div class="d-flex justify-content-left">
+            <p style="padding:0px; margin: 0px;"><%= "#{chat.user.first_name} #{chat.user.last_name}"%></p>
+            </div>
+          </a>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-9">
+
+      <div class="tab-content" id="v-pills-tabContent">
+
+        <% current_user.shop.chatrooms.each_with_index do |chat, index| %>
+          <div class="tab-pane fade <%= "show active" if index==0 %>" id="v-pills-<%="#{chat.shop.id}"%>" role="tabpanel" aria-labelledby="v-pills-<%="#{chat.shop.id}"%>-tab">
+            <%= render "chatrooms/chatroom", chatroom: chat, message: @message, shop: current_user.shop, user_id: chat.user.id %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>

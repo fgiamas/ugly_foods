@@ -1,0 +1,37 @@
+<div class="user-dash-main">
+  <div class="user-tabs-content d-flex">
+
+    <div class="nav flex-column nav-pills user-main" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="owner-dash nav-link <%= 'active' unless params[:messages] == "true" %>" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home fa-owner user-logo"></i> Home</a>
+      <a class=" owner-dash nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false"><i class="fas fa-pepper-hot fa-owner user-logo"></i> Your Orders</a>
+      <a class="owner-dash" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-comments fa-owner user-logo"></i> Messages</a>
+    </div>
+
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+        <div class="welcome d-flex flex-wrap align-items-center">
+          <%= image_tag("storefront.png", :alt => "shop", style: 'width: 80px; height: 80px;') %>
+          <h2> Hello <%= current_user.first_name %>, welcome to your storefront! </h2>
+        </div>
+
+        <%= render partial: 'owner_dash_home' %>
+        <%= render partial: 'owner_dash_home_stock' %>
+
+      </div>
+
+      <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <%= render 'owner_dash_orders' %>
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <%= render 'owner_dash_messages' %>
+      </div>
+      <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
+        <% current_user.notifications.each do |notification| %>
+        <%= link_to "#{notification.to_notification.message} ", shop_chatroom_path(current_user.shop.id, user_id: notification.params[:message][:user_id]) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

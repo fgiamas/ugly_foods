@@ -1,0 +1,42 @@
+<h5>Your stock</h5>
+
+<a class="btn btn-primary" data-toggle="collapse" href="#AddToStock" role="button" aria-expanded="false" aria-controls="AddToStock">
+Add to your Stock
+</a>
+
+<div class="collapse" id="AddToStock">
+  <div class="card card-body">
+      <%= simple_form_for(@product) do |f| %>
+        <%= f.input :discount_percent %>
+        <%= f.input :price_per_unit %>
+        <%= f.input :lifespan %>
+        <%= f.input :total_units %>
+        <%= f.input :total_kg %>
+        <%= f.input :days_to_expiry %>
+        <%= f.input :status, collection: Product.statuses.keys.to_a %>
+        <%= f.association :produce_type %>
+        <%= f.submit %>
+      <% end %>
+  </div>
+</div>
+
+<div class="products-ugly shop-existing-products">
+  <h2>Ugly Foods</h2>
+  <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
+    <%= render partial: "stock_display", locals: { food: food } %>
+  <% end %>
+</div>
+
+<div class="products-old shop-existing-products">
+  <h2>Oldies but Goldies</h2>
+  <% current_user.shop.old_foods.each do |food| %>
+    <%= render partial: "stock_display", locals: { food: food } %>
+  <% end %>
+</div>
+
+<div class="products-flower shop-existing-products">
+  <h2>Flowers</h2>
+  <% current_user.shop.flowers.each do |food| %>
+    <%= render partial: "stock_display", locals: { food: food } %>
+  <% end %>
+</div>
