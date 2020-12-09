@@ -61,7 +61,7 @@ class User < ApplicationRecord
     kg_ugly_sum = 0
     units_old_sum = 0
     kg_old_sum = 0
-    carts.each do |cart|
+    self.carts.each do |cart|
       cart.product_selections.each do |selection|
         if selection.product.produce_type.category == "flower"
           if selection.units

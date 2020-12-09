@@ -24,7 +24,8 @@
 
 
 .responses-box{
-  background: linear-gradient(180deg, rgba(165,223,233,1) 18%, rgba(233,247,250,1) 100%, rgba(255,255,255,1) 100%);
+  background: rgb(245,171,126);
+background: linear-gradient(180deg, rgba(245,171,126,1) 0%, rgba(255,228,168,1) 28%, rgba(255,255,255,1) 100%);
   border-radius: 20px;
   max-width: 800px;
   padding: 20px;
@@ -43,7 +44,7 @@
 }
 .message-response.yours {
   width: 60%;
-  background-color: #A9A9A9;
+  background-color: #DCDCDC;
   color: white;
   text-align: left;
   padding-left: 25px;

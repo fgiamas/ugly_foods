@@ -1,17 +1,10 @@
 class RatingsController < ApplicationController
-  def new
-    # we need @restaurant in our `simple_form_for`
-    @shop = Shop.find(params[:shop_id])
-    @rating = Rating.new
-  end
 
   def create
     @rating = Rating.new(rating_params)
-    # we need `restaurant_id` to associate review with corresponding restaurant
-    @shop = Shop.find(params[:shop_id])
-    @rating.shop = @shop
+    @rating.user = current_user
     if @rating.save
-      redirect_to shop_path(@shop)
+      redirect_back(fallback_location: root_path)
     else
       render :new
     end
@@ -26,6 +19,7 @@ class RatingsController < ApplicationController
    private
 
   def rating_params
-    params.require(:rating).permit(:content)
+    params.require(:rating).permit(:content, :rating)
   end
+
 end
