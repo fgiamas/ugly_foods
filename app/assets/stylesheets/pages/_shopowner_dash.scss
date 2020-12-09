@@ -180,3 +180,55 @@
   background-color: grey;
 }
 
+.form-control.edit-prod {
+  background-color: grey;
+}
+
+input#product_total_units {
+  background-color: #C4CFD3;
+  width: 100px;
+  color: white;
+  margin: 5px;
+}
+
+input#product_total_kg {
+  background-color: #C4CFD3;
+  width: 100px;
+  color: white;
+}
+
+select#product_status {
+  background-color: #C4CFD3;
+  width: 100px;
+  color: white;
+}
+
+input#product_price_per_unit {
+  background-color: #C4CFD3;
+  width: 100px;
+  color: white;
+  margin: auto;
+}
+
+
+input#product_discount_percent {
+  background-color: #C4CFD3;
+  width: 100px;
+  color: white;
+  margin: auto;
+}
+
+select#product_produce_type_id {
+  background-color: #C4CFD3;
+  width: 200px;
+  color: white;
+  margin: 5px;
+}
+
+.edit-prod.btn {
+  border-radius: 20px;
+  background-color: rgb(245,171,126);
+  box-shadow: 5px 5px 10px 3px rgba(30,29,38,0.08);
+  color: white;
+  padding: 5px 10px 5px 10px;
+}
