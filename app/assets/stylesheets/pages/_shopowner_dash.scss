@@ -1,19 +1,29 @@
 .shop-owner-main {
-  background-color: #FCF5F2;
   width: 100%;
   color: black;
 }
 
+.shop-owner-stats {
+  margin-bottom: 40px;
+}
+
 .shop-orders {
-  background: white;
   padding: 40px;
+  width: 480px;
   border-radius: 15px;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.shop-orders.upcoming {
+  background: #F5AB7E;
+}
+
+.shop-orders.past {
+  background: #E3DFDC;
 }
 
 .order-shop {
-  background-color: #FEFAF2;
-  box-shadow: 5px 5px 5px 5px rgba(255,221,184,0.1);
   margin-bottom: 3px;
   padding: 10px;
 }
@@ -64,4 +74,30 @@
   box-shadow: 5px 5px 10px 2px rgba(87,89,90,0.05);
   padding: 15px;
   border-radius: 15px;
+}
+
+.scrollbar-owner {
+  height: 200px;
+  overflow-y: scroll;
+  min-width: 500px;
+}
+
+.all-owner-order-info {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.grouped-owner-cart {
+  box-shadow: 5px 5px 10px 3px rgba(87,89,90,0.08);
+  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius:20px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.scrollbar-products-owner {
+  height: 700px;
+  overflow-y: scroll;
 }

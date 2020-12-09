@@ -75,7 +75,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <%= simple_form_for [ @shop, @rating], remote: true do |f| %>
+                <%= simple_form_for [ shop, rating], remote: true do |f| %>
                   <%= f.label :rating, "Leave a rating!" %>
                   <%= f.input :rating, as: :integer, label: false,  input_html: {min:1, step: 1, max: 5}, placeholder: "1 to 5" %>
                   <%= f.label :content, "Rating content" %>
@@ -90,7 +90,7 @@
         <!-- modal content -->
 
       </div>
-      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
+      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-owner overflow-auto">
         <div class="scrollbar-items">
           <% @shop.ratings.each do |rating| %>
             <div class="d-flex">

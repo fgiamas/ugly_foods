@@ -9,7 +9,7 @@
 
 <div class="shops-show-all">
   <div class="storefront-container d-flex" id="heart">
-    <%= render "shop_info", locals: { rating: @rating} %>
+    <%= render partial: "shop_info", locals: { rating: @rating, shop: current_user.shop } %>
 
     <%= render "shop_map" %>
   </div>
