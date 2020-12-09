@@ -2,7 +2,8 @@
 
     <%= image_tag("storefront-2.png", :alt => "shop", style: "position: absolute; width: 90px; height: 100px; top:-7%;" ) %>
     <h1 class="purple" style="padding-top: 50px;">Welcome to <%= @shop.user.first_name %>'s shop, <%= @shop.name %></h1>
-
+          <%= @shop.id %>
+          <%= current_user.id %>
           <div class="ratings-title">
           <h5>Overall rating <%= @shop.calculate_rating %></h5>
 
