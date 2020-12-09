@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @shops = Shop.all
+    @disable_navbar = true
     @markers = @shops.geocoded.map do |shop|
      {
         lat: shop.latitude,
