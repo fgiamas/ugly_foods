@@ -88,6 +88,15 @@
       <p>Total: <%= current_user.current_cart.product_selections.map {|item| item.total_price}.sum.round(2)%> </p>
     </div>
 
+
+     <div class="confirm-pay">
+            <%= simple_form_for current_user.current_cart, url: cart_path(current_user.current_cart), method: :put do |f|%>
+            <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }  %>
+            <%= f.submit 'Confirm your purchase'%>
+            <% end %>
+
+          </div>
+
   </div>
 </div>
 
