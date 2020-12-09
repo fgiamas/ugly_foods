@@ -1,54 +1,22 @@
 <h1>Here are your orders</h1>
 
-<div class="shop-orders upcoming">
-  <h3>Upcoming Orders</h3>
-  <%= "No upcoming orders!" if current_user.shop.upcoming_confirmed_orders.empty? %>
-  <% grouped_carts = current_user.shop.upcoming_confirmed_orders.group_by(&:cart) %>
-  <!-- this is an array of keys (below) -->
-  <% grouped_carts.keys.sort_by {|cart| cart.pick_up_date}.each do |cart_key| %>
-    <!-- iterating over the keys -->
-    <%= cart_key.user.first_name %>
-    <%= cart_key.user.last_name %>
-    <!-- the argument we are passing is block -->
-    <!-- grouped_carts is hash
-          keys are now sorted in an array
-          for each of teh keys we are grabbing the value from the grouped carts -->
-    <% grouped_carts[cart_key].each do |order| %>
-    <!-- with the each we are manipulating the value of the key we just sorted-->
-    <div class="order-shop d-flex justify-content-around">
-        <div class="title=units">
-        <strong><%= order.product.produce_type.name %></strong>
-          <% if order.units %>
-            <p class="units"><%= order.units %> units</p>
-          <% else %>
-            <p class="kg"><%= order.kg %> kg </p>
-          <% end %>
-          <p>Total: €<%= order.total_price %></p>
-        </div>
-        <%= order.cart.pick_up_date.strftime("%m/%d/%Y") %>
-        <div class="purchase-user">
-          <div class="purchase-user-full-name d-flex">
-            <%= order.cart.user.first_name.downcase.capitalize %>
-            <%= order.cart.user.last_name.downcase.capitalize %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-  <% end %>
-</div>
-<div class="shop-orders past">
-  <h3>Past Orders</h3>
-  <%current_user.shop.past_confirmed_orders.each do |order| %>
-    <div class="order-shop d-flex">
-      <div class="title=units">
-        <strong><%= order.product.produce_type.name %></strong>
-        <% if order.units %>
-          <p class="units"><%= order.units %> units </p>
-        <% else %>
-          <p class="kg"><%= order.kg %> kg </p>
-        <% end %>
-      </div>
-      <%= order.cart.pick_up_date.strftime("%m/%d/%Y") %>
-    </div>
-  <% end %>
+<div class="all-owner-order-info d-flex flex-wrap justify-content-around">
+  <div class="shop-orders upcoming">
+    <h3 style="color: white; padding-bottom: 15px;">Upcoming Orders</h3>
+
+    <%if current_user.shop.upcoming_confirmed_orders.empty? %>
+      <i class="fas fa-folder-open fa-2x" style="color: white;"></i>
+      <h6 style="color: white;">You have no upcoming orders!</h6>
+    <% end %>   <!-- this is an array of keys (below) -->
+    <%= render partial: "owner_dash_order_card", locals: { grouped_carts: current_user.shop.upcoming_confirmed_orders.group_by(&:cart) } %>
+  </div>
+
+  <div class="shop-orders past">
+    <h3 style="color: white; padding-bottom: 15px;">Past Orders</h3>
+    <%if current_user.shop.past_confirmed_orders.empty? %>
+      <i class="fas fa-folder-open" style="color: white;"></i>
+      <h6 style="color: white;">You have no past orders yet!</h6>
+    <% end %>
+     <%= render partial: "owner_dash_order_card", locals: { grouped_carts: current_user.shop.past_confirmed_orders.group_by(&:cart) } %>
+  </div>
 </div>
