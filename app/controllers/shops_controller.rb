@@ -4,7 +4,11 @@ class ShopsController < ApplicationController
 
   def index
     @fruit_and_veg_produce = ProduceType.where("category: ? or ")
+    if params[:shop].present?
+      @shops = Shop.where(id: params[:shop])
+    else
     @shops = Shop.all
+    end
     if params[:search].present?
       @location = params[:search][:location]
       @km = params[:search][:km]

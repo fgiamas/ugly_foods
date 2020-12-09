@@ -274,8 +274,10 @@ scrollbar-color: #f6d365 #F5F5F5;
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+
     opacity: 0;
   }
 }
@@ -286,8 +288,10 @@ scrollbar-color: #f6d365 #F5F5F5;
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+
     opacity: 0;
   }
 }
@@ -305,12 +309,12 @@ scrollbar-color: #f6d365 #F5F5F5;
 }
 .leave-a-review-button {
   color: purple;
-
 }
 
 #product_selection_units{
   background-color: rgba(0, 0, 0, 0.07);
   margin-right: 10px;
+
 }
 
 
