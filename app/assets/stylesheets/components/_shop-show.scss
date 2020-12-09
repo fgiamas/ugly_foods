@@ -267,8 +267,8 @@ scrollbar-color: #f6d365 #F5F5F5;
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
     opacity: 0;
   }
 }
@@ -279,8 +279,8 @@ scrollbar-color: #f6d365 #F5F5F5;
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
     opacity: 0;
   }
 }
@@ -289,13 +289,6 @@ scrollbar-color: #f6d365 #F5F5F5;
   height: 7%;
 }
 
-<<<<<<< HEAD
-
-.cart-logo-animation{
-  background-color: #fda085;
-  color: white;
-=======
 .leave-a-review-button {
   color: purple;
->>>>>>> master
 }

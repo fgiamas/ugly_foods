@@ -1,4 +1,6 @@
-<h2><%= shop.name %></h2>
+
+<h4><%= link_to "#{shop.name}", shop_path(shop) %></h4>
+<%= image_tag("shop-placeholder.jpg", :alt => "shop", style: "width: 55px; height: 45px; border-radius: 20px; margin-bottom: 10px;") %>
 <h6><%= shop.address %></h6>
 <% shop.ratings.each do |rating| %>
 <% rating.content  %>
