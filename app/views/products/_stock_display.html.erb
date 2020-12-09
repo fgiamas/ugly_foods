@@ -1,5 +1,5 @@
 <div class="product-card">
-  <p class="grey" style="font-size: 13px; padding:0px; margin: 0px;"> Uploaded at <%= food.created_at.strftime("%y-%m-%d") %></p>
+  <p class="grey" style="font-size: 13px; padding:0px; margin: 0px; padding-left: 5%; padding-bottom: 8px;"> Uploaded at <%= food.created_at.strftime("%y-%m-%d") %></p>
   <div class="d-flex justify-content-around">
 
     <div>
@@ -19,36 +19,52 @@
       <p class="grey" style="margin: 0px; padding: 0px; font-size: 15px;"><%= food.discount_percent %>% discount</p>
     </div>
 
+    <div>
     <%= link_to product_path(food),
         method: :delete,
         data: { confirm: "Are you sure?" } do %>
-         <p>Delete product</p>
+         <p class="delete-stock-item">Delete product</p>
       <% end %>
 
-  </div>
-
-  <div>
-    <a class="btn" style="padding-left: 80px;" data-toggle="collapse" href="#EditItem1" role="button" aria-expanded="false" aria-controls="EditItem">
+    <a class="btn" style="padding-left: 80px;" data-toggle="collapse" href="#link-<%=food.id%>" role="button" aria-expanded="false" aria-controls="<%= food.id %>">
       Edit your item
       <i class="fas fa-pen-square" style="color: #92A6AD;"></i>
     </a>
 
-    <div class="collapse" id="EditItem1">
+    </div>
+  </div>
+
+
+    <div class="collapse" id="link-<%=food.id%>">
       <div class="card card-body">
           <%= simple_form_for(food) do |f| %>
-
-            <%= f.association :produce_type %>
-            <%= f.input :status, collection: Product.statuses.keys.to_a %>
-            <%= f.input :total_units %>
-            <%= f.input :total_kg %>
-            <%= f.input :price_per_unit %>
-            <%= f.input :discount_percent %>
+            <div class="d-flex">
+              <div>
+                <%= f.label :produce_type, "Enter the produce type" %>
+                <%= f.association :produce_type, html: { class: "edit-prod"}, label: false %>
+              </div>
+              <div>
+                <%= f.label :status, "Ugly or oldie?" %>
+                <%= f.input :status, html: { class: "edit-prod"}, collection: Product.statuses.keys.to_a, label: false %>
+              </div>
+              <div style="text-align:center;">
+                <p>Choose either units or kg</p>
+                <div class="d-flex">
+                  <%= f.input :total_units, html: { class: "edit-prod"}, input_html: {min:1, step:1} %>
+                  <%= f.input :total_kg, html: { class: "edit-prod"}, input_html: {min:1, step:1} %>
+                </div>
+              </div>
+            </div>
+            <%= f.label :price_per_unit, "Price per unit" %>
+            <%= f.input :price_per_unit, label:false, html: { class: "edit-prod"} %>
+            <%= f.label :discount_percent, "Discount %" %>
+            <%= f.input :discount_percent, label: false, html: { class: "edit-prod"} %>
             <%= f.button :submit, label: "Update product" %>
           <% end %>
-        </div>
       </div>
-
     </div>
+
+
 
 
 </div>
