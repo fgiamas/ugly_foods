@@ -1,0 +1,72 @@
+<div class="top-shop d-flex">
+  <div class="shop-owner-stats shop-owner-stats-1">
+
+    <div class="shop-owner-rating">
+      <div class="d-flex justify-content-between">
+        <h5>Your rating</h5>
+        <%= link_to shop_path(current_user.shop) do%>
+          <p class="back-to-store">See your storefront</p>
+        <% end %>
+      </div>
+      <div class="d-flex">
+        <h2><%= current_user.shop.calculate_rating %></h2>
+        <div class="dashboard-rating d-flex flex-wrap" style="padding-top: 10px; padding-left: 10px;">
+          <% current_user.shop.calculate_rating.to_i.times do %>
+            <i class="fas fa-star" style="color: #F6C753; padding-left: 2px;"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="d-flex">
+        <i class="fas fa-heart fa-2x" style="padding-left: 5px;"></i>
+        <p style="padding-left: 20px;"><%= "#{current_user.shop.likes.count} users loves your shop " %></p>
+      </div>
+    </div>
+
+  </br>
+
+    <h5>Read recent ratings</h5>
+    <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
+      <div class="scrollbar-items">
+        <div class="shop-owner-feedback">
+          <% current_user.shop.ratings.each do |rating| %>
+
+              <div class="shop-owner-feedback-card">
+                <div class="d-flex">
+                  <h6 style="padding-right: 10px;"><%= rating.rating %></h6>
+                  <% rating.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </div>
+                <p><%= rating.content %></p>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shop-owner-stats shop-owner-stats-2">
+    <h3>Here are your stats! 💡</h3>
+    <% shop_stats = current_user.shop.amnt_saved %>
+      <div class="d-flex">
+        <%= image_tag("ugly-white.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
+        <p>You have saved <%= shop_stats[:kg_ugly_sum]%> kg & <%= shop_stats[:units_ugly_sum]%> units of ugly foods </p>
+      </div>
+      <div class="d-flex">
+        <%= image_tag("old-white.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
+        <p>You have saved <%= shop_stats[:kg_old_sum]%> kg & <%= shop_stats[:units_old_sum]%> units of oldies but goldies </p>
+      </div>
+      <div class="d-flex">
+        <%= image_tag("flower-white.png", :alt => "shop", style: 'width: 30px; height: 30px;') %>
+        <p>You have saved <%= shop_stats[:flower_sum]%> units of flowers </p>
+      </div>
+    <h4>Let's save the foods!</h4>
+    <h5> We're all beautiful on the inside</h5>
+  </div>
+
+</div>
+
+<div class="upcoming-orders">
+  <% current_user.shop.confirmed_orders.each do |prod| %>
+  <% end %>
+</div>

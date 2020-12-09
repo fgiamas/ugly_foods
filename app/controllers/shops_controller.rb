@@ -36,6 +36,8 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @rating = Rating.new
+    @rating.shop = @shop
     @markers = [{ lat: @shop.latitude, lng: @shop.longitude, infoWindow: render_to_string(partial: "info_window", locals: { shop: @shop }),image_url: helpers.asset_url('carrot.png') }]
     @product_selection = ProductSelection.new
     (@liked_shop = check_if_liked) if current_user
