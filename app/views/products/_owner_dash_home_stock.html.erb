@@ -38,20 +38,62 @@
 
 <div class="tab-content">
   <div class="products-ugly shop-existing-products tab-pane fade show active" id="ugly-stock">
-    <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
-      <%= render partial: "stock_display", locals: { food: food } %>
-    <% end %>
+    <!-- search bar -->
+    <div class="row">
+      <div class="col-sm-12 mb-3">
+        <input type="text" id="myFilter-5" class="form-control my-Filter-5"  placeholder="Search through your uglies..">
+      </div>
+    </div>
+
+    <div class="row" id="myItems-5">
+      <div class="col-sm-12 mb-3">
+
+        <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
+          <%= render partial: "stock_display", locals: { food: food, var: 5 } %>
+        <% end %>
+
+      </div>
+    </div>
+
   </div>
 
+
   <div class="products-old shop-existing-products tab-pane fade" id="old-stock">
-    <% current_user.shop.old_foods.each do |food| %>
-      <%= render partial: "stock_display", locals: { food: food } %>
-    <% end %>
+
+    <div class="row">
+      <div class="col-sm-12 mb-3">
+        <input type="text" id="myFilter-6" class="form-control my-Filter-6"  placeholder="Search through your oldies..">
+      </div>
+    </div>
+
+    <div class="row" id="myItems-6">
+      <div class="col-sm-12 mb-3">
+
+      <% current_user.shop.old_foods.each do |food| %>
+        <%= render partial: "stock_display", locals: { food: food, var: 6 } %>
+      <% end %>
+
+      </div>
+    </div>
   </div>
 
   <div class="products-flower shop-existing-products tab-pane fade" id="flower-stock">
-    <% current_user.shop.flowers.each do |food| %>
-      <%= render partial: "stock_display", locals: { food: food } %>
-    <% end %>
+
+    <div class="row">
+      <div class="col-sm-12 mb-3">
+        <input type="text" id="myFilter-7" class="form-control my-Filter-7"  placeholder="Search through your flowers..">
+      </div>
+    </div>
+
+    <div class="row" id="myItems-7">
+      <div class="col-sm-12 mb-3">
+
+      <% current_user.shop.flowers.each do |food| %>
+        <%= render partial: "stock_display", locals: { food: food, var: 7 } %>
+      <% end %>
+
+      </div>
+    </div>
+
   </div>
 </div>
