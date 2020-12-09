@@ -2,6 +2,21 @@
 
   background: white;
 }
+.index-search-item2{
+padding-top:15px;
+}
+.pages-home .navbar-lewagon {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  .logo-navbar{
+    background-color:#EBF9FD;
+    color:white;
+    border-radius: 30px;
+  }
+}
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -41,9 +56,9 @@ margin-left: 50%;
 
 .search-wrap{
 align-items: center;
-border-radius: 40px;
+border-radius: 30px;
 background-color: white;
-padding: px;
+padding: 0px 15px 5px;
 
 }
 
@@ -64,4 +79,3 @@ padding: px;
 .navbar-lewagon{
   background-color: #EBF9FD;
 }
-
