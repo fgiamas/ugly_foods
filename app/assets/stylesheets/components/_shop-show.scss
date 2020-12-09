@@ -274,8 +274,10 @@ scrollbar-color: #f6d365 #F5F5F5;
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(10px);
-            transform: translateX(10px);
+
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+
     opacity: 0;
   }
 }
@@ -286,8 +288,10 @@ scrollbar-color: #f6d365 #F5F5F5;
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateX(10px);
-            transform: translateX(10px);
+
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+
     opacity: 0;
   }
 }
@@ -296,6 +300,13 @@ scrollbar-color: #f6d365 #F5F5F5;
   height: 7%;
 }
 
+
+
+
+.cart-logo-animation{
+  background-color: #fda085;
+  color: white;
+}
 .leave-a-review-button {
   color: purple;
 }
