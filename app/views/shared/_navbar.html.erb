@@ -10,12 +10,14 @@
   <div class= "index-search-bar d-flex flex-wrap align-items-center mr-0">
     <div class = "search-wrap d-flex">
       <div class="index-search-item1">
-        <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
-        <%= f.input :location, wrapper: false, as: :string, html: {class: "search-location"}, placeholder: "Enter your address", label: false%>
+        <%= simple_form_for :search, url: shops_path, html: {class: "search-form navbar-edit"}, method: :get do |f|%>
+        <%= f.input :location, wrapper: false, as: :string, html: {class: "search-location navbar-edit"}, placeholder: "Enter your address", label: false%>
       </div>
 
       <div class="index-search-item2">
+
         <%= f.input :km, collection: [[2, "2km"], [4, "4km"],[6, "6km"],[8, "8km"],[10, "10km"],[20, "20km"],[30, "30km"]], label_method: :second, value_method: :first,  html: {class: "search-location"}, prompt: "Distance from your location?", label: false%>
+
       </div>
 
 
