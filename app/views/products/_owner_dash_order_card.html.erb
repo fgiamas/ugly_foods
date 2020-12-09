@@ -1,0 +1,42 @@
+<div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-products-owner overflow-auto">
+  <div class="scrollbar-items-owner">
+
+    <% grouped_carts.keys.sort_by {|cart| cart.pick_up_date}.each do |cart_key| %>
+      <!-- iterating over the keys -->
+      <div class="grouped-owner-cart" style="width: 400px;">
+        <div style="padding: 10px; padding-left: 15px; padding-right: 15px;">
+          <div class="d-flex">
+            🛒 &nbsp
+            <p style="color: #F5AB7E;"><%= cart_key.user.first_name.downcase.capitalize %></p> &nbsp
+            <p style="color: #F5AB7E;"><%= cart_key.user.last_name.downcase.capitalize %></p>
+            <%= link_to 'Chat with the customer', shop_chatroom_path(shop_id: current_user.shop.id, user_id: cart_key.user.id) %>
+
+          </div>
+          <p> Cart ordered on: <strong><%= cart_key.pick_up_date.strftime("%m/%d/%Y") %></strong> </p>
+        </div>
+      <!-- the argument we are passing is block -->
+      <!-- grouped_carts is hash
+            keys are now sorted in an array
+            for each of teh keys we are grabbing the value from the grouped carts -->
+        <% grouped_carts[cart_key].each do |order| %>
+        <!-- with the each we are manipulating the value of the key we just sorted-->
+          <div style="align-items: left;">
+          <div class="order-shop d-flex flex-wrap justify-content-around" style="font-size: 15px; border-bottom: 0.1px solid lightgrey; padding-bottom: none;">
+              <div>
+                <strong><%= order.product.produce_type.name %></strong>
+
+                <% if order.units %>
+                  <p class="units grey" style="padding: 0px; margin: 0px;"><%= order.units %> units</p>
+                <% else %>
+                  <p class="kg grey" style="padding: 0px; margin: 0px;"><%= order.kg %> kg </p>
+                <% end %>
+              </div>
+              <p>€<%= order.total_price %></p>
+            </div>
+          </div>
+        <% end %>
+        <p style="padding-left: 10px; padding-top: 20px;color: #F5AB7E;" ><strong>Total price: € <%= cart_key.calculate_price %></strong></p>
+      </div>
+    <% end %>
+  </div>
+</div>

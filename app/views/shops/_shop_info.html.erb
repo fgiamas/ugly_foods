@@ -53,8 +53,44 @@
 
 
       </br>
-      <h6 class="purple"><strong>Read recent reviews</strong></h6>
-      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-shopfront overflow-auto">
+      <div class="d-flex justify-content-between">
+        <h5 class="purple"><strong>Read recent reviews</strong></h5>
+
+
+        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+          <div class="leave-a-review-button d-flex flex-wrap">
+            <i class="fas fa-plus-circle" style="padding-top: 5px; color: #B7E5F8"></i>
+            <p style="padding-left: 5px; margin-right: 40px; color:#808080;" >Leave a review</p>
+          </div>
+        </button>
+
+        <!-- modal content -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Leave a review for <%= @shop.name %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [ shop, rating], remote: true do |f| %>
+                  <%= f.label :rating, "Leave a rating!" %>
+                  <%= f.input :rating, as: :integer, label: false,  input_html: {min:1, step: 1, max: 5}, placeholder: "1 to 5" %>
+                  <%= f.label :content, "Rating content" %>
+                  <%= f.input :content, as: :text, label: false, placeholder: "Don't forget to leave a comment"%>
+                  <%= f.submit "Submit review", class: "btn btn-primary" %>
+                  <button type="button" data-dismiss="modal"></button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal content -->
+
+      </div>
+      <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scroll-bar-owner overflow-auto">
         <div class="scrollbar-items">
           <% @shop.ratings.each do |rating| %>
             <div class="d-flex">
@@ -82,8 +118,6 @@
           <% end %>
         </div>
       </div>
-
-      <%= link_to 'Leave a review', new_shop_rating_path(@shop) %>
     </div>
 
 

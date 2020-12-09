@@ -1,8 +1,8 @@
 
 <% if current_user.shop %>
-  <%= render 'shared/shopowner_dashboard' %>
+  <%= render 'shopowner_dashboard' %>
   <%= yield %>
 <% else %>
-  <%= render 'shared/user_dashboard' %>
+  <%= render 'user_dashboard' %>
   <%= yield %>
 <% end %>

@@ -62,4 +62,41 @@ class Shop < ApplicationRecord
 
   def filtered_by_flowers
   end
+
+  def amnt_saved
+    flower_sum = 0
+    units_ugly_sum = 0
+    kg_ugly_sum = 0
+    units_old_sum = 0
+    kg_old_sum = 0
+    self.product_selections.each do |selection|
+        if selection.product.produce_type.category == "flower" && selection.cart.status == "confirmed"
+          if selection.units
+          flower_sum += selection.units
+          end
+        elsif selection.product.status == "ugly" && selection.cart.status == "confirmed"
+          if selection.kg
+            kg_ugly_sum += selection.kg
+          end
+          if selection.units
+            units_ugly_sum += selection.units
+          end
+        elsif selection.product.status == "old" && selection.cart.status == "confirmed"
+          if selection.kg
+            kg_old_sum += selection.kg
+          end
+          if selection.units
+            units_old_sum += selection.units
+          end
+        end
+    end
+    return {
+      flower_sum: flower_sum,
+      units_ugly_sum: units_ugly_sum,
+      kg_ugly_sum: kg_ugly_sum,
+      units_old_sum: units_old_sum,
+      kg_old_sum: kg_old_sum
+    }
+  end
+
 end

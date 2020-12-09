@@ -1,0 +1,55 @@
+<div class="product-card">
+  <p class="grey" style="font-size: 13px; padding:0px; margin: 0px;"> Uploaded at <%= food.created_at.strftime("%y-%m-%d") %></p>
+  <div class="d-flex justify-content-around">
+
+    <div>
+      <strong><%= food.produce_type.name %></strong></br>
+    </div>
+
+
+
+    <div>
+      <p style="font-size: 15px; margin: 0px; padding: 0px; "><%= "#{food.total_units} units" if food.total_units %></p>
+      <p style="font-size: 15px; margin: 0px; padding: 0px;"><%= "#{food.total_kg} kg" if food.total_kg %></p>
+    </div>
+
+    <div>
+      <strong><p style="margin: 0px; padding: 0px; font-size: 15px;">Your price: €<%= food.total_price.round(2)%> / unit</p></strong>
+      <p class="grey" style="margin: 0px; padding: 0px; font-size: 15px;">€<%= food.price_per_unit %> / unit</p>
+      <p class="grey" style="margin: 0px; padding: 0px; font-size: 15px;"><%= food.discount_percent %>% discount</p>
+    </div>
+
+    <%= link_to product_path(food),
+        method: :delete,
+        data: { confirm: "Are you sure?" } do %>
+         <p>Delete product</p>
+      <% end %>
+
+  </div>
+
+  <div>
+    <a class="btn" style="padding-left: 80px;" data-toggle="collapse" href="#EditItem1" role="button" aria-expanded="false" aria-controls="EditItem">
+      Edit your item
+      <i class="fas fa-pen-square" style="color: #92A6AD;"></i>
+    </a>
+
+    <div class="collapse" id="EditItem1">
+      <div class="card card-body">
+          <%= simple_form_for(food) do |f| %>
+
+            <%= f.association :produce_type %>
+            <%= f.input :status, collection: Product.statuses.keys.to_a %>
+            <%= f.input :total_units %>
+            <%= f.input :total_kg %>
+            <%= f.input :price_per_unit %>
+            <%= f.input :discount_percent %>
+            <%= f.button :submit, label: "Update product" %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+
+</div>
+

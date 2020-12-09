@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-between">
+  <h3 class="purple">Your stock</h3>
+  <a class="btn add-stock" data-toggle="collapse" href="#AddToStock" role="button" aria-expanded="false" aria-controls="AddToStock">
+    <div class="d-flex">
+      <i class="fas fa-plus-circle fa-lg purple" style="padding-top: 5px; padding-right: 5px;"></i>
+        <p class="purple" style="padding-bottom: 0px; margin-bottom: 0px;"> Add to your Stock</p>
+    </div>
+  </a>
+</div>
+
+<div class="collapse" id="AddToStock">
+  <div class="card card-body card-body-add-dropdown">
+      <%= simple_form_for(@product) do |f| %>
+        <%= f.input :discount_percent %>
+        <%= f.input :price_per_unit %>
+        <%= f.input :lifespan %>
+        <%= f.input :total_units %>
+        <%= f.input :total_kg %>
+        <%= f.input :days_to_expiry %>
+        <%= f.input :status, collection: Product.statuses.keys.to_a %>
+        <%= f.association :produce_type %>
+        <%= f.submit %>
+      <% end %>
+  </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a href="#ugly-stock" class="nav-link prod active" data-toggle="tab">Ugly Foods</a>
+    </li>
+    <li class="nav-item">
+        <a href="#old-stock" class="nav-link prod" data-toggle="tab">Oldies but Goldies</a>
+    </li>
+    <li class="nav-item">
+        <a href="#flower-stock" class="nav-link prod" data-toggle="tab">Flowers</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+  <div class="products-ugly shop-existing-products tab-pane fade show active" id="ugly-stock">
+    <% current_user.shop.ugly_foods.order(:created_at).each do |food| %>
+      <%= render partial: "stock_display", locals: { food: food } %>
+    <% end %>
+  </div>
+
+  <div class="products-old shop-existing-products tab-pane fade" id="old-stock">
+    <% current_user.shop.old_foods.each do |food| %>
+      <%= render partial: "stock_display", locals: { food: food } %>
+    <% end %>
+  </div>
+
+  <div class="products-flower shop-existing-products tab-pane fade" id="flower-stock">
+    <% current_user.shop.flowers.each do |food| %>
+      <%= render partial: "stock_display", locals: { food: food } %>
+    <% end %>
+  </div>
+</div>

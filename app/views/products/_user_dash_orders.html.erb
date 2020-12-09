@@ -1,0 +1,117 @@
+<div class="d-flex">
+
+  <div class="all-orders">
+    <div class="user-upcoming-orders">
+      <h3 class="upcoming-title orange-text">Upcoming Orders</h3>
+
+      <div class="upcoming-orders">
+        <div class="index-scroll force_overflow">
+          <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-user-dash">
+            <div class="upcoming-orders-list">
+
+              <% all_upcoming_carts = current_user.user_upcoming_carts %>
+              <% all_upcoming_carts.sort_by {|cart| cart.pick_up_date}.each do |cart| %>
+                <div class="carts-user-dash">
+
+                  <div class="d-flex justify-content-between cart-titling">
+                    <div class="d-flex flex-wrap">
+                      <div class="cart-item-user-up">🛒</div>
+                      <p class="orange-text"><strong>Order on <%= cart.pick_up_date %></strong></p>
+                    </div>
+                    <p>€ <%= cart.calculate_price %></p>
+                  </div>
+
+                  <% grouped_prod_select =  cart.product_selections.group_by(&:shop) %>
+                  <div>
+                    <% grouped_prod_select.keys.each do |shop_key| %>
+                      <div class="upcoming-org-shop">
+                        <p class="cart-shop-title purple"><strong><%= shop_key.name %></strong></p>
+
+                        <%= link_to 'Chat with the owner', shop_chatroom_path(shop_key) %>
+
+                        <% grouped_prod_select[shop_key].each do |selection| %>
+                          <div class="d-flex justify-content-between cart-item-group">
+                            <p class="cart-items"><%= selection.product.produce_type.name %> </p>
+                            <div>
+                              <p class="cart-items"><strong>€<%= selection.total_price%></strong> </p>
+                              <p class="cart-items"><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+
+                </div>
+              <% end %>
+
+            </div>
+           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="all-orders">
+    <div class="user-upcoming-orders">
+      <h3 class="upcoming-title orange-text">Past Orders</h3>
+
+        <div class="upcoming-orders">
+          <div class="index-scroll">
+            <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-user-dash">
+              <div class="upcoming-orders-list">
+
+                <% all_past_carts = current_user.user_past_carts %>
+                <% all_past_carts.sort_by {|cart| cart.pick_up_date}.each do |cart| %>
+
+                    <div class="carts-user-dash">
+                      <!-- going into the cart itself, separated by carts -->
+                        <div class="d-flex justify-content-between cart-titling">
+                          <div class="d-flex flex-wrap">
+                            <div class="cart-item-user-up">🛒</div>
+                            <p class="orange-text"><strong>Order on <%= cart.pick_up_date %></strong></p>
+                          </div>
+                          <p>€ <%= cart.calculate_price %></p>
+                        </div>
+
+                        <!-- cart now grouped by shop -->
+                        <% grouped_prod_select =  cart.product_selections.group_by(&:shop) %>
+                        <div>
+                          <!--now going into the product selection for each shop -->
+                          <% grouped_prod_select.keys.each do |shop_key| %>
+
+                        <div class="upcoming-org-shop-orders">
+                          <strong><%= shop_key.name %></strong>
+                            <%= link_to 'Message the shop', dashboard_path(messages: true) %>
+                            <div class="upcoming-org-shop">
+                              <p class="cart-shop-title purple"><strong><%= shop_key.name %></strong></p>
+
+                              <% grouped_prod_select[shop_key].each do |selection| %>
+                                <div class="d-flex justify-content-between cart-item-group">
+                                  <p class="cart-items"><%= selection.product.produce_type.name %> </p>
+                                  <div>
+                                    <p class="cart-items"><strong>€<%= selection.total_price%></strong> </p>
+                                    <p class="cart-items"><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
+                                  </div>
+                                </div>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        </div>
+
+                      </div>
+                    </div>
+
+                <% end %>
+
+            </div>
+           </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

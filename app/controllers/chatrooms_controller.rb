@@ -18,10 +18,10 @@
       # For shopowners
       @chatroom = Chatroom.find_or_create_by(shop: current_user.shop, user: params[:user_id])
     else
-      # For buyers
       @chatroom = Chatroom.find_or_create_by(shop: @shop, user: current_user)
     end
     @message = Message.new
+    redirect_to dashboard_path(messages: true)
   end
 
 end
