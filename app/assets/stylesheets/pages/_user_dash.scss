@@ -80,6 +80,7 @@
   background-color: #FBAB7E;
   background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
   height: 100%;
+  margin-top: 20%;
 }
 
 .orange-text {
@@ -241,6 +242,14 @@ box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.8);
   padding: 20px;
   margin-left: 10px;
   box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.4);
+  transition: height 2s;
+}
+
+.shop-near-me:hover {
+  transform: scale(1.03);
+  box-shadow: 2px 2px 8px 0px rgba(190 ,190,190,0.6);
+  cursor: pointer;
+  border: none;
 }
 
 .shops-near-me {
@@ -266,3 +275,10 @@ box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.8);
   text-align: center;
 }
 
+.leave-a-review-btn:hover {
+ background-color: #EEEEEE;
+}
+
+.scrolling-wrapper.row.flex-row.flex-nowrap.mt-4.pb-4.shops-near-me-list {
+  padding: 10px;
+}
