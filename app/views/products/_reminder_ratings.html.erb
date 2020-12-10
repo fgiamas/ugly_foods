@@ -11,7 +11,9 @@
             <p class="purple"><%= shop.user.first_name %>
             <%= shop.user.last_name %><p><p>&nbsp went</p>
             </div>
-            <p class="leave-a-review-btn orange"> 🌟 Leave a review🌟</p>
+            <%= link_to shop_path(shop) do%>
+              <p class="leave-a-review-btn orange"> 🌟 Leave a review🌟</p>
+            <% end %>
           </div>
         </div>
       <% end %>

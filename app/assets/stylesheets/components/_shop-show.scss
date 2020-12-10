@@ -84,9 +84,13 @@ a:hover{
   margin: 20px;
   border-radius: 20px;
 }
+.shops-show-all.margin-show {
+  margin-left: 40px;
+  margin-right: 40px;
+}
 
 .shops-show-all-back {
-  background-color: #F2FAFC;
+  background-color: #ECF9FE;
   padding: 20px;
 }
 
@@ -173,6 +177,8 @@ button {
 
 .shopping-cart-drop {
   background-color: white;
+  position: absolute;
+  right: 0px;
 }
 
 .btn.cart {
@@ -317,5 +323,29 @@ scrollbar-color: #f6d365 #F5F5F5;
 
 }
 
+input#myFilter {
+  margin: auto;
+  width: 70%;
+  background-color: #F2F3F2;
+}
 
+input#myFilter-2 {
+  margin: auto;
+  width: 70%;
+  background-color: #F2F3F2;
+}
 
+input#myFilter-3 {
+  margin: auto;
+  width: 70%;
+  background-color: #F2F3F2;
+}
+
+.col-sm-12.mb-3.show-page {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.col-sm-12.mb-3.show-page::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}

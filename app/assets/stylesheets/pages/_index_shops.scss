@@ -1,9 +1,9 @@
 .shop-info {
-     background-color: white;
+    background-color: white;
     padding: 20px;
     margin-bottom: 10px;
+    margin-left: 7%;
     border-radius: 10px;
-    margin-right: 1%;
 }
 
 .shop-image-rating {
@@ -13,7 +13,7 @@
 .calculated-rating {
   padding-right: 10px;
   color: white;
-  background-color: #C7E8E6;
+  background-color: #EB4963;
   border-radius: 20px 0px 0px 20px;
   padding-left: 15px;
   margin-right: 6px;
@@ -29,10 +29,6 @@
 }
 
 .name-and-distance {
-  background-color:#FBAB7E  ;
-  background-image:linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-  padding: 15px;
-  border-radius: 10px;
   color :black;
 }
 
@@ -158,18 +154,24 @@ border-top:1px solid #dedede;
 }
 
 .visit-shop-text{
-  margin-top: 30%;
-  color: black;
+  margin-top: 20%;
+  padding-left: 10px;
+  color: #F5A45B;
+ text-decoration: none;
+
 }
 
 .index-page{
-  background-color: whitesmoke;
+  background-color: #ECF9FE;
 
 }
 
 .heartbeat {
   -webkit-animation: heartbeat 3.5s ease-in-out 2s infinite both;
           animation: heartbeat 3.5s ease-in-out 2s infinite both;
+  border-radius: 25px;
+  padding: 1px 15px 1px 15px;
+  box-shadow: 2px 2px 8px 0px rgba(97 ,90,87,0.1);
 }
 @-webkit-keyframes heartbeat {
   from {
@@ -310,7 +312,4 @@ border-top:1px solid #dedede;
   }
 }
 
-.visit-shop-text{
- padding-top:  50px;
- text-decoration: none;
-}
+

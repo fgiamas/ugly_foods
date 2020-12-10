@@ -1,124 +1,112 @@
 
-<div class= "cart-show-index">
-  <div class= "second-index">
-  <div class="container">
+<div class= "cart-show-index" style="padding: 40px;">
 
-
-    <div class="user-intro">
-      <h1><%= current_user.first_name.capitalize %>, welcome to your cart!</h1>
-     <p> Together we can <strong> save </strong> the foods!</p>
-   </div>
-
-
-
-
-   <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
-
-
-
-<%= link_to shops_path do %>
+          <%= link_to shops_path do %>
             <div class="continue-shoping">
               <div class="d-flex flex-wrap">
-                <i class="fas fa-long-arrow-alt-left"></i>
-                <p>Continue shopping</p>
+                <div class="continue-shopping-styling">
+                  <p style="padding: 0; margin: 0;"><i class="fas fa-long-arrow-alt-left"></i>
+                  Continue shopping</p>
+                </div>
               </div>
               <% end %>
             </div>
 
-   <div class="row">
 
-    <div class="col-6">
+  <div class="cart-container d-flex">
+
+    <div class="col-7 total-cart" style=" box-shadow: 5px 5px 10px 3px rgba(87,89,90,0.08);">
+
+      <div class="user-intro">
+        <h4><%= current_user.first_name.capitalize %>, welcome to your cart!</h4>
+        <p> Together we can <strong> save </strong> the foods!</p>
+      </div>
+
+      <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
+
       <div class="cart-cards">
        <% group_cart_items.keys.each do |shop_key| %>
-       <div class="all-cart-card-info" style="border-bottom: 0.2px solid grey; margin-bottom: 5px;">
+       <div class="all-cart-card-info">
           <div class = "cart-card-index" style="background-color:white;">
 
-          <div class="cart-logo">
-             <%= image_tag("cart-item.png", :alt => "cart-item")%>
-           </div>
+            <div class="cart-logo">
+               <%= image_tag("cart-item.png", :alt => "cart-item")%>
+            </div>
 
-          <div class="cart-name">
-            <strong class="orange"><%= shop_key.name %></strong>
-          </div>
+            <div class="cart-name">
+              <strong class="orange"><%= shop_key.name %></strong>
+            </div>
 
-          <div class="cart-item-index-all">
-            <% group_cart_items[shop_key].each do |select| %>
-              <div class="cart-item-index">
-                <strong><%= select.product.produce_type.name %></strong>
-              </div>
-            <% end %>
-          </div>
+            <div class="cart-item-index-all">
+              <% group_cart_items[shop_key].each do |select| %>
+                <div class="cart-item-index">
+                  <strong><%= select.product.produce_type.name %></strong>
+                </div>
+              <% end %>
+            </div>
 
-          <div class="cart-quantity-index">
+            <div class="cart-quantity-index" style="width: 70px;">
+               <% group_cart_items[shop_key].each do |select| %>
+                 <div class= "cart-quantity">
+                  <p class="grey" style="padding: 0; margin: 0;">
+                    <%= select.units ? "#{select.units} units" : "#{select.kg} kg" %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="cart-price-index" style="width: 70px;">
              <% group_cart_items[shop_key].each do |select| %>
-               <div class= "cart-quantity">
-                <strong>
-                  <%= select.units ? "#{select.units} units" : "#{select.kg} kg" %>
-                </strong>
-              </div>
-            <% end %>
+               <div class="cart-price">
+                € <%= select.total_price.round(2) %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="remove-cart-item-show" style="padding-left: 20%;">
+             <% group_cart_items[shop_key].each do |select| %>
+                <div>
+                  <%= link_to product_selection_path(select),
+                  method: :delete,
+                  data: {confirm: "Are you sure you want to remove from cart?"},
+                  remote: true do %>
+                  <i class="far fa-minus-square"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+
           </div>
 
-          <div class="cart-price-index">
-           <% group_cart_items[shop_key].each do |select| %>
-             <div class="cart-price">
-
-              € <%= select.total_price.round(2) %>
-
-                <%= link_to product_selection_path(select),
-                method: :delete,
-                data: {confirm: "Are you sure you want to remove from cart?"},
-                remote: true do %>
-                <i class="far fa-minus-square"></i>
-                <% end %>
-
-              </div>
-            <% end %>
+          <div class="price-per-shop" style="padding-right: 10px;">
+            <p style="font-size: 15px;"> Total at: <%= "#{shop_key.name}" %> <strong> <%= "€#{group_cart_items[shop_key].map {|item| item.total_price}.sum}"%></strong></p>
           </div>
 
         </div>
+      <% end %>
 
-        <div class="price-per-shop">
-          <p> Total per <%= shop_key.name %> <%= group_cart_items[shop_key].map {|item| item.total_price}.sum %></p>
-        </div>
-    </div>
-  <% end %>
-
-    <div class ="grand-total">
-      <p>Total: <%= current_user.current_cart.product_selections.map {|item| item.total_price}.sum.round(2)%> </p>
-    </div>
+      <div class ="grand-total">
+        <p style="padding-top: 10px;">Total: €<%= current_user.current_cart.calculate_price.round(2)%> </p>
+      </div>
 
 
-     <div class="confirm-pay">
+        <div class="confirm-pay" id="payment-animation" style="margin-top: 30px;">
             <%= simple_form_for current_user.current_cart, url: cart_path(current_user.current_cart), method: :put do |f|%>
-            <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }  %>
-            <%= f.submit 'Confirm your purchase'%>
+            <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }, class: "confirm-pay-input" %>
+            <%= f.submit 'Confirm your purchase', class: "confirm-pay-submit" %>
             <% end %>
+        </div>
+      </div>
+    </div>
 
-          </div>
+
+    <div class="col-5">
+      <%= render "shops/payment_method" %>
+    </div>
 
   </div>
-</div>
-
-
-  <div class="col-6">
-    <%= render "shops/payment_method" %>
-  </div>
 
 </div>
 
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-</div> <!-- card.// -->
-
-</div>
 
 

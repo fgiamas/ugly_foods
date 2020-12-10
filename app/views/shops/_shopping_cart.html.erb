@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div class="btn-group aign-items-right">
+  <div class="btn-group dropleft">
     <% group_cart_items = current_user.current_cart.product_selections.group_by(&:shop) %>
 
     <button type="button" class="btn cart dropdown-toggle dropleft" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative">
@@ -53,7 +53,10 @@
 
           <div class="bring-to-checkout" id="cart-animation">
             <div class="" id="cart-slide">
-            <i class="fas fa-shopping-cart fa-lg text-white" style="padding-top: 10px;"> see cart</i>
+            <div class="d-flex">
+              <i class="fas fa-shopping-cart fa-lg text-white" style="padding-top: 10px;"></i>
+              <p style="color: white; padding-top: 2%; padding-left: 2%;">see cart</p>
+            </div>
             </div>
           </div>
             <%= link_to "check_out", cart_path(current_user.current_cart), id:"check-out-link", class:"d-none" %>

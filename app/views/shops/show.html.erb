@@ -1,13 +1,15 @@
 <%= render "shop_nav" %>
 
 <div class="shops-show-all-back">
-      <%= link_to shops_path do %>
-      <div class="back-to-shops" style="color: white;">
+
+<div class="shops-show-all margin-show" style="position: relative;">
+
+    <%= link_to shops_path do %>
+      <div class="back-to-shops" style="color: white; position: absolute; top: -50px; left: -20px;">
         <i class="fas fa-arrow-circle-left fa-2x"></i>
       </div>
     <% end %>
 
-<div class="shops-show-all">
   <div class="storefront-container d-flex" id="heart">
     <%= render partial: "shop_info", locals: { rating: @rating, shop: @shop } %>
 
@@ -32,12 +34,12 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-12 mb-3">
-          <input type="text" id="myFilter" class="form-control my-Filter"  placeholder="Search for uglies..">
+        <div class="col-sm-12 mb-3 show-page">
+          <input type="text" id="myFilter" class="form-control my-Filter show-page"  placeholder="Search for uglies..">
         </div>
       </div>
       <div class="row" id="myItems">
-        <div class="col-sm-12 mb-3">
+        <div class="col-sm-12 mb-3 show-page">
           <% @shop.ugly_foods.sort_by(&:produce_type).each do |product| %>
 
           <% product.total_units ? measure = "units" : measure = "kg"  %>
@@ -53,13 +55,13 @@
         <%= image_tag("old-index.png", :alt => "shop", class: "scroll-icons") %>
       </div>
       <div class="row">
-        <div class="col-sm-12 mb-3">
-          <input type="text" id="myFilter-2" class="form-control my-Filter"  placeholder="Search for oldies..">
+        <div class="col-sm-12 mb-3 show-page">
+          <input type="text" id="myFilter-2" class="form-control my-Filter show-page"  placeholder="Search for oldies..">
         </div>
       </div>
 
       <div class="row" id="myItems-2">
-        <div class="col-sm-12 mb-3">
+        <div class="col-sm-12 mb-3 show-page">
           <% @shop.old_foods.sort_by{|t| [t.produce_type, t.produce_type.name] }.each do |product| %>
 
           <% product.total_units? ? measure = "units" : measure = "kg"  %>
@@ -77,12 +79,12 @@
         <%= image_tag("flower-index.png", :alt => "shop", class: "scroll-icons") %>
       </div>
       <div class="row">
-        <div class="col-sm-12 mb-3">
-          <input type="text" id="myFilter-3" class="form-control my-Filter"  placeholder="Search for flowers..">
+        <div class="col-sm-12 mb-3 show-page">
+          <input type="text" id="myFilter-3" class="form-control my-Filter show-page"  placeholder="Search for flowers..">
         </div>
       </div>
       <div class="row" id="myItems-3">
-        <div class="col-sm-12 mb-3">
+        <div class="col-sm-12 mb-3 show-page">
 
           <% @shop.flowers.sort_by{ |t| t.produce_type.name }.each do |product| %>
           <% product.total_units? ? measure = "units" : measure = "kg"  %>
