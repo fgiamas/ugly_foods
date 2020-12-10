@@ -46,6 +46,7 @@
             </div>
           <% end %>
 
+
           <div class="sub-total d-flex justify-content-between" style="padding: 10px; margin: 0px;">
             <p class="purple">Subtotal:</p>
             <p class="purple">€ <%= current_cart.calculate_price %> </p>
@@ -74,33 +75,29 @@
 
       <% end %>
 
-    </div>
 
-  </div>
+<script>
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+  const cartAnimation = document.querySelector("#cart-animation")
+  const animationSlide = document.querySelector("#cart-slide")
+  const animationCheckOutLink = document.querySelector("#check-out-link")
+  const cartDropdown = document.querySelector("#cart-drop")
+  cartAnimation.addEventListener("click",(e)=>{
+    e.preventDefault()
+    cartDropdown.addEventListener("click", (event) => event.stopImmediatePropagation())
+    console.log("clicked")
+    animationSlide.classList.add("slide-out-right")
+    setTimeout(() => {
+      console.log("Waited for a while")
+      animationCheckOutLink.click()
+    }, 100)
+    // sleep(2000).then(() => {
+    //     // Do something after the sleep!
+    // });
+  })
+  // sleep time expects milliseconds
+// Usage!
+</script>
 
-
-  <script>
-  function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
-    const cartAnimation = document.querySelector("#cart-animation")
-    const animationSlide = document.querySelector("#cart-slide")
-    const animationCheckOutLink = document.querySelector("#check-out-link")
-    const cartDropdown = document.querySelector("#cart-drop")
-    cartAnimation.addEventListener("click",(e)=>{
-      e.preventDefault()
-      cartDropdown.addEventListener("click", (event) => event.stopImmediatePropagation())
-      console.log("clicked")
-      animationSlide.classList.add("slide-out-right")
-      setTimeout(() => {
-        console.log("Waited for a while")
-        animationCheckOutLink.click()
-      }, 1200)
-      // sleep(2000).then(() => {
-      //     // Do something after the sleep!
-      // });
-    })
-    // sleep time expects milliseconds
-  // Usage!
-  </script>
-<% end %>

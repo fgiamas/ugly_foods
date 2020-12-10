@@ -31,6 +31,7 @@ import { initFiltersThree } from '../plugins/init_filters';
 import { initFiltersFive } from '../plugins/init_filters';
 import { initFiltersSix } from '../plugins/init_filters';
 import { initFiltersSeven } from '../plugins/init_filters';
+import { initIntersectionObserver  } from '../plugins/init_scroll';
 // import { initLandingPage } from '../plugins/init_landing_page'
 
 
@@ -49,5 +50,5 @@ document.addEventListener('turbolinks:load', () => {
   initFiltersFive();
   initFiltersSix();
   initFiltersSeven();
-
+  initIntersectionObserver();
 })

@@ -5,7 +5,11 @@
             <div class="continue-shoping">
               <div class="d-flex flex-wrap">
                 <div class="continue-shopping-styling">
+<<<<<<< HEAD
                   <p style="padding: 0; margin: 0;"><i class="fas fa-long-arrow-alt-left"></i>
+=======
+                  <p><i class="fas fa-long-arrow-alt-left"></i>
+>>>>>>> master
                   Continue shopping</p>
                 </div>
               </div>
@@ -85,12 +89,21 @@
         </div>
       <% end %>
 
+<<<<<<< HEAD
       <div class ="grand-total">
         <p style="padding-top: 10px;">Total: €<%= current_user.current_cart.calculate_price.round(2)%> </p>
       </div>
 
 
         <div class="confirm-pay" id="payment-animation" style="margin-top: 30px;">
+=======
+    <div class ="grand-total">
+      <p>Total: <%= current_user.current_cart.product_selections.map {|item| item.total_price}.sum.round(2)%> €</p>
+    </div>
+
+
+     <div class="confirm-pay" id="payment-animation">
+>>>>>>> master
             <%= simple_form_for current_user.current_cart, url: cart_path(current_user.current_cart), method: :put do |f|%>
             <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }, class: "confirm-pay-input" %>
             <%= f.submit 'Confirm your purchase', class: "confirm-pay-submit" %>
@@ -99,6 +112,13 @@
       </div>
     </div>
 
+<<<<<<< HEAD
+=======
+          </div>
+
+    </div>
+</div>
+>>>>>>> master
 
     <div class="col-5">
       <%= render "shops/payment_method" %>
@@ -109,4 +129,38 @@
 </div>
 
 
+<<<<<<< HEAD
+=======
+</div>
+
+            <div class="" id="fruit-slide">
+              <h1 style= "font-size: 160px;">🥑</h1>
+            </div>
+
+</div>
+
+</div>
+
+
+
+</div> <!-- card.// -->
+
+</div>
+
+<script>
+  const fruitSlide = document.querySelector("#fruit-slide")
+  const paymentAnimation = document.querySelector("#payment-animation input[type='submit']")
+  paymentAnimation.addEventListener("click",(e)=>{
+    e.preventDefault()
+    fruitSlide.classList.add("slide-out-elliptic-top-bck")
+    setTimeout(() => {
+      console.log("Waited for a while")
+      document.querySelector("#payment-animation form").submit()
+    }, 1200)
+
+  })
+
+</script>
+
+>>>>>>> master
 
