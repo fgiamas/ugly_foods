@@ -52,7 +52,7 @@
 
         <div class="bring-to-checkout" id="cart-animation">
           <div class="" id="cart-slide">
-          <i class="fas fa-shopping-cart fa-lg text-white" style="padding-top: 10px;"> see cart</i>
+          <p><i class="fas fa-shopping-cart fa-lg text-white" style="padding-top: 10px;"></i> see cart</p>
           </div>
         </div>
           <%= link_to "check_out", cart_path(current_user.current_cart), id:"check-out-link", class:"d-none" %>
@@ -91,7 +91,7 @@ function sleep (time) {
     setTimeout(() => {
       console.log("Waited for a while")
       animationCheckOutLink.click()
-    }, 1200)
+    }, 100)
     // sleep(2000).then(() => {
     //     // Do something after the sleep!
     // });
