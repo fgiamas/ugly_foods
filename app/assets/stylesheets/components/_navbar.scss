@@ -12,7 +12,7 @@ padding-top:15px;
   left: 0;
   background-color: transparent;
   .logo-navbar{
-    background-color:#EBF9FD;
+   text-shadow: 2px 2px black;
     color:white;
     border-radius: 30px;
   }
@@ -78,9 +78,4 @@ padding: 0px 15px 5px;
 
 .navbar-lewagon{
   background-color: #EBF9FD;
-}
-
-
-input#product_total_units {
-  background-color: #C4CFD3;
 }

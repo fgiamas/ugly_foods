@@ -1,0 +1,85 @@
+  <% @shops.each do |shop| %>
+      <div class="shop-info d-flex">
+        <div class="shop-image-rating">
+          <div>
+            <%= image_tag("shop-placeholder.jpg", :alt => "shop", style: "width: 165px; height: 120px; border-radius: 10px; margin-bottom: 10px;") %>
+          </div>
+          <div class="rating-index d-flex flex-wrap align-items-center">
+            <div class="calculated-rating">
+              <%=shop.calculate_rating.round(1) %>
+            </div>
+            <% shop.calculate_rating.round.times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <%= link_to shop_path(shop) do %>
+
+              <div class="heartbeat d-flex align-items-center">
+                <%= image_tag("visit-shop-2.png", :alt => "shop", style: "width: 40px; height: 40px; margin-top: 20px;") %>
+                <p class="visit-shop-text">Visit shop</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="more-shop-info">
+          <div class="name-and-distance">
+            <strong><%= shop.name %></strong>
+            <p> 0.8miles away </p>
+          </div>
+
+          <div class="produce d-flex flex-wrap">
+            <div class="produce-ugly produce-display-index d-flex flex-wrap">
+              <%= image_tag("ugly-index.png", :alt => "shop", class: "scroll-icons") %>
+
+              <div class="produce-ugly-scroll index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
+                  <div class="scrollbar-items">
+                    <% shop.ugly_foods.each do |ugly_food| %>
+                      <div class="ugly-food-display">
+                        <p class="produce-name <%= 'searched-items' if @search_products&.include? ugly_food.produce_type.name %>"><%= ugly_food.produce_type.name %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="produce-old produce-display-index d-flex flex-wrap">
+              <%= image_tag("old-index.png", :alt => "shop", class: "scroll-icons") %>
+              <div class="produce-ugly-scroll index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
+                  <div class="scrollbar-items">
+                    <% shop.old_foods.each do |old_food| %>
+                    <div class="ugly-food-display">
+                      <p class="produce-name"> <%= old_food.produce_type.name %> </p>
+               <!--  -->
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="produce-flowers produce-display-index d-flex flex-wrap">
+              <%= image_tag("flower-index.png", :alt => "shop", class: "scroll-icons") %>
+              <div class="produce-ugly-scroll index-scroll force_overflow">
+                <div data-spy="scroll" data-offset="0" class="scrollbar scrollbar-primary scrollbar-index">
+                  <div class="scrollbar-items">
+                    <% shop.flowers.each do |flower| %>
+                      <div class="ugly-food-display">
+                        <p class="produce-name <%= 'searched-items' if @search_products&.include? flower.produce_type.name %>"><%= flower.produce_type.name %></p>
+
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
