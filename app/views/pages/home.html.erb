@@ -1,11 +1,13 @@
 <div class="home-banner" style="position: relative">
   <div class="d-flex justify-content-between">
-    <div class="welcome-home">
-      <h1 class="tracking-in-contract">Ugly foods</h1>
+    <div class="welcome-home d-flex">
+      <%= image_tag("logo3.png", :alt => "ugly goods", style: 'width: 80px; height: 80px;') %>
+      <h1>Ugly foods</h1>
+
     </div>
 
     <div>
-      <%= link_to  do%>
+      <%= link_to new_user_session_path do%>
         <p class="log-in-prompt" style="width: 80px; text-align: center; color: white; border: 0.4px solid white; padding: 5px 10px 5px 10px; border-radius: 15px;"> Log in </p>
       <% end %>
     </div>
@@ -22,46 +24,12 @@
 
   <div class = "index-container d-flex align-items-center">
 
-    <div class= "main-search-bar-home d-flex flex-wrap align-items-center">
-
-      <div class="search-item">
-        <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
-        <%= f.input :location, as: :string, html: {class: "search-location"}, placeholder: "Enter your address", label: false%>
-      </div>
-
-      <div class="search-item">
-          <%= f.input :km, collection: [[2, "2km"], [4, "4km"],[6, "6km"],[8, "8km"],[10, "10km"],[20, "20km"],[30, "30km"]], label_method: :second, value_method: :first,  html: {class: "search-location"}, prompt: "How far do you want to go?", label: false%>
-
-      </div>
-
-      <div class="dropdown search-item">
-        <button class="btn  dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag("search-f.png", :alt => "shop", style: 'width: 40px; height: 40px;') %>
-        </button>
-        <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton" id="test-for">
-          <input type="text" id="autocomplete-flowers">
-          <%= f.input :flowers, label: false, placeholder: "select a flower", collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
-        </div>
-      </div>
-
-      <div class="dropdown search-item">
-        <button class="btn  dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag("search-v.png", :alt => "shop", style: 'width: 40px; height: 40px;') %>
-        </button>
-        <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton" id="test-for">
-          <input type="text" id="autocomplete">
-          <ul id="collection"></ul>
-          <%= f.input :fruits_and_veggies, label: false, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
-        </div>
-      </div>
-
-        <div class="dropdown search-item">
-          <%= button_tag do %><i class="fas fa-search"></i><% end %>
-        </div>
-        <% end %>
-
+  <div class="main-home-stuff">
+    <%= render 'shared/search_bar' %>
+    <div style="padding-left: 2%; padding-top: 4%;">
+      <h5 class="help-us-button" style="text-align:center" >Help us save the foods</h5>
     </div>
-    <p>Dont' have an account yet?&nbsp Help us save the foods</p>
+  </div>
   </div>
 </div>
 
@@ -101,15 +69,15 @@
   </div>
 
   <div class = "index-category">
-    <div class = "index-ugly" id="categories-products">
+    <div class = "index-ugly index-card-info" id="categories-products">
       <%= image_tag("ugly-index.png", :alt => "shop", class: "scroll-icons") %><h3> Ugly foods </h3></br>
       <p>  Approximately 20% of all fruits and vetegables get thrown away for cosmetic imperfections. Let’s not feed in to that... instead let’s feed ourselves, for cheaper!</p>
     </div>
-    <div class="index-old" id="categories-products">
+    <div class="index-old index-card-info" id="categories-products">
       <%= image_tag("old-index.png", :alt => "shop", class: "scroll-icons") %><h3> Oldies but Goldies </h3></br>
       <p>Their clock may be ticking, but let’s still give them a chance. Our oldies are fruits and vegetables that are going bad soon, but are still in their prime. Let’s not let them go to waste.</p>
     </div>
-    <div class="index-flower" id="categories-products">
+    <div class="index-flower index-card-info" id="categories-products">
       <%= image_tag("flower-index.png", :alt => "shop", class: "scroll-icons") %> <h3> Flowers </h3></br>
       <p>Let’s take a load off our local flower shops and decorate our homes. If flowers are nearing their due date, shopowners will upload them to Ugly Foods to make sure they find a home.</p>
     </div>

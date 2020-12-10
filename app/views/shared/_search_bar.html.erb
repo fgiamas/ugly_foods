@@ -1,0 +1,39 @@
+<div class= "main-search-bar-home d-flex flex-wrap align-items-center">
+
+      <div class="search-item">
+        <%= simple_form_for :search, url: shops_path, html: {class: "search-form"}, method: :get do |f|%>
+        <%= f.input :location, as: :string, html: {class: "search-location"}, placeholder: "Enter your address", label: false%>
+      </div>
+
+      <div class="search-item">
+          <%= f.input :km, collection: [[2, "2km"], [4, "4km"],[6, "6km"],[8, "8km"],[10, "10km"],[20, "20km"],[30, "30km"]], label_method: :second, value_method: :first,  html: {class: "search-location"}, prompt: "How far do you want to go?", label: false%>
+
+      </div>
+
+      <div class="dropdown search-item">
+        <button class="btn  dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag("search-f.png", :alt => "shop", style: 'width: 40px; height: 40px;') %>
+        </button>
+        <div class="dropdown-menu search_flowers" aria-labelledby="dropdownMenuButton" id="test-for">
+          <input type="text" id="autocomplete-flowers">
+          <%= f.input :flowers, label: false, placeholder: "select a flower", collection: ProduceType.where(category: 2).pluck(:name), input_html: {multiple: true}, as: :check_boxes %>
+        </div>
+      </div>
+
+      <div class="dropdown search-item">
+        <button class="btn  dropdown-toggle btn-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag("search-v.png", :alt => "shop", style: 'width: 40px; height: 40px;') %>
+        </button>
+        <div class="dropdown-menu search_fruits_and_veggies" aria-labelledby="dropdownMenuButton" id="test-for">
+          <input type="text" id="autocomplete">
+          <ul id="collection"></ul>
+          <%= f.input :fruits_and_veggies, label: false, collection: ProduceType.where(["category = ? or category = ?", 0, 1]).pluck(:name), input_html: {multiple: true, id: :name}, as: :check_boxes %>
+        </div>
+      </div>
+
+        <div class="dropdown search-item">
+          <%= button_tag do %><i class="fas fa-search"></i><% end %>
+        </div>
+        <% end %>
+
+    </div>

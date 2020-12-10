@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-center" style="margin-top: 20px; box-shadow: 5px 5px 10px 4px rgba(87,89,90,0.02); padding-top: 10px;">
+  <div class="d-flex justify-content-center" style="margin-top: 20px;padding-top: 10px;">
     <div class=" message-sent">
       <%= simple_form_for [ shop, chatroom, message], remote: true do |f| %>
       <%= f.hidden_field :chatroom, value: chatroom.id %>
@@ -23,7 +23,7 @@
 
     <div class= "message-button">
       <%= button_tag do%>
-          <i class="fas fa-paper-plane" style="padding-top: 10px; padding-left: 2px;"></i>
+          <i class="fas fa-paper-plane fa-lg" style="padding-top: 10px; padding-left: 2px; color: #F8CA6B;"></i>
         <% end %>
       <% end %>
     </div>

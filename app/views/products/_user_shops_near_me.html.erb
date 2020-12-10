@@ -2,30 +2,26 @@
 <div class="all-shops">
 
   <div class="container-fluid shops-near-me" >
-    <h3 class="orange ">Discover shops near you</h3>
+    <h3 class="orange ">Shops you like</h3>
     <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 shops-near-me-list">
-      <% current_user.shops_near_me.each do |shop| %>
+      <% current_user.likes.each do |like| %>
         <div class="shop-near-me col-5">
           <div class="d-flex flex-wrap">
             <div class="marqt-shop marqt-shop-near" style="width: 150px; height: 120px;"></div>
             <div class="dash-shop-info">
-              <strong><p class="orange"><%= shop.name %></strong>
+              <strong><p class="orange"><%= like.shop.name %></strong>
               <div class="">
-                <p class="grey">This shop is owned by</p><p class="purple"><%= "     #{shop.user.first_name} #{shop.user.last_name}" %></p>
+                <p class="grey">This shop is owned by</p><p class="purple"><%= "     #{like.shop.user.first_name} #{like.shop.user.last_name}" %></p>
               </div>
               <div class="d-flex flex=wrap">
-                <p class="purple"><%= shop.calculate_rating %></p>
+                <p class="purple"><%= like.shop.calculate_rating %></p>
                 <div class="icon-in-line d-flex flex-wrap">
-                  <% shop.calculate_rating.truncate().times do %>
+                  <% like.shop.calculate_rating.truncate().times do %>
                     <i class="fas fa-star purple"></i>
                   <% end %>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="features-products">
-            <p class="purple">Features products this week:</p>
           </div>
 
         </div>
