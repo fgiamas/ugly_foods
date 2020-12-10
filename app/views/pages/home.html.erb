@@ -7,8 +7,15 @@
     </div>
 
     <div>
-      <%= link_to new_user_session_path do%>
-        <p class="log-in-prompt" style="width: 80px; text-align: center; color: white; border: 0.4px solid white; padding: 5px 10px 5px 10px; border-radius: 15px;"> Log in </p>
+      <% if user_signed_in? %>
+        <div class="user-button-main">
+          <%= render "shared/user_button" %>
+        </div>
+      <% end %>
+      <% if !user_signed_in? %>
+        <%= link_to new_user_session_path do%>
+          <p class="log-in-prompt" style="width: 80px; text-align: center; color: white; border: 0.4px solid white; padding: 5px 10px 5px 10px; border-radius: 15px;"> Log in </p>
+        <% end %>
       <% end %>
     </div>
   </div>
