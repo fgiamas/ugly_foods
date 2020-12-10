@@ -19,8 +19,10 @@
 <%= link_to shops_path do %>
             <div class="continue-shoping">
               <div class="d-flex flex-wrap">
-                <i class="fas fa-long-arrow-alt-left"></i>
-                <p>Continue shopping</p>
+                <div class="continue-shopping-styling">
+                  <p><i class="fas fa-long-arrow-alt-left"></i>
+                  Continue shopping</p>
+                </div>
               </div>
               <% end %>
             </div>
@@ -85,19 +87,19 @@
   <% end %>
 
     <div class ="grand-total">
-      <p>Total: <%= current_user.current_cart.product_selections.map {|item| item.total_price}.sum.round(2)%> </p>
+      <p>Total: <%= current_user.current_cart.product_selections.map {|item| item.total_price}.sum.round(2)%> €</p>
     </div>
 
 
-     <div class="confirm-pay">
+     <div class="confirm-pay" id="payment-animation">
             <%= simple_form_for current_user.current_cart, url: cart_path(current_user.current_cart), method: :put do |f|%>
-            <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }  %>
-            <%= f.submit 'Confirm your purchase'%>
+            <%= f.input :pick_up_date, as: :date, html5: true, data:{ provide:'datepicker' }, class: "confirm-pay-input" %>
+            <%= f.submit 'Confirm your purchase', class: "confirm-pay-submit" %>
             <% end %>
 
           </div>
 
-  </div>
+    </div>
 </div>
 
 
@@ -110,6 +112,9 @@
 
 </div>
 
+            <div class="" id="fruit-slide">
+              <h1 style= "font-size: 160px;">🥑</h1>
+            </div>
 
 </div>
 
@@ -120,5 +125,20 @@
 </div> <!-- card.// -->
 
 </div>
+
+<script>
+  const fruitSlide = document.querySelector("#fruit-slide")
+  const paymentAnimation = document.querySelector("#payment-animation input[type='submit']")
+  paymentAnimation.addEventListener("click",(e)=>{
+    e.preventDefault()
+    fruitSlide.classList.add("slide-out-elliptic-top-bck")
+    setTimeout(() => {
+      console.log("Waited for a while")
+      document.querySelector("#payment-animation form").submit()
+    }, 1200)
+
+  })
+
+</script>
 
 
