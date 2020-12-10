@@ -12,7 +12,6 @@
     </button>
 
     <div class="dropdown-menu shopping-cart-drop" id="cart-drop" style="position: relative; bottom: 0px;">
-      <% if current_user %>
         <% if current_user.current_cart.product_selections.empty? %>
           <p>There is nothing in your cart</p>
         <% else %>
@@ -24,6 +23,7 @@
                     <strong class="purple"><%= shop_key.name %></strong>
                     <% group_cart_items[shop_key].each do |select| %>
                     <div class="cart-cards d-flex flex-wrap justify-content-between" style="padding-bottom: 10px;">
+
                       <div>
                         <strong><p class="light-blue" style="text-transform: capitalize; margin: 0; padding: 0;"><%= select.product.produce_type.name %></p></strong>
                         <p class="grey" style="font-size: 14px; padding: 0px; margin: 0px">€ <%= select.total_price.round(2) %></p>
@@ -37,6 +37,7 @@
                       remote: true do %>
                       <i class="far fa-minus-square remove-cart" style="color: #EB4963"></i>
                       <% end %>
+
                     </div>
                     <% end %>
                   </div>
@@ -44,7 +45,7 @@
                 <% end %>
               </div>
             </div>
-          <% end %>
+        <% end %>
 
 
           <div class="sub-total d-flex justify-content-between" style="padding: 10px; margin: 0px;">
@@ -63,18 +64,9 @@
             <%= link_to "check_out", cart_path(current_user.current_cart), id:"check-out-link", class:"d-none" %>
 
 
-        </div>
-
-
-      <% else %>
-
-        <div class="d-flex justify-content-around">
-          <%= image_tag("oops.png", :alt => "shop", class: "scroll-icons") %>
-          <p>Oops! Looks like you aren't logged in 🤔</p>
-        </div>
-
-      <% end %>
-
+      </div>
+    </div>
+<% end %>
 
 <script>
 function sleep (time) {
