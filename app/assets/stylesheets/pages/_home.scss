@@ -1,4 +1,3 @@
-
 .welcome-home{
 margin-left: 8%;
 color: #ACE1F6;
@@ -8,6 +7,106 @@ text-shadow: 2px 2px black;
 .welcome h1{
 font-family: 'Fjalla One', sans-serif;
 }
+
+.tracking-in-contracts.animating{
+  -webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+          animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@-webkit-keyframes tracking-in-contracts {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contracts {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+.tracking-in-contractz.animating {
+  -webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+          animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@-webkit-keyframes tracking-in-contractz {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contractz {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+
+
+
+.tracking-in-contract.animating {
+  -webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+          animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@-webkit-keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
 
 .index-container{
   // background-image: image-url("uglyfoods.jpg");
@@ -89,6 +188,8 @@ color: black;
   font-size: 60px;
 }
 
+
+
 .card-girl{
  background-image: image-url('s3.jpg');
  border-radius: 20px;
@@ -133,6 +234,13 @@ background-color: white;
   font-weight: bolder;
   font-size: 28px;
 }
+
+
+
+
+
+
+
 #categories-products{
   background-color: white;
   border-radius: 20px;
@@ -149,6 +257,37 @@ background-color: white;
 #categories-products h3{
   color:#FBAB7E
 }
+
+
+
+.scale-up-centerz.animating {
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+          animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+
+@-webkit-keyframes scale-up-centerz {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes scale-up-centerz {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+
 
 .index-category{
   display:flex;
@@ -361,12 +500,12 @@ ul#buttons li:before {
   animation-timing-function: cubic-bezier(0.5, -0.6, 1, 1);
 }
 
-ul#buttons li:hover a {
+ul#buttons li:hover a  {
   animation: icon-in .5s forwards;
   animation-timing-function: cubic-bezier(0, 0, 0.4, 1.6);
 }
 
-ul#buttons li:hover:before {
+ul#buttons li:hover:before  {
   animation: back-in .5s forwards;
   animation-timing-function: cubic-bezier(0, 0, 0.4, 1.6);
 }
@@ -426,6 +565,7 @@ ul#buttons li:hover:before {
     border-radius: 13px;
     border: 2px solid #b3b3b3;
     margin: 0 auto;
+
 }
 
 #test-for {
