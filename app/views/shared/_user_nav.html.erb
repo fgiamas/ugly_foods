@@ -6,9 +6,11 @@
     <div class="d-flex justify-content-end">
       <% if user_signed_in? %>
         <div class="d-flex justify-content-end">
-          <div>
-            <%= render "shops/shopping_cart" %>
-          </div>
+          <% if !current_user.shop %>
+            <div>
+              <%= render "shops/shopping_cart" %>
+            </div>
+          <% end %>
           <div>
              <div class="btn-group">
 
@@ -26,9 +28,11 @@
       <% end %>
     </div>
     </div>
-    <div>
-      <% if !user_signed_in? %>
+
+    <% if !user_signed_in? %>
+      <div>
         <%= render 'shared/login_button' %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+
 </div>

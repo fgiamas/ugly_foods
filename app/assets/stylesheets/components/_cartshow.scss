@@ -74,6 +74,7 @@
 }
 .cart-show-index{
   background-color: #EBF9FD;
+  height: 100vh;
 }
 .second-index{
   background-color: white;
@@ -167,7 +168,7 @@ width: 100%;}
   color:white;
   border: none;
   box-shadow: 3px 3px 4px 2px rgba(191, 191, 191, 0.5);
-  font-weight: bolder;}
+ }
 
 
 .total-cart {
@@ -184,10 +185,13 @@ width: 100%;}
 }
 
 input#cart_pick_up_date{
-  background-color: #FDFDFD;
+  background-color: lightgrey;
   padding-left: 20px;
   padding-right: 20px;
+  margin-left: 15%;
+  margin-right: 15%;
 }
+
 
 .all-cart-card-info {
   margin-bottom: 5px;
@@ -214,9 +218,9 @@ input#cart_pick_up_date{
 }
 
 .continue-shopping-styling{
-    padding: 7px;
     padding-top: 7px;
-
+    padding-left: 7px;
+    padding-right: 7px;
     background-color: #F5AD7D;
     border-radius: 14px;
     color: white;

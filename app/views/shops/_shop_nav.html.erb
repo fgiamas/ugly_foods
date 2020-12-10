@@ -27,10 +27,11 @@
         </div>
       <% end %>
     </div>
-    <div>
-      <% if !user_signed_in? %>
+
+    <% if !user_signed_in? %>
+      <div>
         <%= render 'shared/login_button' %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
 </div>

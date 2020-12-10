@@ -1,0 +1,12 @@
+<div class=" message-sent" id="message-send-fix">
+  <%= simple_form_for [ shop, chatroom, message], remote: true do |f| %>
+    <%= f.hidden_field :chatroom, value: chatroom.id %>
+    <%= f.input :content, label: false, class: "send-new-message", placeholder: "send a message" %>
+</div>
+
+<div class= "message-button">
+  <%= button_tag do%>
+      <i class="fas fa-paper-plane fa-lg" style="padding-top: 10px; padding-left: 2px; color: #F8CA6B;"></i>
+    <% end %>
+  <% end %>
+</div>
