@@ -53,6 +53,7 @@
     </div>
   </div>
 
+
   <div class="all-orders">
     <div class="user-upcoming-orders">
       <h3 class="upcoming-title orange-text">Past Orders</h3>
@@ -81,37 +82,39 @@
                           <!--now going into the product selection for each shop -->
                           <% grouped_prod_select.keys.each do |shop_key| %>
 
-                        <div class="upcoming-org-shop-orders">
-                          <strong><%= shop_key.name %></strong>
-                            <%= link_to 'Message the shop', dashboard_path(messages: true) %>
-                            <div class="upcoming-org-shop">
-                              <p class="cart-shop-title purple"><strong><%= shop_key.name %></strong></p>
+                            <div class="upcoming-org-shop-orders">
+                              <strong><%= shop_key.name %></strong>
+                              <%= link_to 'Message the shop', dashboard_path(messages: true) %>
+                                <div class="upcoming-org-shop">
+                                  <p class="cart-shop-title purple"><strong><%= shop_key.name %></strong></p>
 
-                              <% grouped_prod_select[shop_key].each do |selection| %>
-                                <div class="d-flex justify-content-between cart-item-group">
-                                  <p class="cart-items"><%= selection.product.produce_type.name %> </p>
-                                  <div>
-                                    <p class="cart-items"><strong>€<%= selection.total_price%></strong> </p>
-                                    <p class="cart-items"><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
-                                  </div>
+                                  <% grouped_prod_select[shop_key].each do |selection| %>
+                                    <div class="d-flex justify-content-between cart-item-group">
+                                      <p class="cart-items"><%= selection.product.produce_type.name %> </p>
+                                      <div>
+                                        <p class="cart-items"><strong>€<%= selection.total_price%></strong> </p>
+                                        <p class="cart-items"><%= selection.units ? "#{selection.units} units" : "#{selection.units} kg" %>  </p>
+                                      </div>
+                                    </div>
+                                  <% end %>
+
                                 </div>
-                              <% end %>
                             </div>
                           <% end %>
                         </div>
 
-                      </div>
                     </div>
+
 
                 <% end %>
 
-            </div>
-           </div>
+              </div>
+           §</div>
           </div>
         </div>
 
-      </div>
     </div>
   </div>
 
 </div>
+
