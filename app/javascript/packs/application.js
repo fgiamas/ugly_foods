@@ -53,7 +53,7 @@ document.addEventListener('turbolinks:load', () => {
   initFiltersSeven();
   initIntersectionObserver();
 
-  // initCartAnim();
+  initCartAnim();
 })
 
   initChatroomCable();
