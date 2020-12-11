@@ -282,3 +282,21 @@ box-shadow: 2px 2px 8px 0px rgba(255 ,255,255,0.8);
 .scrolling-wrapper.row.flex-row.flex-nowrap.mt-4.pb-4.shops-near-me-list {
   padding: 10px;
 }
+
+.notification-dash {
+  background-color: #EB4963;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 50px;
+  margin-left: 5px;
+}
+
+.chat-customer:hover a {
+  color: black;
+}
+
+.chat-customer:hover {
+  background-color: #EFF4F9;
+}
+

@@ -31,6 +31,7 @@ import { initFiltersThree } from '../plugins/init_filters';
 import { initFiltersFive } from '../plugins/init_filters';
 import { initFiltersSix } from '../plugins/init_filters';
 import { initFiltersSeven } from '../plugins/init_filters';
+import { initCartAnim } from '../plugins/init_cart_animation';
 import { initIntersectionObserver  } from '../plugins/init_scroll';
 // import { initLandingPage } from '../plugins/init_landing_page'
 
@@ -38,11 +39,11 @@ import { initIntersectionObserver  } from '../plugins/init_scroll';
 
 
 document.addEventListener('turbolinks:load', () => {
+
   initMapbox();
   initAutocomplete();
   initAutocompleteFlowers();
   // initHideSelection();
-  initChatroomCable();
   initFilters();
   initFiltersTwo();
   initFiltersThree();
@@ -51,4 +52,8 @@ document.addEventListener('turbolinks:load', () => {
   initFiltersSix();
   initFiltersSeven();
   initIntersectionObserver();
+
+  // initCartAnim();
 })
+
+  initChatroomCable();
