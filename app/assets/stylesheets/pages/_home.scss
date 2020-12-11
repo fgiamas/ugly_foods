@@ -120,20 +120,16 @@ font-family: 'Fjalla One', sans-serif;
   height: 87vh;
 
 }
-.main-search-bar {
-  background-color: rgba(255,255,255,1);
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 50px;
 
-}
+
 
 .main-search-bar-home{
   background-color: rgba(255,255,255,1);
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 30px;
-  width: 690px !important;
+  width: 760px !important;
+  height: 70px;
   justify-content: space-between;
   box-shadow: 5px 5px 10px 2px rgba(128,128,128,0.5);
 }
@@ -671,11 +667,11 @@ font-weight: bolder;
 }
 
 .form-group.select.required.search_km {
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 .form-group.string.required.search_location{
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 #autocomplete-flowers {
@@ -756,3 +752,29 @@ font-weight: bolder;
 .index-ugly {
   box-shadow: 6px 6px 12px 5px rgba(110,39,32,0.5);
 }
+
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 760px !important;
+  justify-content: space-around;
+}
+
+#search-submit:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 20px;
+  content: "\f002";
+  color: #AEE2F7;
+  text-shadow: 2px 2px black;
+}
+
+.form-group.string.required.search_location {
+  margin-right: 10px !important;
+}
+
+input#search_location{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+

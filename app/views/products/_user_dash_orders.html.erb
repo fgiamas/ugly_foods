@@ -25,10 +25,8 @@
                   <div>
                     <% grouped_prod_select.keys.each do |shop_key| %>
                       <div class="upcoming-org-shop">
+                        <p class="chat-customer" style="padding: 5px 10px 5px 10px; border: 0.5px solid #E3DFDC; border-radius: 20px; color: white; width: 80%;"><%= link_to '✉️ Chat with the shopowner', shop_chatroom_path(shop_key) %></p>
                         <p class="cart-shop-title purple"><strong><%= shop_key.name %></strong></p>
-
-                        <%= link_to 'Chat with the owner', shop_chatroom_path(shop_key) %>
-
                         <% grouped_prod_select[shop_key].each do |selection| %>
                           <div class="d-flex justify-content-between cart-item-group">
                             <p class="cart-items"><%= selection.product.produce_type.name %> </p>
@@ -83,9 +81,8 @@
                           <% grouped_prod_select.keys.each do |shop_key| %>
 
                             <div class="upcoming-org-shop-orders">
-                              <strong><%= shop_key.name %></strong>
-                              <%= link_to 'Message the shop', dashboard_path(messages: true) %>
                                 <div class="upcoming-org-shop">
+                                  <p class="chat-customer" style="padding: 5px 10px 5px 10px; border: 0.5px solid #E3DFDC; border-radius: 20px; color: white; width: 80%;"><%= link_to '✉️ Chat with the shopowner', shop_chatroom_path(shop_key) %></p>
                                   <p class="cart-shop-title purple"><strong><%= shop_key.name %></strong></p>
 
                                   <% grouped_prod_select[shop_key].each do |selection| %>
@@ -109,7 +106,7 @@
                 <% end %>
 
               </div>
-           §</div>
+           </div>
           </div>
         </div>
 

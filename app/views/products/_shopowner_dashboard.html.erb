@@ -4,7 +4,7 @@
     <div class="nav flex-column nav-pills user-main" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="owner-dash nav-link <%= 'active' unless params[:messages] == "true" %>" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home fa-owner user-logo"></i> Home</a>
       <a class=" owner-dash nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false"><i class="fas fa-pepper-hot fa-owner user-logo"></i> Your Orders</a>
-      <a class="owner-dash <%= 'active' if params[:messages] == "true" %>" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-comments fa-owner user-logo"></i> Messages</a>
+      <a class="owner-dash <%= 'active' if params[:messages] == "true" %>" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-comments fa-owner user-logo"></i> Messages <p class="notification-dash" id="notification"><%= current_user.notifications.count %></p></a>
     </div>
 
     <div class="tab-content" id="v-pills-tabContent">

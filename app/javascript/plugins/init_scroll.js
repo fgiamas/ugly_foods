@@ -15,7 +15,7 @@ if(document.querySelector(".pages-home")) {
     //loadItems(10);
   });
 
-  intersectionObserver.observe(document.querySelector('.tracking-in-contract'));
+  // intersectionObserver.observe(document.querySelector('.tracking-in-contract'));
   intersectionObserver.observe(document.querySelector('.tracking-in-contracts'));
   intersectionObserver.observe(document.querySelector('.tracking-in-contractz'));
 
