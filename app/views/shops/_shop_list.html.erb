@@ -68,7 +68,7 @@
                   <div class="scrollbar-items">
                     <% shop.old_foods.each do |old_food| %>
                     <div class="ugly-food-display">
-                      <p class="produce-name"> <%= old_food.produce_type.name %> </p>
+                      <p class="produce-name <%= 'searched-items' if @search_products&.include? old_food.produce_type.name %>"> <%= old_food.produce_type.name %> </p>
                <!--  -->
                     </div>
                     <% end %>
