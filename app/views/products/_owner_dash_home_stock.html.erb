@@ -9,17 +9,22 @@
 </div>
 
 <div class="collapse" id="AddToStock">
-  <div class="card card-body card-body-add-dropdown">
+  <div class="card card-body card-body-add-dropdown" style="margin-bottom: 40px;">
       <%= simple_form_for(@product) do |f| %>
-        <%= f.input :discount_percent %>
-        <%= f.input :price_per_unit %>
-        <%= f.input :lifespan %>
-        <%= f.input :total_units %>
-        <%= f.input :total_kg %>
-        <%= f.input :days_to_expiry %>
-        <%= f.input :status, collection: Product.statuses.keys.to_a %>
-        <%= f.association :produce_type %>
-        <%= f.submit %>
+        <%= f.label :produce_type, "Add a produce" %>
+        <%= f.association :produce_type, label: false %>
+        <%= f.label :status, "Ugly or Oldie?" %>
+        <%= f.input :status, collection: Product.statuses.keys.to_a, label: false %>
+        <%= f.label :price_per_unit, "Price per unit" %>
+        <%= f.input :price_per_unit, label: false %>
+        <%= f.label :discount_percent, "Discount you offer" %>
+        <%= f.input :discount_percent, label: false %>
+        <p>Is your stock in units or kg?</p>
+        <div class="d-flex">
+          <%= f.input :total_units %>
+          <%= f.input :total_kg %>
+        </div>
+        <%= f.submit class: "add-prod" %>
       <% end %>
   </div>
 </div>
