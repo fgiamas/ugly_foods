@@ -1,5 +1,4 @@
-<div class="message-container <%= message.user == current_user ? 'mine' : 'yours' %>" id="message-<%= message.id %>">
-
+<div class="message-container type-<%= message.user.shop ? 'shop' : 'user' %>" id="message-<%= message.id %>">
   <i class="author">
 
     <div class="name-time d-flex align-items-center <%= message.user == current_user ? 'mine' : 'yours' %>" id="message-<%= message.id %>">

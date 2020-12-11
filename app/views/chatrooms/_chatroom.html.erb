@@ -6,7 +6,7 @@
 
   <div class="responses-box">
     <div class = "responses">
-      <div id="messages" data-chatroom-id="<%= chatroom.id %>">
+      <div id="messages" class="<%= current_user.shop ? 'shop' : 'user' %>" data-chatroom-id="<%= chatroom.id %>">
         <% chatroom.messages.each do |message| %>
           <%= render "messages/message", message: message %>
         <% end %>

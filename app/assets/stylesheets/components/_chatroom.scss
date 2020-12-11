@@ -25,7 +25,7 @@
 
 .responses-box{
   background: rgb(245,171,126);
-background: linear-gradient(180deg, rgba(245,171,126,1) 3%, rgba(248,202,107,1) 96%, rgba(251,209,123,1) 100%);
+  background: linear-gradient(180deg, rgba(245,171,126,1) 3%, rgba(248,202,107,1) 96%, rgba(251,209,123,1) 100%);
   border-radius: 20px;
   max-width: 800px;
   padding: 20px;
@@ -40,19 +40,19 @@ background: linear-gradient(180deg, rgba(245,171,126,1) 3%, rgba(248,202,107,1) 
   height: 100%;
 }
 
-.message-response.mine {
-  width: 60%;
-  background-color: white;
-  text-align: right;
-  padding-right: 25px;
-}
-.message-response.yours {
-  width: 60%;
-  background-color: #DCDCDC;
-  color: white;
-  text-align: left;
-  padding-left: 25px;
-}
+// .message-response.mine {
+//   width: 60%;
+//   background-color: white;
+//   text-align: right;
+//   padding-right: 25px;
+// }
+// .message-response.yours {
+//   width: 60%;
+//   background-color: #DCDCDC;
+//   color: white;
+//   text-align: left;
+//   padding-left: 25px;
+// }
 
 .message-container.mine {
   justify-content: right;
@@ -72,9 +72,9 @@ background: linear-gradient(180deg, rgba(245,171,126,1) 3%, rgba(248,202,107,1) 
   display: inline-block;
 }
 
-.name-time.mine{
-margin-left: 72%;
-}
+// .name-time.mine{
+// margin-left: 72%;
+// }
 
 input#message_content {
   margin-right: 20px;
@@ -86,3 +86,51 @@ input#message_content {
 i .fa-paper-plane:hover {
   color: #F5AE7C;
 }
+
+
+
+.user .type-user,
+.shop .type-shop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+
+
+// SOME OTHER PERSON
+.user .type-shop .message-response,
+.shop .type-user .message-response {
+  display: inline-block;
+  text-align: left;
+  background-color: #DCDCDC;
+}
+
+
+
+// ME
+.user .type-user .message-response,
+.shop .type-shop .message-response {
+  display: inline-block;
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
