@@ -35,7 +35,7 @@ gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
 
 group :production do
-  gem 'pg' #sqlite3 gem is not supported on Heroku.
+  gem 'pg', '>= 0.18', '< 2.0'
   gem 'rails_12factor'
 end
 
