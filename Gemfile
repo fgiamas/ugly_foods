@@ -34,6 +34,10 @@ gem 'faker'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
 
+group :production do
+  gem 'pg' #sqlite3 gem is not supported on Heroku.
+  gem 'rails_12factor'
+end
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
