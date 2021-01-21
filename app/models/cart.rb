@@ -20,6 +20,7 @@ class Cart < ApplicationRecord
       sum += item_sum
     end
     return sum.round(2)
+
   end
 
 end

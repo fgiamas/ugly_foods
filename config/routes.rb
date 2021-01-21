@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # need a view dashboard.html.erb
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
   resources :shops do
     # so that we have nested URLs, use shallow nesting for certain things
     resource :chatroom, only: :show do
@@ -20,9 +20,10 @@ Rails.application.routes.draw do
   resources :product_selections
   resources :products, except: [:index]
 
-  resources :carts, only: [:show, :new, :update] do
+  resources :carts, only: [:show, :new, :update, :create] do
     post '/:product_id', to: 'cart#add_item_to_cart'
     delete '/:product_id', to: 'cart#remove_item_from_cart'
+    resources :payments, only: :new
   end
   # method run before_action will create for us
 
