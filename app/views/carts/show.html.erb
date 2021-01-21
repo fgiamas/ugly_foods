@@ -84,7 +84,7 @@
         <% end %>
 
         <div class ="grand-total">
-          <p style="padding-top: 10px;">Total: €<%= current_user.current_cart.calculate_price.round(2)%> </p>
+          <p style="padding-top: 10px;">Total: <%= number_to_currency(current_user.current_cart.calculate_price.round(2), :unit => "€")%> </p>
         </div>
 
 
@@ -94,6 +94,11 @@
               <%= f.submit 'Confirm your purchase', class: "confirm-pay-submit" %>
               <% end %>
           </div>
+          <%= form_tag carts_path do %>
+            <%= hidden_field_tag 'cart_id', current_cart.id %>
+            <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+          <% end %>
+
       </div>
 
     </div>
