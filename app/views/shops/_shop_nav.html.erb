@@ -2,9 +2,7 @@
     <%= link_to root_path do %>
       <%= image_tag("logo4.png", :alt => "ugly goods", style: 'width: 40px; height: 40px;') %>
     <% end %>
-    <div>
-      <%= render'shared/search_bar' %>
-    </div>
+
     <div class="d-flex justify-content-end">
       <% if user_signed_in? %>
         <div class="d-flex justify-content-end">
