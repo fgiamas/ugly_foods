@@ -29,7 +29,15 @@
   margin: auto !important;
   margin-bottom: 10% !important;
  }
-
+.index-page{
+  flex-direction: column;
+}
+#map{
+  display: none;
+}
+.shop-info{
+margin-right: 7% !important;
+}
 }
 
 @media (max-width: 425px) and (min-width: 320px){
@@ -69,8 +77,12 @@
 .top-text, .bottom-text{
   text-shadow: 2px 2px black;
 }
-.how-it-works, .what-we-do-title,{
-  width: 400px !important;
+.what-we-do-title{
+  width: 300px !important;
+}
+.how-it-works{
+  width: 9em !important;
+  overflow: hidden;
 }
 .index-category{
   flex-direction: column;
@@ -78,5 +90,28 @@
 .index-card-info{
   width: 95% !important;
   margin-bottom: 10% !important;
+}
+.more-shop-info{
+  display: none;
+}
+.inner-cont{
+  //display: flex;
+  flex-direction: column;
+}
+#map{
+  display: none;
+}
+.shop-info{
+margin-right: 7% !important;
+}
+.fa-star{
+  display: none;
+}
+.heartbeat{
+  margin-top: 50% !important;
+}
+.shopping-cart-drop{
+  width: 300px !important;
+  //height: auto;
 }
 }
